@@ -1,5 +1,6 @@
 const { getBaseTimeForGivenTime } = require("./baseTimeCalculation.js");
 const baseTimes = [2, 5, 8, 11, 14, 17, 20, 23];
+process.env.TZ = "Asia/Seoul";
 //pastData= POP을 쓰되, 2시에 부를것을 3시에 부르고, hour만 조정하자.
 
 //어쩌피 3시에 한번 부를꺼니까, 1시간 빼고, minute를 00으로 맞추면 된다.

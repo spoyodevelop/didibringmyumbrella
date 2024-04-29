@@ -4,7 +4,7 @@ const {
   baseTimes,
 } = require("./dateFormatting");
 const { DUMMY_CAPITAL } = require("./locations");
-
+process.env.TZ = "Asia/Seoul";
 const KOREA_METEOROLOGICAL_API_KEY = process.env.KOREA_METEOROLOGICAL_API_KEY;
 // const { KOREA_METEOROLOGICAL_API_KEY } = require("./majorKeys");
 

@@ -1,5 +1,5 @@
 const moment = require("moment");
-
+process.env.TZ = "Asia/Seoul";
 const timeRanges = [
   { startTime: "00:01", endTime: "03:00", baseTime: 23 },
   { startTime: "03:01", endTime: "06:00", baseTime: 2 },
