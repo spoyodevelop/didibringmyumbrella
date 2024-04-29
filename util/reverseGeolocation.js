@@ -10,6 +10,7 @@ const {
   DUMMY_POSITION,
   CAPITAL_LOCATION,
 } = require("./locations");
+
 async function reverseGeocode(location) {
   const { place, latitude, longitude } = location;
   const url = `https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?coords=${longitude},${latitude}&orders=legalcode&output=json`;
@@ -18,7 +19,6 @@ async function reverseGeocode(location) {
     "X-NCP-APIGW-API-KEY": naverAPIClientSecret,
   };
   try {
-    axiosRetry(axios, { retries: 3 });
     const response = await axios.get(url, { headers });
     const data = response.data;
     const region = data.results[0].region;
@@ -37,7 +37,13 @@ async function reverseGeocode(location) {
     };
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error;
+    return {
+      ...CAPITAL_LOCATION[0],
+      error: {
+        message:
+          "reverseGeocode API가 작동하지 않습니다. 서울로 기본값이 설정됩니다.",
+      },
+    };
   }
 }
 

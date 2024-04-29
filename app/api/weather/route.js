@@ -9,16 +9,28 @@ export async function GET(request) {
 
   const latitude = searchParams.get("latitude");
   const longitude = searchParams.get("longitude");
-  const locationData = await fetchClientLocationData({ latitude, longitude });
+  let locationData;
+  let fetchingDataType = "client";
+  try {
+    locationData = await fetchClientLocationData({ latitude, longitude });
+    console.log(locationData);
+    //기본값으로 서울을 받아오게 할까? fallback 로직이 있어야 하는데...
+  } catch (error) {
+    console.error("Error in fetchClientLocationData:", error);
+    throw error;
+  }
+  if (locationData.error) {
+    fetchingDataType = "DB";
+  }
 
   const currentWeatherData = await fetchWeatherDataWithRetry(
-    "client",
+    fetchingDataType,
     "currentData",
     locationData,
     2000
   );
   const pastWeatherData = await fetchWeatherDataWithRetry(
-    "client",
+    fetchingDataType,
     "pastData",
     locationData,
     2000
