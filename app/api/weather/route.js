@@ -6,7 +6,9 @@ import { MongoClient } from "mongodb";
 export async function GET(request) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.searchParams);
+  const currentTime = new Date().toLocaleTimeString();
 
+  console.log("Current time:", currentTime);
   const latitude = searchParams.get("latitude");
   const longitude = searchParams.get("longitude");
   let locationData;
