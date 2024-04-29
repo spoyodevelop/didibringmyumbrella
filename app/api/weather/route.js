@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { fetchWeatherDataWithRetry } from "@/util/fetchWeather";
 import { fetchClientLocationData } from "@/util/reverseGeolocation";
 import { MongoClient } from "mongodb";
-
+export const runtime = "edge";
 export async function GET(request) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.searchParams);
