@@ -85,10 +85,10 @@ async function fetchWeatherData(usage, dataType, location) {
     const newDate = new Date();
     const items = jObj.response.body.items;
     return {
-      newDate,
+      createdAt: newDate,
       dataType,
       usage,
-      url,
+
       location,
       timeObj,
       ...items,
