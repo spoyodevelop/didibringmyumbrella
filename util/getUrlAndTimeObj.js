@@ -18,7 +18,7 @@ function getTimeObj(usage, dataType) {
     ({ year, month, day, hour, minute } = getPastFormattedHour(1, false));
   } else if (dataType === "pastData") {
     ({ year, month, day, hour, minute } = getCurrentBaseDate(
-      new Date(Date.now() + 32400000)
+      new Date(Date.now())
     ));
   }
   return { usage, dataType, year, month, day, hour, minute };
