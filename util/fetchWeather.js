@@ -1,8 +1,7 @@
 const { XMLParser } = require("fast-xml-parser");
-const { fetchClientLocationsData } = require("./locationMapping");
 
 const { getTimeObj, getUrl } = require("./getUrlAndTimeObj");
-const { DUMMY_CAPITAL } = require("./locations");
+
 const axios = require("axios");
 const axiosRetry = require("axios-retry").default;
 

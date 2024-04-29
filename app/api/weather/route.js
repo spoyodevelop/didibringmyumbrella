@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { fetchWeatherDataWithRetry } from "@/util/fetchWeather";
-import { fetchClientLocationData } from "@/util/locationMapping";
+import { fetchClientLocationData } from "@/util/reverseGeolocation";
 import { MongoClient } from "mongodb";
 
 export async function GET(request) {
