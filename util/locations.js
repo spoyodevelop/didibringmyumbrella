@@ -93,6 +93,10 @@ const DUMMY_POSITION = [
 
 const CAPITAL_LOCATION = [
   {
+    administrativeArea: "currentLocation",
+    administrativeAreaKorean: "현 위치",
+  },
+  {
     administrativeArea: "Seoul",
     administrativeAreaKorean: "서울특별시",
     capitalNX: 60,

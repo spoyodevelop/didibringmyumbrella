@@ -9,7 +9,7 @@ const fetchWeatherData = async (placeData) => {
   } else {
     url = `/api/weather/fetchweather?&administrativeArea=${placeData.administrativeArea}`;
   }
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "force-cache" });
   if (!response.ok) {
     console.log(`Failed to fetch data: ${response.status}`);
   } else {

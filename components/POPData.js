@@ -18,12 +18,15 @@ async function fetchPOPData(administrativeArea) {
 const POPdata = () => {
   const { place, placeData, popData, updatePopData } = useWeatherStore();
   useEffect(() => {
-    if (place) {
+    if (place === "currentLocation") {
+      fetchPOPData(placeData.administrativeArea).then((data) => {
+        updatePopData(data);
+      });
+    } else if (place) {
       fetchPOPData(place).then((data) => {
         updatePopData(data);
       });
-    }
-    if (placeData) {
+    } else if (placeData) {
       fetchPOPData(placeData.administrativeArea).then((data) => {
         updatePopData(data);
       });
@@ -31,6 +34,8 @@ const POPdata = () => {
   }, [placeData]);
   return (
     <div>
+      <p>place:{place}</p>
+      <p>placeData:{placeData.administrativeArea}</p>
       <h1>POP Data</h1>
       <p>Weather Data: {JSON.stringify(popData)}</p>
     </div>

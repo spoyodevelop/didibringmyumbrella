@@ -7,16 +7,11 @@ export const useWeatherStore = create((set) => ({
   placeData: {},
   weatherData: {},
   popData: {},
-  currentData: {},
   currentPlaceData: {},
   currentWeatherData: {},
-  updateCurrentWeatherData: (newCurrentWeatherData) =>
-    set({ currentWeatherData: newCurrentWeatherData }),
-  updateCurrentPlace: (newCurrentPlace) =>
-    set({ currentPlace: newCurrentPlace }),
-  updateCurrentPlaceData: (newCurrentPlaceData) =>
-    set({ currentPlaceData: newCurrentPlaceData }),
-  updateCurrentData: (newCurrentData) => set({ currentData: newCurrentData }),
+
+  updateCurrentPlaceData: (newCurrentData) =>
+    set({ currentPlaceData: newCurrentData }),
   updateLatitude: (newLatitude) => set({ latitude: newLatitude }),
   updateLongitude: (newLongitude) => set({ longitude: newLongitude }),
   updatePlace: (newPlace) => set({ place: newPlace }),

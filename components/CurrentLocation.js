@@ -16,7 +16,7 @@ async function fetchLocationData(latitude, longitude) {
     return data;
   }
 }
-
+// 전부분 else if or else 구문 체크, 주의!
 const CurrentLocation = () => {
   const {
     latitude,
@@ -24,14 +24,15 @@ const CurrentLocation = () => {
     placeData,
     updatePlaceData,
     place,
-    updatePlace,
-    currentPlace,
+
+    currentPlaceData,
     updateCurrentPlaceData,
   } = useWeatherStore();
   useEffect(() => {
     if (latitude && longitude) {
       fetchLocationData(latitude, longitude).then((data) => {
         updatePlaceData(data);
+        updateCurrentPlaceData(data);
       });
     }
   }, [latitude, longitude]);
@@ -42,6 +43,9 @@ const CurrentLocation = () => {
       );
       updatePlaceData(locationData);
     }
+    if (place === "currentLocation") {
+      updatePlaceData(currentPlaceData);
+    }
   }, [place]);
   return (
     <div>
@@ -49,7 +53,7 @@ const CurrentLocation = () => {
       <p>Latitude: {latitude}</p>
       <p>Longitude: {longitude}</p>
 
-      <p>Weather Data: {JSON.stringify(currentPlace)}</p>
+      <p>Weather Data: {JSON.stringify(placeData)}</p>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import SelectDB from "./SelectDB";
 import { CAPITAL_LOCATION } from "@/util/locations";
 import { useWeatherStore } from "@/app/store/weather-store";
