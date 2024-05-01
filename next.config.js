@@ -1,4 +1,9 @@
 const nextConfig = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   reactStrictMode: true,
   async rewrites() {
     return [

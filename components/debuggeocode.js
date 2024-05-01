@@ -9,7 +9,7 @@ const DebugGeocodeComponent = () => {
 
   async function fetchWeatherData(latitude, longitude) {
     const response = await fetch(
-      `/api/weather?latitude=${latitude}&longitude=${longitude}`
+      `/api/weather/client?latitude=${latitude}&longitude=${longitude}`
     );
 
     if (!response.ok) {
@@ -29,7 +29,6 @@ const DebugGeocodeComponent = () => {
     try {
       const data = await fetchWeatherData(latitude, longitude);
       setWeatherData(data);
-      console.log(data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
     }

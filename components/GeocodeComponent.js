@@ -1,24 +1,23 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { useWeatherStore } from "@/app/store/weather-store";
 
 const GeocodeComponent = () => {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [weatherData, setWeatherData] = useState({});
+  const {
+    latitude,
+    longitude,
+
+    updateLatitude,
+    updateLongitude,
+  } = useWeatherStore((state) => ({
+    place: state.place,
+    latitude: state.latitude,
+    longitude: state.longitude,
+    updateLatitude: state.updateLatitude,
+    updateLongitude: state.updateLongitude,
+    updatePlaceData: state.updatePlaceData,
+  }));
   const fetchingData = useRef(false); // useRef to track if data fetching is in progress
-
-  async function fetchWeatherData(latitude, longitude) {
-    const response = await fetch(
-      `/api/weather?latitude=${latitude}&longitude=${longitude}`
-    );
-
-    if (!response.ok) {
-      console.log(`Failed to fetch data: ${response.status}`);
-    } else {
-      const data = await response.json();
-      return data;
-    }
-  }
 
   const fetchData = async () => {
     if (!fetchingData.current) {
@@ -30,12 +29,8 @@ const GeocodeComponent = () => {
           navigator.geolocation.getCurrentPosition(async (position) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            setLatitude(latitude);
-            setLongitude(longitude);
-
-            const data = await fetchWeatherData(latitude, longitude);
-            setWeatherData(data);
-            console.log(data);
+            updateLatitude(latitude);
+            updateLongitude(longitude);
 
             fetchingData.current = false; // Reset to false after data fetch completes
           });
@@ -65,7 +60,6 @@ const GeocodeComponent = () => {
       <br />
       Longitude: {longitude}
       <br />
-      Location Data: {JSON.stringify(weatherData)}
     </div>
   );
 };
