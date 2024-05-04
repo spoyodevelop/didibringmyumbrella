@@ -1,62 +1,119 @@
-"use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CAPITAL_LOCATION } from "@/util/locations";
 
+import { seoulLatitude, seoulLongitude } from "@/util/locations";
 import { useWeatherStore } from "@/app/store/weather-store";
 
 async function fetchLocationData(latitude, longitude) {
-  const response = await fetch(
-    `/api/weather/locationfetching?latitude=${latitude}&longitude=${longitude}`
-  );
+  try {
+    const response = await fetch(
+      `/api/weather/locationfetching?latitude=${latitude}&longitude=${longitude}`
+    );
 
-  if (!response.ok) {
-    console.log(`Failed to fetch data: ${response.status}`);
-  } else {
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.status}`);
+    }
+
     const data = await response.json();
     return data;
+  } catch (error) {
+    throw new Error(`Failed to fetch location data: ${error.message}`);
   }
 }
-// 전부분 else if or else 구문 체크, 주의!
+
 const CurrentLocation = () => {
   const {
     latitude,
     longitude,
-    placeData,
+    isInit,
     updatePlaceData,
+    placeData,
     place,
 
     currentPlaceData,
     updateCurrentPlaceData,
+
+    systemMessage: { status: systemStatus, message: systemMessage },
+    updateErrorMessage,
   } = useWeatherStore();
+
+  const [showCurrentLocation, setShowCurrentLocation] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     if (latitude && longitude) {
-      fetchLocationData(latitude, longitude).then((data) => {
-        updatePlaceData(data);
-        updateCurrentPlaceData(data);
-      });
+      fetchLocationData(latitude, longitude)
+        .then((data) => {
+          // Once data is fetched, update the place data
+          updatePlaceData(data);
+
+          // Now that we have data, update the current place data
+          if (latitude !== seoulLatitude && longitude !== seoulLongitude) {
+            console.log("updating current place data");
+            console.log(data);
+            updateCurrentPlaceData(data);
+          }
+        })
+        .catch((error) => {
+          // Handle errors
+          updateErrorMessage(
+            "지오코딩 데이터를 가져오는 중 오류가 발생했습니다."
+          );
+        });
     }
   }, [latitude, longitude]);
+
   useEffect(() => {
-    if (place) {
+    if (place === "currentLocation") {
+      console.log(currentPlaceData);
+      //this is absurd.
+      if (!currentPlaceData.administrativeArea) {
+        updatePlaceData({
+          latitude: seoulLatitude,
+          longitude: seoulLongitude,
+          administrativeArea: "Seoul",
+          administrativeAreaKorean: "서울특별시",
+          capitalNX: 60,
+          capitalNY: 127,
+          koreanName: "서울",
+          midAreaNumber: "11B00000",
+        });
+      } else {
+        updatePlaceData(currentPlaceData);
+      }
+    } else if (place) {
+      // place가 정의되어 있는지 확인하는 가드 절 추가
       const locationData = CAPITAL_LOCATION.find(
         (capital) => capital.administrativeArea === place
       );
-      updatePlaceData(locationData);
+      if (locationData) {
+        // locationData가 undefined가 아닌지 확인
+        updatePlaceData(locationData);
+      }
     }
-    if (place === "currentLocation") {
-      updatePlaceData(currentPlaceData);
-    }
-  }, [place]);
-  return (
-    <div>
-      <h1>Current Location</h1>
-      <p>Latitude: {latitude}</p>
-      <p>Longitude: {longitude}</p>
+  }, [place, currentPlaceData]);
 
-      <p>Weather Data: {JSON.stringify(placeData)}</p>
-    </div>
+  return (
+    <>
+      {isInit && (
+        <p>
+          기본 위치는 서울시 중구에요. 버튼을 눌러 현 위치의 정보를 확인할수
+          있어요.
+        </p>
+      )}
+      {systemStatus === "error" ? (
+        <p>{systemMessage}</p>
+      ) : (
+        <span>
+          현위치는{" "}
+          {currentPlaceData?.administrativeAreaKorean &&
+            currentPlaceData?.administrativeAreaKorean}{" "}
+          {currentPlaceData?.area2 && currentPlaceData?.area2}{" "}
+          {currentPlaceData?.area3 && currentPlaceData?.area3}
+        </span>
+      )}
+    </>
   );
 };
+
 export default CurrentLocation;
-// 지금 location 데이터를 어디서 받아오려는거야?
-//latitude, longitude가 변경되면 이것을 호출하는게 맞는건가?

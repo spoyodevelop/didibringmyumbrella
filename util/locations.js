@@ -1,3 +1,5 @@
+const seoulLatitude = 37.5665;
+const seoulLongitude = 126.978;
 const DUMMY_POSITION = [
   {
     place: "남산타워",
@@ -255,4 +257,6 @@ module.exports = {
   DUMMY_POSITION,
   CAPITAL_LOCATION,
   DUMMY_CAPITAL,
+  seoulLatitude,
+  seoulLongitude,
 };

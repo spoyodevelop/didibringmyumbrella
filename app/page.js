@@ -8,8 +8,11 @@ import DBSelection from "@/components/dbselection/DBSelectionDetails";
 import POPdata from "@/components/POPData";
 
 export default function Home() {
+  const { systemMessage, currentPlaceData } = useWeatherStore();
   return (
     <>
+      <p> currentPlace: {JSON.stringify(currentPlaceData)} </p>
+      <p> systemMessage: {JSON.stringify(systemMessage)} </p>
       <GeocodeComponent />
       <CurrentLocation />
 
