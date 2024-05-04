@@ -1,23 +1,38 @@
 const { useEffect } = require("react");
 import { useWeatherStore } from "@/app/store/weather-store";
 
-async function fetchPOPData(administrativeArea) {
-  const response = await fetch(
-    `/api/weather/popdata?administrativeArea=${administrativeArea}`,
-    { cache: "force-cache" }
-  );
-
-  if (!response.ok) {
-    console.log(`Failed to fetch data: ${response.status}`);
-  } else {
-    const data = await response.json();
-    return data;
-  }
-}
-
 const POPdata = () => {
-  const { place, placeData, popData, updatePopData, currentPlaceData } =
-    useWeatherStore();
+  const {
+    place,
+    placeData,
+    popData,
+    updatePopData,
+    currentPlaceData,
+    updateSystemMessage,
+  } = useWeatherStore();
+  async function fetchPOPData(administrativeArea) {
+    if (!administrativeArea) {
+      return;
+    }
+    const response = await fetch(
+      `/api/weather/popdata?administrativeArea=${administrativeArea}`,
+      { next: { revalidate: 300 } }
+    );
+
+    if (!response.ok) {
+      updateSystemMessage({
+        status: "error",
+        message: `강수확률정보를 가져오는데 에러가 발생했어요.`,
+      });
+    } else {
+      const data = await response.json();
+      updateSystemMessage({
+        status: "success",
+        message: `강수확률정보를 가져왔어요.`,
+      });
+      return data;
+    }
+  }
   useEffect(() => {
     if (place === "currentLocation") {
       if (!currentPlaceData) {

@@ -21,15 +21,19 @@ export async function GET(request) {
   const administrativeArea = searchParams.get("administrativeArea");
 
   if (!administrativeArea) {
-    return NextResponse.json({
-      message: "Please provide an administrative area.",
-    });
+    throw new Error("Administrative area is missing.");
   }
 
-  const { collection, client } = await connectToDatabase();
+  const { collection, client } = await connectToDatabase().catch((error) => {
+    console.error("Error connecting to database:", error);
+    throw new Error("Failed to connect to database");
+  });
   const query = { administrativeArea };
   const options = { sort: { newDate: -1 } };
-  const DBData = await collection.findOne(query, options);
+  const DBData = await collection.findOne(query, options).catch((error) => {
+    console.error("Error fetching data from database:", error);
+    throw new Error("Failed to fetch data from database");
+  });
   await client.close();
 
   return NextResponse.json({ DBData });

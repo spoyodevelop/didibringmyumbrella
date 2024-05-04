@@ -1,6 +1,8 @@
 import { CAPITAL_LOCATION } from "@/util/locations";
+import { useWeatherStore } from "@/app/store/weather-store";
 
 const SelectDB = ({ selectedValue, onSelectChange }) => {
+  const { currentPlaceData } = useWeatherStore();
   return (
     <select value={selectedValue} onChange={onSelectChange}>
       {CAPITAL_LOCATION.map((location) => (
@@ -8,7 +10,11 @@ const SelectDB = ({ selectedValue, onSelectChange }) => {
           key={location.administrativeArea}
           value={location.administrativeArea}
         >
-          {location.administrativeAreaKorean}
+          {location.administrativeArea === "currentLocation"
+            ? !currentPlaceData.administrativeArea
+              ? "기본위치"
+              : "현 위치"
+            : location.administrativeAreaKorean}
         </option>
       ))}
     </select>

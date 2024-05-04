@@ -14,6 +14,7 @@ const GeocodeComponent = () => {
     updateIsInit,
     updateCurrentPlaceData,
     updatePlace,
+    systemMessage: { status: systemStatus, message: systemMessage },
   } = useWeatherStore();
   const fetchingData = useRef(false); // useRef to track if data fetching is in progress
 
@@ -37,6 +38,7 @@ const GeocodeComponent = () => {
             updateLongitude(longitude);
             updateIsInit(false);
             updatePlace("currentLocation");
+
             updateSystemMessage({
               status: "success",
               message: "현재 위치정보를 가져왔습니다.",
@@ -45,19 +47,15 @@ const GeocodeComponent = () => {
           (error) => {
             console.error("Error getting geolocation:", error);
             // If user rejects geolocation, set location to Seoul
-
+            console.log("user reject geolocation");
             updateSystemMessage({
               status: "error",
-              message: "위치정보를 가져올수 없습니다.",
+              message: "위치정보를 가져올수 없습니다. 위치정보를 허용해주세요.",
             });
 
             updateLatitude(seoulLatitude);
             updateLongitude(seoulLongitude);
-            updateSystemMessage({
-              status: "error",
-              message:
-                "위치정보를 가져오는 중 오류가 발생했습니다. 위치정보 사용을 허용해주세요.",
-            });
+
             updateIsInit(false);
 
             // Set error message
@@ -108,7 +106,7 @@ const GeocodeComponent = () => {
         console.error("Error sending data:", error);
         updateSystemMessage({
           status: "error",
-          message: "알수 없는 오류가 발생했습니다.",
+          message: "알수 없는 오류가 발생했습니다. 페이지를 새로고침 해주세요.",
         });
         // Set error message
         // Example: updateErrorMessage("An error occurred while fetching geolocation.");

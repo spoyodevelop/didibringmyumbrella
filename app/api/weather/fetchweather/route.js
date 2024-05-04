@@ -16,10 +16,9 @@ export async function GET(request) {
     });
   }
   if (!administrativeArea) {
-    return NextResponse.json({
-      message: "Please provide an administrative area.",
-    });
+    throw new Error("Administrative area is missing.");
   }
+
   if (!convertedX || !convertedY) {
     const locationData = CAPITAL_LOCATION.find(
       (capital) => capital.administrativeArea === administrativeArea

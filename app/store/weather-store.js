@@ -12,11 +12,20 @@ export const useWeatherStore = create((set) => ({
   systemMessage: {
     status: "",
     message: "",
+    idCounter: 0,
   },
   isInit: false,
   updateIsInit: (newIsInit) => set({ isInit: newIsInit }),
-  updateSystemMessage: (newSystemMessage) =>
-    set({ systemMessage: newSystemMessage }),
+  updateSystemMessage: (newSystemMessage) => {
+    set((state) => ({
+      // Generate a unique ID for the new system message
+      systemMessage: {
+        ...newSystemMessage,
+
+        idCounter: state.systemMessage.idCounter + 1,
+      },
+    }));
+  },
   updateErrorMessage: (newErrorMessage) =>
     set({ errorMessage: newErrorMessage }),
   updateCurrentPlaceData: (newCurrentData) =>

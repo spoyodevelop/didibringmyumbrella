@@ -2,22 +2,6 @@
 import { useWeatherStore } from "@/app/store/weather-store";
 import React, { useEffect, useRef } from "react";
 
-const fetchWeatherData = async (placeData) => {
-  let url = "";
-  if (placeData.convertedX && placeData.convertedY) {
-    url = `api/weather/fetchweather?convertedX=${placeData.convertedX}&convertedY=${placeData.convertedY}&administrativeArea=${placeData.administrativeArea}`;
-  } else {
-    url = `/api/weather/fetchweather?&administrativeArea=${placeData.administrativeArea}`;
-  }
-  const response = await fetch(url, { cache: "force-cache" });
-  if (!response.ok) {
-    console.log(`Failed to fetch data: ${response.status}`);
-  } else {
-    const data = await response.json();
-    return data;
-  }
-};
-
 const DidItRain = () => {
   const isItInit = useRef(true);
   const {
@@ -26,9 +10,45 @@ const DidItRain = () => {
     updateWeatherData,
     weatherData,
     currentPlaceData,
+    updateSystemMessage,
     updatePlaceData,
   } = useWeatherStore();
+  const fetchWeatherData = async (placeData) => {
+    let url = "";
+    if (placeData.convertedX && placeData.convertedY) {
+      url = `api/weather/fetchweather?convertedX=${placeData.convertedX}&convertedY=${placeData.convertedY}&administrativeArea=${placeData.administrativeArea}`;
+    } else {
+      url = `/api/weather/fetchweather?&administrativeArea=${placeData.administrativeArea}`;
+    }
 
+    try {
+      const response = await fetch(url, { next: { revalidate: 300 } });
+
+      if (!response.ok) {
+        // HTTP 에러 처리
+        const errorMessage = await response.text();
+        updateSystemMessage({
+          status: "error",
+          message: `날씨정보를 가져오는데 에러가 발생했어요. ${errorMessage}`,
+        });
+        return;
+      }
+
+      const data = await response.json();
+      updateSystemMessage({
+        status: "success",
+        message: `날씨정보를 가져왔어요.`,
+      });
+      return data;
+    } catch (error) {
+      updateSystemMessage({
+        status: "error",
+        message: "날씨정보를 가져오는데 에러가 발생했어요.",
+      });
+      console.error("Error fetching weather data:", error);
+      throw error;
+    }
+  };
   useEffect(() => {
     if (!placeData.administrativeArea) return;
     if (!placeData) return;

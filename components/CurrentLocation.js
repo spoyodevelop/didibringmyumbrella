@@ -7,7 +7,8 @@ import { useWeatherStore } from "@/app/store/weather-store";
 async function fetchLocationData(latitude, longitude) {
   try {
     const response = await fetch(
-      `/api/weather/locationfetching?latitude=${latitude}&longitude=${longitude}`
+      `/api/weather/locationfetching?latitude=${latitude}&longitude=${longitude}`,
+      { next: { revalidate: 300 } }
     );
 
     if (!response.ok) {
@@ -25,7 +26,7 @@ const CurrentLocation = () => {
   const {
     latitude,
     longitude,
-    isInit,
+
     updatePlaceData,
     placeData,
     place,
@@ -95,15 +96,7 @@ const CurrentLocation = () => {
 
   return (
     <>
-      {isInit && (
-        <p>
-          기본 위치는 서울시 중구에요. 버튼을 눌러 현 위치의 정보를 확인할수
-          있어요.
-        </p>
-      )}
-      {systemStatus === "error" ? (
-        <p>{systemMessage}</p>
-      ) : (
+      {currentPlaceData.administrativeArea ? (
         <span>
           현위치는{" "}
           {currentPlaceData?.administrativeAreaKorean &&
@@ -111,6 +104,11 @@ const CurrentLocation = () => {
           {currentPlaceData?.area2 && currentPlaceData?.area2}{" "}
           {currentPlaceData?.area3 && currentPlaceData?.area3}
         </span>
+      ) : (
+        <p>
+          기본 위치는 서울시 중구에요. 버튼을 눌러 현 위치의 정보를 확인할수
+          있어요.
+        </p>
       )}
     </>
   );
