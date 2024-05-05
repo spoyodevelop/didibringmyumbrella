@@ -124,11 +124,9 @@ const GeocodeComponent = () => {
   };
 
   return (
-    <>
-      <button className="btn btn-primary" onClick={handleClick}>
-        현위치는?
-      </button>
-    </>
+    <button className="btn btn-primary btn-m" onClick={handleClick}>
+      현위치는?
+    </button>
   );
 };
 

@@ -3,12 +3,13 @@ import { CAPITAL_LOCATION } from "@/util/locations";
 
 import { seoulLatitude, seoulLongitude } from "@/util/locations";
 import { useWeatherStore } from "@/app/store/weather-store";
+import LocationIcon from "../icons/LocationIcon";
 
 async function fetchLocationData(latitude, longitude) {
   try {
     const response = await fetch(
       `/api/weather/locationfetching?latitude=${latitude}&longitude=${longitude}`,
-      { next: { revalidate: 300 } }
+      { next: { revalidate: 3600 } }
     );
 
     if (!response.ok) {
@@ -97,13 +98,15 @@ const CurrentLocation = () => {
   return (
     <>
       {currentPlaceData.administrativeArea ? (
-        <span>
-          현위치는{" "}
-          {currentPlaceData?.administrativeAreaKorean &&
-            currentPlaceData?.administrativeAreaKorean}{" "}
-          {currentPlaceData?.area2 && currentPlaceData?.area2}{" "}
-          {currentPlaceData?.area3 && currentPlaceData?.area3}
-        </span>
+        <div className="flex items-center gap-2">
+          <LocationIcon className="w-6 h-6" />
+          <span>
+            {currentPlaceData?.administrativeAreaKorean &&
+              currentPlaceData?.administrativeAreaKorean}{" "}
+            {currentPlaceData?.area2 && currentPlaceData?.area2}{" "}
+            {currentPlaceData?.area3 && currentPlaceData?.area3}
+          </span>
+        </div>
       ) : (
         <p>
           기본 위치는 서울시 중구에요. 버튼을 눌러 현 위치의 정보를 확인할수

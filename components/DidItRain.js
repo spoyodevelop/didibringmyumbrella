@@ -22,7 +22,7 @@ const DidItRain = () => {
     }
 
     try {
-      const response = await fetch(url, { next: { revalidate: 300 } });
+      const response = await fetch(url, { next: { revalidate: 3600 } });
 
       if (!response.ok) {
         // HTTP 에러 처리

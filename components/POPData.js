@@ -16,7 +16,7 @@ const POPdata = () => {
     }
     const response = await fetch(
       `/api/weather/popdata?administrativeArea=${administrativeArea}`,
-      { next: { revalidate: 300 } }
+      { next: { revalidate: 3600 } }
     );
 
     if (!response.ok) {

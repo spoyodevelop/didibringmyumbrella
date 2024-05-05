@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useWeatherStore } from "@/app/store/weather-store";
-import CloseButton from "./CloseButton";
+import CloseButton from "../icons/CloseButton";
 import styles from "./Notification.module.css";
+import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
+import ErrorIcon from "../icons/ErrorIcon";
+import SuccessIcon from "./SuccessIcon";
 
 const Notification = () => {
   const {
@@ -14,9 +17,12 @@ const Notification = () => {
 
   const [showNotification, setShowNotification] = useState(false);
   const colorVariants = {
-    success: `alert alert-success fixed bottom-0 right-0 m-4 z-50 w-auto p-4 rounded-md shadow-md transition-opacity ease-in duration-700 opacity-100`,
-    error: `alert alert-error fixed bottom-0 right-0 m-4 z-50 w-auto p-4 rounded-md shadow-md transition-opacity ease-in duration-700 opacity-100`,
+    success:
+      "alert alert-success fixed bottom-0 right-0 m-4 z-50 w-auto md:bottom-0 p-4 rounded-md shadow-md transition-opacity ease-in duration-700 opacity-100 inset-x-0",
+    error:
+      "alert alert-error fixed bottom-0 right-0 m-4 z-50 w-auto md:bottom-0 p-4 rounded-md shadow-md transition-opacity ease-in duration-700 opacity-100 inset-x-0",
   };
+
   useEffect(() => {
     let timer;
     let time;
@@ -38,21 +44,49 @@ const Notification = () => {
     return () => clearTimeout(timer); // Cleanup the timer on component unmount or when systemMessage changes
   }, [systemIdCounter]);
 
+  // Define animation variants
+  const fadeInOutVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
+    exit: { opacity: 0, transition: { duration: 0.2 } }, // Increase duration for exit
+  };
+
+  const modifiedVariants =
+    systemStatus === "success"
+      ? {
+          ...fadeInOutVariants,
+          visible: {
+            ...fadeInOutVariants.visible,
+            transition: { duration: 1 },
+          }, // Increase duration for success status
+        }
+      : fadeInOutVariants;
+
   return (
     <div>
-      {showNotification && (
-        <div className={`${colorVariants[systemStatus]}`}>
-          {systemMessage}
-          <div className="hidden md:block">
-            <button
-              className={`btn btn-outline btn-circle btn-sm btn-light hover:bg-gray-100 hover:text-gray-800 `}
-              onClick={() => setShowNotification(false)}
-            >
-              <CloseButton />
-            </button>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {showNotification && (
+          <motion.div
+            key={systemIdCounter}
+            className={`${colorVariants[systemStatus]}`}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={modifiedVariants}
+          >
+            {systemStatus === "success" ? <SuccessIcon /> : <ErrorIcon />}
+            {systemMessage}
+            <div className="hidden md:block">
+              <button
+                className={`btn btn-outline btn-circle btn-sm btn-light hover:bg-gray-100 hover:text-gray-800 `}
+                onClick={() => setShowNotification(false)}
+              >
+                <CloseButton />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
