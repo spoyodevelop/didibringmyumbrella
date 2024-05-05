@@ -9,7 +9,7 @@ export async function GET(request) {
   const convertedX = searchParams.get("convertedX");
   const convertedY = searchParams.get("convertedY");
   const administrativeArea = searchParams.get("administrativeArea");
-  console.log(convertedX, convertedY, administrativeArea);
+  // console.log(convertedX, convertedY, administrativeArea);
   if (administrativeArea === "totalOfAllArea") {
     return NextResponse.json({
       message: "totalOfAllArea has no weather data",

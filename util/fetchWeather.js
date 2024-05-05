@@ -39,7 +39,7 @@ async function fetchWeatherDataWithRetry(usage, dataType, location, delay) {
 async function fetchWeatherData(usage, dataType, location) {
   const timeObj = getTimeObj(usage, dataType);
   const url = getUrl(location, timeObj);
-  console.log(url);
+  // console.log(url);
 
   try {
     // Configure axios retry. which is pretty mucccchhhh useless now.
