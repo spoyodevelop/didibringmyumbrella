@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Loading from "@/components/ui/Loading";
 import WeatherData from "./WeatherData";
 import { CAPITAL_LOCATION } from "@/util/locations";
+import RealPOPstats from "../RealPOPstats";
 const DidItRain = ({ className }) => {
   const isItInit = useRef(true);
   const {
@@ -92,10 +93,11 @@ const DidItRain = ({ className }) => {
   }
   let finalDisplayingPlace = getDisplayingPlace(place);
   const { didItRain } = weatherData;
+
   return (
     <div className={className}>
-      <div className="mb-4 text-l w-96 card md:mb-0">
-        <div className="items-center h-full card-body">
+      <div className="mb-4 text-l card md:mb-0">
+        <div className="items-center card-body">
           <h1>현재는 {finalDisplayingPlace} 데이터를 보여주고 있어요.</h1>
           {weatherData && didItRain ? (
             <h1 className="text-3xl text-black card-title">
@@ -118,6 +120,7 @@ const DidItRain = ({ className }) => {
         ) : (
           <Loading size="sm" className="w-full mb-4 md:w-auto md:mb-0" />
         )}
+        <RealPOPstats className="w-full mb-4 md:w-auto md:mb-0 card bg-slate-50" />
         {weatherData.RN1 ? (
           <WeatherData
             data={weatherData}

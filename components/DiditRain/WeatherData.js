@@ -22,9 +22,9 @@ const WeatherData = ({ data, typeOfData, className }) => {
     if (!POP) return;
     formattedDate = convertToDateTime(POP.POP.fcstDate, POP.POP.fcstTime);
     const formattedValue = POP.POP.fcstValue;
-    const name = "강수확률은 ";
-    const formatter = "% 입니다.";
-    formattedString = `${name} ${formattedValue} ${formatter}`;
+    const name = "예보강수확률";
+    const formatter = "%";
+    formattedString = { name, formatter, formattedValue };
   }
   if (typeOfData === "RN1") {
     const { RN1 } = data;
@@ -32,18 +32,20 @@ const WeatherData = ({ data, typeOfData, className }) => {
 
     formattedDate = convertToDateTime(RN1.RN1.baseDate, RN1.RN1.baseTime);
     const formattedValue = RN1.RN1.obsrValue;
-    if (!formattedValue) {
-      formattedString = "강수량은 없습니다.";
-    } else {
-      const name = "강수량은";
-      const formatter = "mm 입니다.";
-      formattedString = `${name} ${formattedValue} ${formatter}`;
-    }
+
+    const name = "강수량은";
+    const formatter = "mm 입니다.";
+    formattedString = { name, formattedValue, formatter };
   }
   return (
     <div className={className}>
       <div className="card-body">
-        <h2 className="text-xl text-black card-title">{formattedString}</h2>
+        <h2 className="text-xl text-black card-title">
+          {formattedString.name}
+          <span className="text-4xl">
+            {formattedString.formattedValue} {formattedString.formatter}
+          </span>
+        </h2>
         <p>
           {formattedDate.toLocaleDateString("ko-KR", {
             weekday: "long",

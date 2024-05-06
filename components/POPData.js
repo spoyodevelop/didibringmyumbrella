@@ -101,9 +101,7 @@ const POPdata = () => {
   useEffect(() => {
     if (!popData) return;
     else if (popData.DBData) {
-      console.log(popData.DBData);
       const transformedData = transformDataForNivoChart(popData.DBData);
-      console.log(transformedData);
 
       setPopDataForNivo(transformedData);
     }
@@ -114,7 +112,7 @@ const POPdata = () => {
       <p>place:{place}</p>
       <p>placeData:{placeData.administrativeArea}</p> */}
       <h1>POP Data</h1>
-      
+
       {popDataForNivo.length > 0 && <MyBarChart data={popDataForNivo} />}
     </>
   );

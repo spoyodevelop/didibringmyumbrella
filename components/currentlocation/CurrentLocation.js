@@ -96,7 +96,7 @@ const CurrentLocation = () => {
   }, [place, currentPlaceData]);
 
   return (
-    <>
+    <div>
       {currentPlaceData.administrativeArea ? (
         <div className="flex items-center gap-2">
           <LocationIcon className="w-6 h-6" />
@@ -113,7 +113,7 @@ const CurrentLocation = () => {
           있어요.
         </p>
       )}
-    </>
+    </div>
   );
 };
 

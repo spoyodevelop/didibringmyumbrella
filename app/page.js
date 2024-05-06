@@ -12,13 +12,17 @@ export default function Home() {
   const { systemMessage, currentPlaceData, weatherData } = useWeatherStore();
   return (
     <>
-      <h1 className="text-4xl font-bold text-center text-white">아맞다 우산</h1>
-      <p className="text-center text-white">
-        실제 강수확률을 체크해보세요. <br />
-        <span className="text-sm">
-          아래 버튼을 눌러 현재 위치를 확인하세요.
-        </span>
-      </p>
+      <div className="mb-4 bg-black">
+        <h1 className="text-4xl font-bold text-center text-white">
+          아맞다 우산
+        </h1>
+        <p className="text-center text-white">
+          실제 강수확률을 체크해보세요. <br />
+          <span className="text-sm">
+            아래 버튼을 눌러 현재 위치를 확인하세요.
+          </span>
+        </p>
+      </div>
       {/* <div className="w-4/5 p-6 mb-4 rounded-lg shadow-xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 align-center">
         <h2 className="mb-4 text-2xl font-bold text-white">Current Place:</h2>
         <p className="text-gray-200">{JSON.stringify(currentPlaceData)}</p>
@@ -28,15 +32,15 @@ export default function Home() {
         <p className="text-gray-200">{JSON.stringify(weatherData)}</p>
       </div> */}
 
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-4 p-6 text-center bg-white rounded-lg shadow-md">
+      <div className="px-4">
+        <div className="flex items-center justify-center gap-4">
           <GeocodeComponent />
           <CurrentLocation />
         </div>
       </div>
       <DBSelection />
 
-      <DidItRain className="flex flex-col items-center gap-4 p-5 rounded-xl md:flex-row bg-slate-200 mb-11" />
+      <DidItRain className="flex flex-col items-center w-11/12 gap-4 p-5 rounded-xl md:flex-row bg-slate-200 mb-11" />
       <div className="w-4/5 h-64 shadow-md bg-slate-100 rounded-xl">
         <POPdata />
       </div>
