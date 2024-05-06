@@ -4,7 +4,7 @@ import CloseButton from "../icons/CloseButton";
 import styles from "./Notification.module.css";
 import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import ErrorIcon from "../icons/ErrorIcon";
-import SuccessIcon from "./SuccessIcon";
+import SuccessIcon from "../icons/SuccessIcon";
 
 const Notification = () => {
   const {
