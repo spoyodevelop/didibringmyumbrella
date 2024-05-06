@@ -4,12 +4,14 @@ const WeatherData = ({ data, typeOfData, className }) => {
     const year = String(fcstDate).substring(0, 4);
     const month = String(fcstDate).substring(4, 6) - 1; // JavaScript의 월은 0부터 시작하므로 1을 빼줍니다.
     const day = String(fcstDate).substring(6, 8);
-
-    const hours = String(fcstTime).substring(0, 2);
-    const minutes = String(fcstTime).substring(2, 4);
-
+    let hours;
+    if (String(fcstTime).length === 3) {
+      hours = String(fcstTime).substring(0, 1);
+    } else {
+      hours = String(fcstTime).substring(0, 2);
+    }
     // Date 객체 생성
-    const dateObject = new Date(year, month, day, hours, minutes);
+    const dateObject = new Date(year, month, day, hours);
 
     return dateObject;
   }
