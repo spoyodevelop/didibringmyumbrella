@@ -116,7 +116,7 @@ const DidItRain = ({ className }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 md:flex-nowrap">
+      <div className="flex flex-wrap gap-4 md:flex-nowrap justify-evenly">
         {weatherData.POP ? (
           <WeatherData
             data={weatherData}
@@ -124,7 +124,7 @@ const DidItRain = ({ className }) => {
             className="w-full mb-4 card md:w-auto md:mb-0 bg-slate-50"
           />
         ) : (
-          <div className="w-64 bg-slate-50 card">
+          <div className="w-96 lg:w-64 bg-slate-50 card">
             <div className="flex items-center justify-center card-body">
               <Loading />
             </div>
@@ -140,7 +140,7 @@ const DidItRain = ({ className }) => {
             className="w-full mb-4 md:w-auto md:mb-0 card bg-slate-50"
           />
         ) : (
-          <div className="w-64 bg-slate-50 card">
+          <div className="w-96 lg:w-64 bg-slate-50 card">
             <div className="flex items-center justify-center card-body">
               <Loading />
             </div>

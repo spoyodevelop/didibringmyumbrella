@@ -43,7 +43,7 @@ export default function RealPOPstats({ className }) {
           </div>
         </div>
       ) : (
-        <div className="w-64 bg-slate-50 card">
+        <div className="w-96 lg:w-64 bg-slate-50 card">
           <div className="flex items-center justify-center card-body">
             <Loading />
           </div>
