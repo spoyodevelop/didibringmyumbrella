@@ -6,11 +6,11 @@ const MyBarChart = ({ data }) => (
     data={data}
     keys={["실강수"]}
     indexBy="id"
-    margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-    padding={0.3}
+    margin={{ top: 50, right: 80, bottom: 50, left: 60 }}
+    padding={0.35}
     valueScale={{ type: "linear" }}
     indexScale={{ type: "band", round: true }}
-    colors={{ scheme: "nivo" }}
+    colors={{ scheme: "paired" }}
     defs={[
       {
         id: "dots",
@@ -85,14 +85,14 @@ const MyBarChart = ({ data }) => (
         anchor: "bottom-right",
         direction: "column",
         justify: false,
-        translateX: 120,
+        translateX: 80,
         translateY: 0,
         itemsSpacing: 2,
-        itemWidth: 100,
+        itemWidth: 60,
         itemHeight: 20,
         itemDirection: "left-to-right",
         itemOpacity: 0.85,
-        symbolSize: 20,
+        symbolSize: 10,
         effects: [
           {
             on: "hover",
