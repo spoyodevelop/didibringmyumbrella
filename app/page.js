@@ -40,7 +40,7 @@ export default function Home() {
       </div>
       <DBSelection />
 
-      <DidItRain className="flex flex-col items-center w-11/12 gap-4 p-5 rounded-xl lg:flex-row md:flex-col bg-slate-200 mb-11" />
+      <DidItRain className="flex flex-col items-center w-11/12 gap-4 p-5 justify-evenly rounded-xl lg:flex-row md:flex-col bg-slate-200 mb-11" />
       <div className="w-11/12 h-64 shadow-md bg-slate-100 rounded-xl">
         <POPdata />
       </div>

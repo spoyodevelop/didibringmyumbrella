@@ -5,6 +5,9 @@ import Loading from "@/components/ui/Loading";
 import WeatherData from "./WeatherData";
 import { CAPITAL_LOCATION } from "@/util/locations";
 import RealPOPstats from "../RealPOPstats";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import POPdata from "../POPData";
+
 const DidItRain = ({ className }) => {
   const isItInit = useRef(true);
   const {
@@ -15,6 +18,7 @@ const DidItRain = ({ className }) => {
     currentPlaceData,
     updateSystemMessage,
     updatePlaceData,
+    popData,
   } = useWeatherStore();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -120,9 +124,15 @@ const DidItRain = ({ className }) => {
             className="w-full mb-4 card md:w-auto md:mb-0 bg-slate-50"
           />
         ) : (
-          <Loading size="sm" className="w-full mb-4 md:w-auto md:mb-0" />
+          <div className="w-64 bg-slate-50 card">
+            <div className="flex items-center justify-center card-body">
+              <Loading />
+            </div>
+          </div>
         )}
+
         <RealPOPstats className="w-full mb-4 md:w-auto md:mb-0 card bg-slate-50" />
+
         {weatherData.RN1 ? (
           <WeatherData
             data={weatherData}
@@ -130,7 +140,11 @@ const DidItRain = ({ className }) => {
             className="w-full mb-4 md:w-auto md:mb-0 card bg-slate-50"
           />
         ) : (
-          <Loading size="sm" className="w-full mb-4 md:w-auto md:mb-0" />
+          <div className="w-64 bg-slate-50 card">
+            <div className="flex items-center justify-center card-body">
+              <Loading />
+            </div>
+          </div>
         )}
       </div>
     </div>
