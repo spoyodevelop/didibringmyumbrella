@@ -96,15 +96,17 @@ const DidItRain = ({ className }) => {
 
   return (
     <div className={className}>
-      <div className="mb-4 text-l card md:mb-0">
+      <div className="mb-4 card md:mb-0">
         <div className="items-center card-body">
-          <h1>현재는 {finalDisplayingPlace} 데이터를 보여주고 있어요.</h1>
+          <h1 className="text-lg lg:text-base">
+            현재는 {finalDisplayingPlace} 데이터를 보여주고 있어요.
+          </h1>
           {weatherData && didItRain ? (
-            <h1 className="text-3xl text-black card-title">
+            <h1 className="text-2xl text-black lg:3xl card-title">
               비가 내리고 있어요
             </h1>
           ) : (
-            <h1 className="text-3xl text-black card-title">
+            <h1 className="text-2xl text-black lg:3xl card-title">
               비가 내리지 않고 있어요
             </h1>
           )}

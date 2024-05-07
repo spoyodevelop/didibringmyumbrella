@@ -24,7 +24,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
     if (!POP) return;
     formattedDate = convertToDateTime(POP.POP.fcstDate, POP.POP.fcstTime);
     const formattedValue = POP.POP.fcstValue;
-    const name = "예보강수확률";
+    const name = "예보강수확률 ";
     const formatter = "%";
     formattedString = { name, formatter, formattedValue };
   }
@@ -42,9 +42,9 @@ const WeatherData = ({ data, typeOfData, className }) => {
   return (
     <div className={className}>
       <div className="card-body">
-        <h2 className="text-xl text-black card-title">
+        <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
           {formattedString.name}
-          <span className="text-4xl">
+          <span className="text-2xl lg:text-2xl xl:text-3xl">
             {formattedString.formattedValue} {formattedString.formatter}
           </span>
         </h2>

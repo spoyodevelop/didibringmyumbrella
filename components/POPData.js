@@ -50,8 +50,16 @@ const POPdata = () => {
         }
       }
     });
-
-    return transformedData;
+    const newData = transformedData.map((item) => {
+      // id 필드의 값에서 'POP' 부분을 제거하고, '%' 문자를 추가합니다.
+      const newId = item.id.replace("POP", "") + "%";
+      // 실강수% 필드를 추가합니다.
+      return {
+        id: newId,
+        실강수: item.value,
+      };
+    });
+    return newData;
   }
 
   async function fetchPOPData(administrativeArea) {
@@ -108,10 +116,10 @@ const POPdata = () => {
   }, [popData]);
   return (
     <>
-      {/* <p>{JSON.stringify(popDataForNivo)}</p>
-      <p>place:{place}</p>
-      <p>placeData:{placeData.administrativeArea}</p> */}
-      <h1>POP Data</h1>
+      {/* <p>{JSON.stringify(popDataForNivo)}</p> */}
+      {/* <p>place:{place}</p>
+      <p>placeData:{placeData.administrativeArea}</p>
+      <h1>POP Data</h1> */}
 
       {popDataForNivo.length > 0 && <MyBarChart data={popDataForNivo} />}
     </>

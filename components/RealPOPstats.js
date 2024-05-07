@@ -28,8 +28,11 @@ export default function RealPOPstats({ className }) {
   return (
     <div className={className}>
       <div className="card-body">
-        <h2 className="text-black card-title">
-          실제 강수 확률 <span className="text-4xl">{realPOPdata}%</span>
+        <h2 className="text-2xl text-black md:text-base card-title">
+          실제 강수 확률{" "}
+          <span className="text-4xl md:text-2xl lg:text-4xl">
+            {realPOPdata}%
+          </span>
         </h2>
         <p className="">계산된 강수 확률이에요.</p>
       </div>
