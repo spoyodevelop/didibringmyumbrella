@@ -23,14 +23,15 @@ export default function RealPOPstats({ className }) {
         }
         if (!isNaN(percentage)) {
           setRealPOPdata(percentage);
+          console.log(realPOPdata);
         }
       }
     }
   }, [popData, weatherData]);
-
+  // 이게 잘 맞는지 다시한번 확인해보기.
   return (
     <>
-      {realPOPdata ? (
+      {realPOPdata === 0 || realPOPdata ? (
         <div className={className}>
           <div className="card-body">
             <h2 className="text-2xl text-black md:text-base card-title">
