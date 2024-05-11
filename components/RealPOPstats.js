@@ -2,8 +2,8 @@ import { useWeatherStore } from "@/app/store/weather-store";
 import { useEffect, useState } from "react";
 import Loading from "./ui/Loading";
 export default function RealPOPstats({ className }) {
-  const { popData, weatherData } = useWeatherStore();
-  const [realPOPdata, setRealPOPdata] = useState("");
+  const { popData, weatherData, realPOPstats, updateRealPOPstats } =
+    useWeatherStore();
 
   useEffect(() => {
     if (!popData || !weatherData) return;
@@ -22,8 +22,7 @@ export default function RealPOPstats({ className }) {
           percentage = Math.round(percentage);
         }
         if (!isNaN(percentage)) {
-          setRealPOPdata(percentage);
-          console.log(realPOPdata);
+          updateRealPOPstats({ percentage, realPOP, originalPOP });
         }
       }
     }
@@ -31,16 +30,20 @@ export default function RealPOPstats({ className }) {
   // 이게 잘 맞는지 다시한번 확인해보기.
   return (
     <>
-      {realPOPdata === 0 || realPOPdata ? (
+      {realPOPstats.percentage === 0 || realPOPstats.percentage ? (
         <div className={className}>
           <div className="card-body">
-            <h2 className="text-2xl text-black md:text-base card-title">
+            <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
               실제 강수 확률{" "}
-              <span className="text-4xl md:text-2xl lg:text-4xl">
-                {realPOPdata}%
+              <span className="text-2xl lg:text-2xl xl:text-3xl">
+                {realPOPstats.percentage}%
               </span>
             </h2>
-            <p className="">계산된 강수 확률이에요.</p>
+            <p>
+              계산된 강수 확률이에요.( 강수 횟수:{" "}
+              {realPOPstats.realPOP.didItRainCount} / 총 예보 횟수 :{" "}
+              {realPOPstats.realPOP.arrayLength} )
+            </p>
           </div>
         </div>
       ) : (

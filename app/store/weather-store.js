@@ -15,6 +15,9 @@ export const useWeatherStore = create((set) => ({
     idCounter: 0,
   },
   isInit: false,
+  realPOPstats: {},
+  updateRealPOPstats: (newRealPOPstats) =>
+    set({ realPOPstats: newRealPOPstats }),
   updateIsInit: (newIsInit) => set({ isInit: newIsInit }),
   updateSystemMessage: (newSystemMessage) => {
     set((state) => ({

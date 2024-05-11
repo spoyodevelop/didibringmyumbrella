@@ -96,12 +96,15 @@ const DidItRain = ({ className }) => {
     return displayingPlace;
   }
   let finalDisplayingPlace = getDisplayingPlace(place);
-  const { didItRain } = weatherData;
+  let didItRain;
+  if (weatherData) {
+    ({ didItRain } = weatherData);
+  }
 
   return (
     <div className={className}>
-      <div className="mb-4 card md:mb-0">
-        <div className="items-center card-body">
+      <div className="gap-4 mb-4 card md:mb-0">
+        <div className="flex items-center justify-center card-body">
           <h1 className="text-lg lg:text-base">
             현재는 {finalDisplayingPlace} 데이터를 보여주고 있어요.
           </h1>
@@ -116,32 +119,32 @@ const DidItRain = ({ className }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 md:flex-nowrap justify-evenly">
+      <div className="flex flex-col gap-4 md:flex-row md:flex-nowrap justify-evenly">
         {weatherData.POP ? (
           <WeatherData
             data={weatherData}
             typeOfData="POP"
-            className="w-full mb-4 card md:w-auto md:mb-0 bg-slate-50"
+            className="card bg-slate-50"
           />
         ) : (
-          <div className="w-64 lg:w-64 bg-slate-50 card">
-            <div className="flex items-center justify-center card-body">
+          <div className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card">
+            <div className="card-body">
               <Loading />
             </div>
           </div>
         )}
 
-        <RealPOPstats className="w-full mb-4 md:w-auto md:mb-0 card bg-slate-50" />
+        <RealPOPstats className="items-center card bg-slate-50" />
 
         {weatherData.RN1 ? (
           <WeatherData
             data={weatherData}
             typeOfData="RN1"
-            className="w-full mb-4 md:w-auto md:mb-0 card bg-slate-50"
+            className="card bg-slate-50"
           />
         ) : (
-          <div className="w-64 lg:w-64 bg-slate-50 card">
-            <div className="flex items-center justify-center card-body">
+          <div className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card">
+            <div className="card-body">
               <Loading />
             </div>
           </div>

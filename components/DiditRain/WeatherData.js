@@ -36,7 +36,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
     const formattedValue = RN1.RN1.obsrValue;
 
     const name = "강수량은";
-    const formatter = "mm 입니다.";
+    const formatter = "mm";
     formattedString = { name, formattedValue, formatter };
   }
   return (
