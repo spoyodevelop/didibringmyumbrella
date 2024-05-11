@@ -1,15 +1,24 @@
 import { useWeatherStore } from "@/app/store/weather-store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Loading from "./ui/Loading";
+import rounding from "@/util/rounding";
 export default function RealPOPstats({ className }) {
-  const { popData, weatherData, realPOPstats, updateRealPOPstats } =
-    useWeatherStore();
+  const {
+    popData,
+    weatherData,
+    realPOPstats,
+    updateRealPOPstats,
+    updatePopData,
+    updateWeatherData,
+  } = useWeatherStore();
 
   useEffect(() => {
     if (!popData || !weatherData) return;
     else if (popData.DBData && weatherData.POP) {
-      const originalPOP = weatherData.POP.POP.fcstValue;
+      let originalPOP = weatherData.POP.POP.fcstValue;
+      originalPOP = rounding(originalPOP);
       const realPOP = popData.DBData[`POP${originalPOP}`];
+
       let percentage = 0;
       if (
         typeof realPOP.didItRainCount === "number" &&
@@ -26,7 +35,7 @@ export default function RealPOPstats({ className }) {
         }
       }
     }
-  }, [popData, weatherData]);
+  }, [popData, weatherData, updatePopData, updateWeatherData]);
   // 이게 잘 맞는지 다시한번 확인해보기.
   return (
     <>

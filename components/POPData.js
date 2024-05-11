@@ -6,6 +6,7 @@ const POPdata = () => {
   const {
     place,
     placeData,
+    updatePlaceData,
     popData,
     updatePopData,
     currentPlaceData,
@@ -88,24 +89,53 @@ const POPdata = () => {
   useEffect(() => {
     if (place === "currentLocation") {
       if (!currentPlaceData) {
-        fetchPOPData("Seoul").then((data) => {
-          updatePopData(data);
-          return;
-        });
+        fetchPOPData("Seoul")
+          .then((data) => {
+            updatePopData(data);
+          })
+          .catch((error) => {
+            updateSystemMessage({
+              status: "error",
+              message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
+            });
+          });
+      } else {
+        fetchPOPData(placeData.administrativeArea)
+          .then((data) => {
+            updatePopData(data);
+          })
+          .catch((error) => {
+            updateSystemMessage({
+              status: "error",
+              message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
+            });
+          });
       }
-      fetchPOPData(placeData.administrativeArea).then((data) => {
-        updatePopData(data);
-      });
     } else if (place) {
-      fetchPOPData(place).then((data) => {
-        updatePopData(data);
-      });
+      fetchPOPData(place)
+        .then((data) => {
+          updatePopData(data);
+        })
+        .catch((error) => {
+          updateSystemMessage({
+            status: "error",
+            message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
+          });
+        });
     } else if (placeData) {
-      fetchPOPData(placeData.administrativeArea).then((data) => {
-        updatePopData(data);
-      });
+      fetchPOPData(placeData.administrativeArea)
+        .then((data) => {
+          updatePopData(data);
+        })
+        .catch((error) => {
+          updateSystemMessage({
+            status: "error",
+            message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
+          });
+        });
     }
   }, [placeData]);
+
   useEffect(() => {
     if (!popData) return;
     else if (popData.DBData) {
