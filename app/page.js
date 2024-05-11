@@ -2,15 +2,17 @@
 import GeocodeComponent from "@/components/GeocodeComponent";
 import CurrentLocation from "@/components/currentlocation/CurrentLocation";
 import DidItRain from "@/components/DiditRain/DidItRain";
-import { useWeatherStore } from "@/app/store/weather-store";
 import Notification from "@/components/ui/Notification";
-
+import POPExplanation from "@/components/POPExplanation";
 import DBSelection from "@/components/dbselection/DBSelectionDetails";
 import POPdata from "@/components/POPData";
 import Accordion from "@/components/Accordion";
 import Header from "@/components/Header";
-import { useState } from "react";
-import { useRef } from "react";
+
+import { useState, useRef } from "react";
+
+import { useWeatherStore } from "@/app/store/weather-store";
+import QuestionIcon from "@/components/icons/QuestionButton";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -27,35 +29,49 @@ export default function Home() {
         <h2 className="mt-4 text-2xl font-bold text-white">Weather Data:</h2>
         <p className="text-gray-200">{JSON.stringify(weatherData)}</p>
       </div> */}
-      <p>
-        <button
-          href="#accordion"
-          onClick={() => {
-            setActiveAccordion("accordion-2");
-            accordionRef.current?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          {" "}
-          to go to the second accordion{" "}
-        </button>
-      </p>
+
       <div className="flex flex-col items-center w-full mb-48">
-        <div className="flex flex-col justify-between w-11/12 md:flex-row">
-          <div className="flex items-center justify-center gap-4 mb-4">
+        <div className="flex flex-col w-11/12 justify-evenly lg:flex-row">
+          <div className="flex items-center gap-4 mb-4 justify-evenly lg:justify-center">
             <GeocodeComponent />
-            <CurrentLocation />
+            <div className="flex items-center justify-center gap-4">
+              <CurrentLocation />
+              <QuestionIcon
+                onClick={() => {
+                  setActiveAccordion("accordion-2");
+                  accordionRef.current?.scrollIntoView({ behavior: "smooth" });
+                }}
+                buttonSize="xs"
+              />
+            </div>
           </div>
           <DBSelection className="flex flex-col items-center justify-center gap-4 mb-4 md:flex-row" />
         </div>
 
-        <DidItRain className="flex flex-col items-center w-11/12 gap-6 p-5 m-12 md:w-11/12 justify-evenly rounded-xl lg:flex-row md:flex-col md:justify-evenly lg:justify-evenly bg-slate-200" />
-        <div className="w-11/12 h-64 shadow-md bg-slate-100 rounded-xl">
-          <POPdata />
+        <DidItRain
+          className="flex flex-col items-center w-11/12 gap-6 p-5 m-12 md:w-11/12 justify-evenly rounded-xl lg:flex-row md:flex-col md:justify-evenly lg:justify-evenly bg-slate-200 "
+          onClick={() => {
+            setActiveAccordion("accordion-1");
+            accordionRef.current?.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+        <div className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md lg:flex-row bg-slate-200 rounded-xl">
+          <POPExplanation
+            className="flex w-full card item-center lg:w-2/5"
+            onClick={() => {
+              setActiveAccordion("accordion-3");
+              accordionRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
+
+          <div className="flex items-center justify-center w-full shadow-xl h-96 rounded-xl lg:w-3/5">
+            <POPdata />
+          </div>
         </div>
       </div>
       <div
         ref={accordionRef}
-        className="w-3/5 mb-48 shadow-md h-96 bg-slate-100 rounded-xl"
+        className="w-11/12 h-auto p-4 mb-48 shadow-md lg:w-3/5 bg-slate-200 rounded-xl"
         id="accordion"
       >
         <Accordion

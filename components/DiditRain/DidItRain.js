@@ -7,8 +7,9 @@ import { CAPITAL_LOCATION } from "@/util/locations";
 import RealPOPstats from "../RealPOPstats";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import POPdata from "../POPData";
+import QuestionIcon from "../icons/QuestionButton";
 
-const DidItRain = ({ className }) => {
+const DidItRain = ({ className, onClick }) => {
   const isItInit = useRef(true);
   const {
     place,
@@ -103,18 +104,20 @@ const DidItRain = ({ className }) => {
 
   return (
     <div className={className}>
-      <div className="gap-4 mb-4 card md:mb-0">
+      <div className="card">
         <div className="flex items-center justify-center card-body">
-          <h1 className="text-lg lg:text-base">
-            현재는 {finalDisplayingPlace} 데이터를 보여주고 있어요.
-          </h1>
+          <h2 className="text-lg lg:text-sm">
+            현재 {finalDisplayingPlace} 데이터를 보여주고 있어요.
+          </h2>
           {weatherData && didItRain ? (
             <h1 className="text-2xl text-black lg:3xl card-title">
-              비가 내리고 있어요
+              비가 내리고 있어요{" "}
+              <QuestionIcon buttonSize="xs" onClick={onClick} />
             </h1>
           ) : (
             <h1 className="text-2xl text-black lg:3xl card-title">
-              비가 내리지 않고 있어요
+              비가 내리지 않고 있어요{" "}
+              <QuestionIcon buttonSize="xs" onClick={onClick} />
             </h1>
           )}
         </div>
@@ -124,7 +127,7 @@ const DidItRain = ({ className }) => {
           <WeatherData
             data={weatherData}
             typeOfData="POP"
-            className="card bg-slate-50"
+            className="shadow-lg card bg-slate-50"
           />
         ) : (
           <div className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card">
@@ -134,13 +137,13 @@ const DidItRain = ({ className }) => {
           </div>
         )}
 
-        <RealPOPstats className="items-center card bg-slate-50" />
+        <RealPOPstats className="items-center shadow-lg card bg-slate-50" />
 
         {weatherData.RN1 ? (
           <WeatherData
             data={weatherData}
             typeOfData="RN1"
-            className="card bg-slate-50"
+            className="shadow-lg card bg-slate-50"
           />
         ) : (
           <div className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card">

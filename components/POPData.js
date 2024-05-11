@@ -1,6 +1,7 @@
 const { useEffect, useState } = require("react");
 import { useWeatherStore } from "@/app/store/weather-store";
 import MyBarChart from "./NivoBar";
+import Loading from "./ui/Loading";
 
 const POPdata = () => {
   const {
@@ -146,12 +147,11 @@ const POPdata = () => {
   }, [popData]);
   return (
     <>
-      {/* <p>{JSON.stringify(popDataForNivo)}</p> */}
-      {/* <p>place:{place}</p>
-      <p>placeData:{placeData.administrativeArea}</p>
-      <h1>POP Data</h1> */}
-
-      {popDataForNivo.length > 0 && <MyBarChart data={popDataForNivo} />}
+      {popDataForNivo.length > 0 ? (
+        <MyBarChart data={popDataForNivo} />
+      ) : (
+        <Loading size="lg" />
+      )}
     </>
   );
 };

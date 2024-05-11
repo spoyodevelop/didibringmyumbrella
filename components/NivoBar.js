@@ -64,7 +64,7 @@ const MyBarChart = ({ data }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "population",
+      legend: "강수확률(%)",
       legendPosition: "middle",
       legendOffset: 32,
     }}
@@ -72,7 +72,7 @@ const MyBarChart = ({ data }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "% of rain",
+      legend: "실강수확률(%)",
       legendPosition: "middle",
       legendOffset: -40,
     }}
