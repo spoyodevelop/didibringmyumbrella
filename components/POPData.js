@@ -7,14 +7,17 @@ const POPdata = () => {
   const {
     place,
     placeData,
-    updatePlaceData,
     popData,
     updatePopData,
     currentPlaceData,
     updateSystemMessage,
+    updatePopDataForNivo,
+    popDataForNivo,
+    updatePastPOPData,
+    updateAllOfPOPData,
+    allOfPOPData,
   } = useWeatherStore();
 
-  const [popDataForNivo, setPopDataForNivo] = useState({});
   function transformDataForNivoChart(data) {
     // Initialize the array to store the transformed data
     const transformedData = [];
@@ -136,19 +139,28 @@ const POPdata = () => {
         });
     }
   }, [placeData]);
-
+  useEffect(() => {
+    fetchPOPData("totalOfAllArea").then((data) => {
+      if (data.DBData) {
+        const transformedData = transformDataForNivoChart(data.DBData);
+        console.log(transformedData);
+        updateAllOfPOPData({ popDataForNivo: transformedData });
+      }
+    });
+  }, []);
   useEffect(() => {
     if (!popData) return;
     else if (popData.DBData) {
       const transformedData = transformDataForNivoChart(popData.DBData);
-
-      setPopDataForNivo(transformedData);
+      updatePastPOPData({ popDataForNivo: transformedData });
+      updatePopDataForNivo({ popDataForNivo: transformedData });
     }
   }, [popData]);
+
   return (
     <>
-      {popDataForNivo.length > 0 ? (
-        <MyBarChart data={popDataForNivo} />
+      {popDataForNivo?.popDataForNivo ? (
+        <MyBarChart data={popDataForNivo.popDataForNivo} />
       ) : (
         <Loading size="lg" />
       )}

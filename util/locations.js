@@ -234,10 +234,6 @@ const CAPITAL_LOCATION = [
     koreanName: "제주",
     midAreaNumber: "11G00000",
   },
-  {
-    administrativeArea: "totalOfAllArea",
-    administrativeAreaKorean: "전국",
-  },
 ];
 const DUMMY_CAPITAL = [
   {

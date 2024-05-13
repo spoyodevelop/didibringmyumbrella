@@ -16,6 +16,15 @@ export const useWeatherStore = create((set) => ({
   },
   isInit: false,
   realPOPstats: {},
+  popDataForNivo: {},
+  pastPOPData: {},
+  allOfPOPData: {},
+  updatePastPOPData: (newPastPOPData) => set({ pastPOPData: newPastPOPData }),
+  updateAllOfPOPData: (newAllOfPOPData) =>
+    set({ allOfPOPData: newAllOfPOPData }),
+  updatePopDataForNivo: (newPopDataForNivo) =>
+    set({ popDataForNivo: newPopDataForNivo }),
+
   updateRealPOPstats: (newRealPOPstats) =>
     set({ realPOPstats: newRealPOPstats }),
   updateIsInit: (newIsInit) => set({ isInit: newIsInit }),

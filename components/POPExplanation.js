@@ -1,9 +1,12 @@
+import POPDataSelection from "./POPdataSelection";
 import GraphIcon from "./icons/GraphIcon";
 import QuestionIcon from "./icons/QuestionButton";
+
 export default function POPExplanation({ className, onClick }) {
   return (
     <div className={className}>
-      <div className="card-body">
+      <POPDataSelection className="self-center w-full max-w-xs mb-4 md:self-start select select-bordered" />
+      <div className="p-0 card-body">
         <GraphIcon className="w-12 h-12" />
         <div className="flex items-center gap-2 ">
           <h2 className="mb-1 text-3xl text-black card-title">

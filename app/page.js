@@ -8,6 +8,7 @@ import DBSelection from "@/components/dbselection/DBSelectionDetails";
 import POPdata from "@/components/POPData";
 import Accordion from "@/components/Accordion";
 import Header from "@/components/Header";
+import POPDataSelection from "@/components/POPdataSelection";
 
 import { useState, useRef } from "react";
 
@@ -56,14 +57,15 @@ export default function Home() {
           }}
         />
         <div className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md lg:flex-row bg-slate-200 rounded-xl">
-          <POPExplanation
-            className="flex w-full card item-center lg:w-2/5"
-            onClick={() => {
-              setActiveAccordion("accordion-3");
-              accordionRef.current?.scrollIntoView({ behavior: "smooth" });
-            }}
-          />
-
+          <div className="p-8">
+            <POPExplanation
+              className="flex flex-col items-center gap-4 mb-4 card bg-slate-200 rounded-xl"
+              onClick={() => {
+                setActiveAccordion("accordion-3");
+                accordionRef.current?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+          </div>
           <div className="flex items-center justify-center w-full shadow-xl h-96 rounded-xl lg:w-3/5">
             <POPdata />
           </div>
