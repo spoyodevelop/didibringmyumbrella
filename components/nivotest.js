@@ -1,7 +1,3 @@
-const {
-  d,
-} = require("@tanstack/react-query-devtools/build/legacy/devtools-9h89nHJX");
-
 function transformDataForNivoChart(data) {
   // 결과를 저장할 배열 초기화
   const transformedData = [];

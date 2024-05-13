@@ -1,8 +1,9 @@
 import { useWeatherStore } from "@/app/store/weather-store";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 const POPDataSelection = ({ className }) => {
-  const { allOfPOPData, pastPOPData, updatePopDataForNivo } = useWeatherStore();
+  const { allOfPOPData, pastPOPData, updatePopDataForNivo, place } =
+    useWeatherStore();
   const [selectedPlace, setSelectedPlace] = useState("place");
   const handleSelectChange = (event) => {
     setSelectedPlace(event.target.value);
@@ -14,6 +15,9 @@ const POPDataSelection = ({ className }) => {
       updatePopDataForNivo(allOfPOPData);
     }
   }, [selectedPlace]);
+  useEffect(() => {
+    setSelectedPlace("place");
+  }, [place]);
   return (
     <select
       value={selectedPlace}
