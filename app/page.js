@@ -7,8 +7,6 @@ import POPExplanation from "@/components/POPExplanation";
 import DBSelection from "@/components/dbselection/DBSelectionDetails";
 import POPdata from "@/components/POPData";
 import Accordion from "@/components/Accordion";
-import Header from "@/components/Header";
-import POPDataSelection from "@/components/POPdataSelection";
 
 import { useState, useRef } from "react";
 
@@ -38,9 +36,9 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col items-center w-full mb-48">
-        <Question className="flex flex-col items-center justify-center w-4/5 w-full gap-8 p-4 mb-6 rounded-xl md:flex-row" />
+        <Question className="flex flex-col items-center justify-center w-full gap-8 p-4 mb-6 rounded-xl md:flex-row" />
 
-        <HowItWorks className="flex flex-col items-center justify-center w-4/5 w-full gap-8 p-4 rounded-xl md:flex-row" />
+        <HowItWorks className="flex flex-col items-center justify-center w-full gap-8 p-4 rounded-xl md:flex-row" />
         <div className="flex flex-col items-center justify-center w-11/12 px-4 py-8 mt-12 shadow-xl bg-slate-600 rounded-xl">
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
             <div className="flex flex-row items-center justify-center w-auto gap-4">

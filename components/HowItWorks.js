@@ -1,8 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import ConfusedSVG from "./icons/Confused";
-import FrownFace from "./icons/FrownFace";
-import SmilingFace from "./icons/SmilingFace";
+
 import Steps from "./Steps";
 
 const HowItWorks = ({ className }) => {

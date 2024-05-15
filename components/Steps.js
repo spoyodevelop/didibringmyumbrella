@@ -1,7 +1,8 @@
 import React from "react";
 import LocationIcon from "./icons/LocationIcon";
-import "boxicons";
+
 import GraphIcon from "./icons/GraphIcon";
+import Rain from "./icons/Rain";
 
 const Steps = ({ className }) => {
   return (
@@ -20,11 +21,7 @@ const Steps = ({ className }) => {
       </div>
       <div className="flex items-center w-full shadow-xl card bg-slate-100">
         <div className="card-body">
-          <box-icon
-            name="cloud-light-rain"
-            size="lg"
-            color="currentColor"
-          ></box-icon>
+          <Rain />
           <h1 className="text-black card-title">
             <span className="text-4xl text-bold">2.</span>강수확률을
             비교해보세요.

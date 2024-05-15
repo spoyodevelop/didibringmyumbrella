@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import ConfusedSVG from "./icons/Confused";
+
 import FrownFace from "./icons/FrownFace";
 
 const Question = ({ className }) => {
   return (
     <section className={className}>
-      
       <div className="flex flex-col items-center justify-center align-item">
         <h1 className="mb-4 text-2xl lg:text-3xl">
           오늘 분명 비가 온다고 했는데...
