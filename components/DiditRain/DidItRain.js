@@ -109,7 +109,8 @@ const DidItRain = ({ className, onClick }) => {
           <h2 className="text-lg lg:text-sm">
             현재 {finalDisplayingPlace} 데이터를 보여주고 있어요.
           </h2>
-          {weatherData && didItRain ? (
+          {(weatherData && weatherData?.didItRain) ||
+          weatherData?.RN1?.RN1?.obsrValue > 0 ? (
             <h1 className="text-2xl text-black lg:3xl card-title">
               비가 내리고 있어요{" "}
               <QuestionIcon buttonSize="xs" onClick={onClick} />
@@ -123,7 +124,7 @@ const DidItRain = ({ className, onClick }) => {
         </div>
       </div>
       <div className="flex flex-col gap-4 md:flex-row md:flex-nowrap justify-evenly">
-        {weatherData.POP ? (
+        {weatherData?.POP ? (
           <WeatherData
             data={weatherData}
             typeOfData="POP"
@@ -139,7 +140,7 @@ const DidItRain = ({ className, onClick }) => {
 
         <RealPOPstats className="items-center shadow-lg card bg-slate-50" />
 
-        {weatherData.RN1 ? (
+        {weatherData?.RN1 ? (
           <WeatherData
             data={weatherData}
             typeOfData="RN1"

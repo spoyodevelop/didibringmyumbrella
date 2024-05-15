@@ -15,7 +15,17 @@ const WeatherData = ({ data, typeOfData, className }) => {
 
     return dateObject;
   }
-
+  if (!data)
+    return (
+      <div className={className}>
+        <div className="card-body">
+          <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
+            데이터를 가져오는데 실패했습니다.
+          </h2>
+          <p>조금 후에 다시 시도해주세요.</p>
+        </div>
+      </div>
+    );
   let formattedString;
   let formattedDate;
   if (typeOfData === "POP") {
@@ -43,13 +53,13 @@ const WeatherData = ({ data, typeOfData, className }) => {
     <div className={className}>
       <div className="card-body">
         <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
-          {formattedString.name}
+          {formattedString?.name}
           <span className="text-2xl lg:text-2xl xl:text-3xl">
-            {formattedString.formattedValue} {formattedString.formatter}
+            {formattedString?.formattedValue} {formattedString?.formatter}
           </span>
         </h2>
         <p>
-          {formattedDate.toLocaleDateString("ko-KR", {
+          {formattedDate?.toLocaleDateString("ko-KR", {
             weekday: "long",
             year: "numeric",
             month: "long",

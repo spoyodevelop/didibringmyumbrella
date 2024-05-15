@@ -22,7 +22,7 @@ const Accordion = ({ activeAccordion, setActiveAccordion, className }) => {
           htmlFor="accordion-1"
           className="text-xl font-bold text-black collapse-title"
         >
-          {weatherData.didItRain
+          {weatherData?.didItRain || weatherData?.RN1?.RN1?.obsrValue > 0
             ? "어? 밖에는 비가 오지 않는데?"
             : "어? 밖에는 비가 오는데?"}
         </label>
