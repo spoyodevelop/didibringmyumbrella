@@ -5,7 +5,7 @@ import QuestionIcon from "./icons/QuestionButton";
 export default function POPExplanation({ className, onClick }) {
   return (
     <div className={className}>
-      <POPDataSelection className="self-center w-full max-w-xs mb-4 md:self-start select select-bordered" />
+      <POPDataSelection className="self-center max-w-xs mb-4 md:self-start select select-bordered" />
       <div className="p-0 card-body">
         <GraphIcon className="w-12 h-12" />
         <div className="flex items-center gap-2 ">

@@ -4,7 +4,7 @@ const GraphIcon = ({ className }) => (
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
-    stroke="black"
+    stroke="currentColor"
     className={className}
   >
     <path

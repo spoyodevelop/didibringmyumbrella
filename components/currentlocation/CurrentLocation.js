@@ -23,7 +23,7 @@ async function fetchLocationData(latitude, longitude) {
   }
 }
 
-const CurrentLocation = () => {
+const CurrentLocation = ({ className }) => {
   const {
     latitude,
     longitude,
@@ -96,7 +96,7 @@ const CurrentLocation = () => {
   }, [place, currentPlaceData]);
 
   return (
-    <div>
+    <>
       {currentPlaceData.administrativeArea ? (
         <div className="flex items-center gap-2">
           <LocationIcon className="w-6 h-6" />
@@ -108,9 +108,13 @@ const CurrentLocation = () => {
           </span>
         </div>
       ) : (
-        <p>옆에 있는 버튼을 눌러 현 위치의 날씨를 확인할수 있어요.</p>
+        <div>
+          <p className="text-sm">
+            버튼을 눌러 현 위치의 날씨를 확인할수 있어요.
+          </p>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
