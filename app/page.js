@@ -39,7 +39,7 @@ export default function Home() {
         <Question className="flex flex-col items-center justify-center w-full gap-8 p-4 mb-6 rounded-xl md:flex-row" />
 
         <HowItWorks className="flex flex-col items-center justify-center w-full gap-8 p-4 rounded-xl md:flex-row" />
-        <div className="flex flex-col items-center justify-center w-11/12 px-4 py-8 mt-12 shadow-xl bg-slate-600 rounded-xl">
+        <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-11/12 bg-slate-600 rounded-xl">
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
             <div className="flex flex-row items-center justify-center w-auto gap-4">
               <GeocodeComponent />
