@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useWeatherStore } from "@/app/store/weather-store";
 import CloseButton from "../icons/CloseButton";
-import styles from "./Notification.module.css";
+
 import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import ErrorIcon from "../icons/ErrorIcon";
 import SuccessIcon from "../icons/SuccessIcon";
