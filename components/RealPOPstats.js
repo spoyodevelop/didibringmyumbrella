@@ -39,7 +39,7 @@ export default function RealPOPstats({ className }) {
   // 이게 잘 맞는지 다시한번 확인해보기.
   return (
     <>
-      {realPOPstats.percentage === 0 || realPOPstats.percentage ? (
+      {(realPOPstats.percentage === 0 || realPOPstats.percentage) && (
         <div className={className}>
           <div className="card-body">
             <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
@@ -53,12 +53,6 @@ export default function RealPOPstats({ className }) {
               {realPOPstats.realPOP.didItRainCount} / 총 예보 횟수 :{" "}
               {realPOPstats.realPOP.arrayLength} )
             </p>
-          </div>
-        </div>
-      ) : (
-        <div className="w-64 lg:w-64 bg-slate-50 card">
-          <div className="flex items-center justify-center card-body">
-            <Loading />
           </div>
         </div>
       )}

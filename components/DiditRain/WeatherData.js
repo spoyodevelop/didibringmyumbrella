@@ -58,7 +58,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
             {formattedString?.formattedValue} {formattedString?.formatter}
           </span>
         </h2>
-        <p>
+        <p className="text-sm">
           {formattedDate?.toLocaleDateString("ko-KR", {
             weekday: "long",
             year: "numeric",

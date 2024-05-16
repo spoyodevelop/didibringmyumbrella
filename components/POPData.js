@@ -1,13 +1,13 @@
 const { useEffect, useState } = require("react");
+import useSWR from "swr";
 import { useWeatherStore } from "@/app/store/weather-store";
-import MyBarChart from "./NivoBar";
 import Loading from "./ui/Loading";
-
+import MyBarChart from "./NivoBar";
+import ErrorCard from "./ui/ErrorCard";
 const POPdata = () => {
   const {
     place,
     placeData,
-    popData,
     updatePopData,
     currentPlaceData,
     updateSystemMessage,
@@ -15,13 +15,65 @@ const POPdata = () => {
     popDataForNivo,
     updatePastPOPData,
     updateAllOfPOPData,
-    allOfPOPData,
   } = useWeatherStore();
+
+  const fetcher = async (url) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      updateSystemMessage({
+        status: "error",
+        message: `An error occurred while fetching the data. ${response.statusText}`,
+      });
+
+      throw new Error("An error occurred while fetching the data.");
+    }
+    const data = await response.json();
+    updatePopData(data);
+    return data;
+  };
+
+  const {
+    data: popData,
+    error: popDataError,
+    isLoading: popDataLoading,
+  } = useSWR(() => {
+    if (place === "currentLocation") {
+      if (!currentPlaceData) {
+        return `/api/weather/popdata?administrativeArea=Seoul`;
+      } else {
+        return `/api/weather/popdata?administrativeArea=${placeData.administrativeArea}`;
+      }
+    } else if (place) {
+      return `/api/weather/popdata?administrativeArea=${place}`;
+    } else if (placeData) {
+      return `/api/weather/popdata?administrativeArea=${placeData.administrativeArea}`;
+    }
+  }, fetcher);
+
+  const {
+    data: allOfPOPData,
+    error: allOfPOPDataError,
+    isLoading: allofPOPdataLoading,
+  } = useSWR("/api/weather/popdata?administrativeArea=totalOfAllArea", fetcher);
+
+  useEffect(() => {
+    if (allOfPOPData) {
+      const transformedData = transformDataForNivoChart(allOfPOPData.DBData);
+      updateAllOfPOPData({ popDataForNivo: transformedData });
+    }
+  }, [allOfPOPData]);
+
+  useEffect(() => {
+    if (popData) {
+      const transformedData = transformDataForNivoChart(popData.DBData);
+      updatePastPOPData({ popDataForNivo: transformedData });
+      updatePopDataForNivo({ popDataForNivo: transformedData });
+    }
+  }, [popData]);
 
   function transformDataForNivoChart(data) {
     // Initialize the array to store the transformed data
     const transformedData = [];
-
     // Iterate over the keys of the data object
     Object.keys(data).forEach((key) => {
       // Check if the key starts with "POP"
@@ -33,7 +85,6 @@ const POPdata = () => {
         ) {
           let percentage = 0;
           // Calculate the percentage
-
           if (data[key].arrayLength !== 0 && data[key].didItRainCount === 0) {
             percentage = 0;
           } else {
@@ -48,7 +99,6 @@ const POPdata = () => {
               id: key, // POP category name
               value: percentage, // Percentage value
             };
-
             // Add the transformed item to the array
             transformedData.push(transformedItem);
           }
@@ -67,104 +117,20 @@ const POPdata = () => {
     return newData;
   }
 
-  async function fetchPOPData(administrativeArea) {
-    if (!administrativeArea) {
-      return;
-    }
-    const response = await fetch(
-      `/api/weather/popdata?administrativeArea=${administrativeArea}`,
-      { next: { revalidate: 3600 } }
-    );
-
-    if (!response.ok) {
-      updateSystemMessage({
-        status: "error",
-        message: `강수확률정보를 가져오는데 에러가 발생했어요.`,
-      });
-    } else {
-      const data = await response.json();
-      updateSystemMessage({
-        status: "success",
-        message: `강수확률정보를 가져왔어요.`,
-      });
-      return data;
-    }
-  }
-  useEffect(() => {
-    if (place === "currentLocation") {
-      if (!currentPlaceData) {
-        fetchPOPData("Seoul")
-          .then((data) => {
-            updatePopData(data);
-          })
-          .catch((error) => {
-            updateSystemMessage({
-              status: "error",
-              message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
-            });
-          });
-      } else {
-        fetchPOPData(placeData.administrativeArea)
-          .then((data) => {
-            updatePopData(data);
-          })
-          .catch((error) => {
-            updateSystemMessage({
-              status: "error",
-              message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
-            });
-          });
-      }
-    } else if (place) {
-      fetchPOPData(place)
-        .then((data) => {
-          updatePopData(data);
-        })
-        .catch((error) => {
-          updateSystemMessage({
-            status: "error",
-            message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
-          });
-        });
-    } else if (placeData) {
-      fetchPOPData(placeData.administrativeArea)
-        .then((data) => {
-          updatePopData(data);
-        })
-        .catch((error) => {
-          updateSystemMessage({
-            status: "error",
-            message: `현재 위치의 강수확률정보를 가져오는데 에러가 발생했어요.`,
-          });
-        });
-    }
-  }, [placeData]);
-  useEffect(() => {
-    fetchPOPData("totalOfAllArea").then((data) => {
-      if (data.DBData) {
-        const transformedData = transformDataForNivoChart(data.DBData);
-        console.log(transformedData);
-        updateAllOfPOPData({ popDataForNivo: transformedData });
-      }
-    });
-  }, []);
-  useEffect(() => {
-    if (!popData) return;
-    else if (popData.DBData) {
-      const transformedData = transformDataForNivoChart(popData.DBData);
-      updatePastPOPData({ popDataForNivo: transformedData });
-      updatePopDataForNivo({ popDataForNivo: transformedData });
-    }
-  }, [popData]);
-
   return (
     <>
-      {popDataForNivo?.popDataForNivo ? (
+      {allOfPOPData && popData ? (
         <MyBarChart data={popDataForNivo.popDataForNivo} />
+      ) : popDataError || allOfPOPDataError ? (
+        // Assuming you have an ErrorComponent defined somewhere in your project
+        <>
+          <ErrorCard className="flex items-center justify-center" />
+        </>
       ) : (
         <Loading size="lg" />
       )}
     </>
   );
 };
+
 export default POPdata;

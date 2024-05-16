@@ -45,9 +45,12 @@ const Question = ({ className }) => {
           <div className="self-center card">
             <div className="flex justify-center card-body">
               <h2 className="text-xl font-semibold text-center text-black lg:text-3xl">
-                강수 확률은 어떻게 나오는거야?
+                그래서 만들었습니다.
               </h2>
-              <p className="text-xl text-center">강수 확률을 믿으시나요?</p>
+              <p className="text-xl text-center">
+                실제 비가 오는날에만 강수를 체크한 실제 강수 확률을
+                확인해보세요.
+              </p>
             </div>
           </div>
         </section>

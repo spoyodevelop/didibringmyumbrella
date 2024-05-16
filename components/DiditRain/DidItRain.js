@@ -1,83 +1,70 @@
-"use client"; // This is a client-side component
 import { useWeatherStore } from "@/app/store/weather-store";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, use } from "react";
 import Loading from "@/components/ui/Loading";
 import WeatherData from "./WeatherData";
 import { CAPITAL_LOCATION } from "@/util/locations";
 import RealPOPstats from "../RealPOPstats";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import POPdata from "../POPData";
-import QuestionIcon from "../icons/QuestionButton";
 
+import QuestionIcon from "../icons/QuestionButton";
+import useSWR from "swr";
+import ErrorCard from "../ui/ErrorCard";
 const DidItRain = ({ className, onClick }) => {
   const isItInit = useRef(true);
   const {
     place,
     placeData,
     updateWeatherData,
-    weatherData,
     currentPlaceData,
     updateSystemMessage,
     updatePlaceData,
     popData,
   } = useWeatherStore();
-  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchWeatherData = async (placeData) => {
-    setIsLoading(true);
-    let url = "";
-    if (placeData.convertedX && placeData.convertedY) {
-      url = `api/weather/fetchweather?convertedX=${placeData.convertedX}&convertedY=${placeData.convertedY}&administrativeArea=${placeData.administrativeArea}`;
-    } else {
-      url = `/api/weather/fetchweather?&administrativeArea=${placeData.administrativeArea}`;
-    }
-
-    try {
-      const response = await fetch(url, { next: { revalidate: 3600 } });
-
-      if (!response.ok) {
-        // HTTP 에러 처리
-        const errorMessage = await response.text();
+  const {
+    data: weatherData,
+    error: weatherError,
+    isLoading: weatherLoading,
+  } = useSWR(
+    () => {
+      if (!placeData.administrativeArea) return null;
+      if (!placeData) return null;
+      let url = "";
+      if (placeData.convertedX && placeData.convertedY) {
+        url = `api/weather/fetchweather?convertedX=${placeData.convertedX}&convertedY=${placeData.convertedY}&administrativeArea=${placeData.administrativeArea}`;
+      } else {
+        url = `/api/weather/fetchweather?&administrativeArea=${placeData.administrativeArea}`;
+      }
+      return url;
+    },
+    async (url) => {
+      try {
+        const response = await fetch(url, { next: { revalidate: 3600 } });
+        if (!response.ok) {
+          // HTTP 에러 처리
+          const errorMessage = await response.text();
+          updateSystemMessage({
+            status: "error",
+            message: `날씨정보를 가져오는데 에러가 발생했어요. ${errorMessage}`,
+          });
+          return null;
+        }
+        const data = await response.json();
+        updateSystemMessage({
+          status: "success",
+          message: `날씨정보를 가져왔어요.`,
+        });
+        updateWeatherData(data);
+        return data;
+      } catch (error) {
         updateSystemMessage({
           status: "error",
-          message: `날씨정보를 가져오는데 에러가 발생했어요. ${errorMessage}`,
+          message: "날씨정보를 가져오는데 에러가 발생했어요.",
         });
-        return;
+        console.error("Error fetching weather data:", error);
+        throw error;
       }
-
-      const data = await response.json();
-      updateSystemMessage({
-        status: "success",
-        message: `날씨정보를 가져왔어요.`,
-      });
-      setIsLoading(false);
-      return data;
-    } catch (error) {
-      updateSystemMessage({
-        status: "error",
-        message: "날씨정보를 가져오는데 에러가 발생했어요.",
-      });
-      console.error("Error fetching weather data:", error);
-      setIsLoading(false);
-      throw error;
     }
-  };
-  useEffect(() => {
-    if (!placeData.administrativeArea) return;
-    if (!placeData) return;
-
-    //1. currentLocation에서 placeData를 받아온다.
-    //2. placeData가 바뀌었기 때문에,
-    if (placeData.administrativeArea === "totalOfAllArea") {
-      updateWeatherData({ message: "totalOfAllArea has no weather data" });
-    }
-
-    if (placeData) {
-      fetchWeatherData(placeData).then((data) => {
-        updateWeatherData(data);
-      });
-    }
-  }, [updatePlaceData, placeData]);
+  );
 
   function getDisplayingPlace(place) {
     let displayingPlace = "";
@@ -96,12 +83,16 @@ const DidItRain = ({ className, onClick }) => {
     }
     return displayingPlace;
   }
+
   let finalDisplayingPlace = getDisplayingPlace(place);
   let didItRain;
   if (weatherData) {
     ({ didItRain } = weatherData);
   }
-
+  //rifting state up of RealPOPstats.js
+  //send data to RealPOPstats.js
+  //apply error data if weatherError is true
+  console.log(weatherError, weatherData, weatherLoading);
   return (
     <div className={className}>
       <div className="card">
@@ -124,33 +115,47 @@ const DidItRain = ({ className, onClick }) => {
         </div>
       </div>
       <div className="flex flex-col gap-4 md:flex-row md:flex-nowrap justify-evenly">
-        {weatherData?.POP ? (
+        {!weatherLoading && !weatherError ? (
           <WeatherData
             data={weatherData}
             typeOfData="POP"
             className="shadow-lg card bg-slate-50"
           />
+        ) : weatherError ? (
+          // Assuming you have an ErrorComponent defined somewhere in your project
+          <>
+            <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
+          </>
         ) : (
-          <div className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card">
-            <div className="card-body">
-              <Loading />
-            </div>
+          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
+            <Loading />
           </div>
         )}
 
-        <RealPOPstats className="items-center shadow-lg card bg-slate-50" />
-
-        {weatherData?.RN1 ? (
+        {!weatherLoading && !weatherError ? (
+          <RealPOPstats className="items-center shadow-lg card bg-slate-50" />
+        ) : weatherError ? (
+          // Assuming you have an ErrorComponent defined somewhere in your project
+          <>
+            <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
+          </>
+        ) : (
+          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
+            <Loading />
+          </div>
+        )}
+        {!weatherLoading && !weatherError ? (
           <WeatherData
             data={weatherData}
             typeOfData="RN1"
             className="shadow-lg card bg-slate-50"
           />
+        ) : weatherError ? (
+          // Assuming you have an ErrorComponent defined somewhere in your project
+          <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
         ) : (
-          <div className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card">
-            <div className="card-body">
-              <Loading />
-            </div>
+          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
+            <Loading />
           </div>
         )}
       </div>

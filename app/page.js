@@ -39,7 +39,7 @@ export default function Home() {
         <Question className="flex flex-col items-center justify-center w-full gap-8 p-4 mb-6 rounded-xl md:flex-row" />
 
         <HowItWorks className="flex flex-col items-center justify-center w-full gap-8 p-4 rounded-xl md:flex-row" />
-        <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-11/12 bg-slate-600 rounded-xl">
+        <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-full rounded-xl">
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
             <div className="flex flex-row items-center justify-center w-auto gap-4">
               <GeocodeComponent />
@@ -64,17 +64,16 @@ export default function Home() {
               accordionRef.current?.scrollIntoView({ behavior: "smooth" });
             }}
           />
-          <div className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md lg:flex-row bg-slate-200 rounded-xl">
-            <div className="p-8">
-              <POPExplanation
-                className="flex flex-col items-center gap-4 mb-4 card"
-                onClick={() => {
-                  setActiveAccordion("accordion-3");
-                  accordionRef.current?.scrollIntoView({ behavior: "smooth" });
-                }}
-              />
-            </div>
-            <div className="flex items-center justify-center w-full shadow-xl h-96 rounded-xl">
+          <div className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 shadow-md lg:flex-row bg-slate-200 rounded-xl">
+            <POPExplanation
+              className="flex flex-col items-center gap-4 mb-4 card"
+              onClick={() => {
+                setActiveAccordion("accordion-3");
+                accordionRef.current?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+
+            <div className="flex items-center justify-center w-full shadow-xl md:w-full lg:w-3/5 h-96 rounded-xl">
               <POPdata />
             </div>
           </div>

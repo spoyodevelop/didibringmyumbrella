@@ -44,7 +44,7 @@ async function fetchWeatherData(usage, dataType, location) {
   try {
     // Configure axios retry. which is pretty mucccchhhh useless now.
     axiosRetry(axios, {
-      retries: 5,
+      retries: 2,
       retryDelay: (...args) => axiosRetry.exponentialDelay(...args, 2000),
       onRetry: (retryCount, error, requestConfig) => {
         console.log(`retry count: `, retryCount);
@@ -84,6 +84,7 @@ async function fetchWeatherData(usage, dataType, location) {
 
     const newDate = new Date();
     const items = jObj.response.body.items;
+    console.log("sucessfully fetched data for", location.administrativeArea);
     return {
       createdAt: newDate,
       dataType,

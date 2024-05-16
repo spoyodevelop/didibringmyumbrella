@@ -1,5 +1,5 @@
 import style from "../styles/index.css";
-
+import SWRProvider from "./SWRProvider";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
 const notoSansKr = Noto_Sans_KR({
   // preload: true, 기본값
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
             " flex flex-col items-center justify-center min-h-screen"
           }
         >
-          {children}
+          <SWRProvider>{children}</SWRProvider>
         </main>
       </body>
     </html>
