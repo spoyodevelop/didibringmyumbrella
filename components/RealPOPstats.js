@@ -48,7 +48,7 @@ export default function RealPOPstats({ className }) {
                 {realPOPstats.percentage}%
               </span>
             </h2>
-            <p>
+            <p className="text-sm">
               계산된 강수 확률이에요.( 강수 횟수:{" "}
               {realPOPstats.realPOP.didItRainCount} / 총 예보 횟수 :{" "}
               {realPOPstats.realPOP.arrayLength} )

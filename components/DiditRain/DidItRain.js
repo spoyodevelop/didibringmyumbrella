@@ -92,7 +92,7 @@ const DidItRain = ({ className, onClick }) => {
   //rifting state up of RealPOPstats.js
   //send data to RealPOPstats.js
   //apply error data if weatherError is true
-  console.log(weatherError, weatherData, weatherLoading);
+
   return (
     <div className={className}>
       <div className="card">
