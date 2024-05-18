@@ -26,7 +26,7 @@ const Question = ({ className }) => {
           </div>
           <div className="mb-4">
             <h2 className="mb-1 text-base font-semibold text-black lg:text-lg">
-              30%의 확률로 비가 내린다고 해요.
+              강수 확률이 30%라는 기상예보를 봤을때, 우산을 두고 나갔나요?
             </h2>
             <p>
               날씨 예보에서 강수확률 30%를 확인했을때, 밖에 우산을 가지고
@@ -35,7 +35,7 @@ const Question = ({ className }) => {
           </div>
           <div className="mb-4">
             <h2 className="mb-1 text-base font-semibold text-black lg:text-lg">
-              60%의 확률로 비가 내린다고 해요.
+              강수 확률이 60%라는 기상예보를 봤을때, 우산을 들고 나갔나요?
             </h2>
             <p>
               60%의 확률로 강수가 된다면, 우산을 들고 가는게 좋겠죠? 하지만 항상
@@ -45,11 +45,10 @@ const Question = ({ className }) => {
           <div className="self-center card">
             <div className="flex justify-center card-body">
               <h2 className="text-xl font-semibold text-center text-black lg:text-3xl">
-                그래서 만들었습니다.
+                실제 비가 오는날에만 강수를 체크 했어요.
               </h2>
               <p className="text-xl text-center">
-                실제 비가 오는날에만 강수를 체크한 실제 강수 확률을
-                확인해보세요.
+                실제 강수 확률을 확인해보세요.
               </p>
             </div>
           </div>

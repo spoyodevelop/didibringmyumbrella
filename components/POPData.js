@@ -44,8 +44,11 @@ const POPdata = () => {
         return `/api/weather/popdata?administrativeArea=${placeData.administrativeArea}`;
       }
     } else if (place) {
+      //god knows why this is happens.
+      if (!place) return;
       return `/api/weather/popdata?administrativeArea=${place}`;
     } else if (placeData) {
+      if (!placeData.administrativeArea) return;
       return `/api/weather/popdata?administrativeArea=${placeData.administrativeArea}`;
     }
   }, fetcher);

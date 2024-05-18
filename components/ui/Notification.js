@@ -18,9 +18,9 @@ const Notification = () => {
   const [showNotification, setShowNotification] = useState(false);
   const colorVariants = {
     success:
-      "alert alert-success fixed bottom-0 right-0 m-4 z-50 w-auto md:bottom-0 p-4 rounded-md shadow-md transition-opacity ease-in duration-700 opacity-100 inset-x-0",
+      "alert alert-success fixed bottom-0 right-0 m-4 z-50 w-auto md:bottom-0 p-4 rounded-md shadow-md transition-opacity inset-x-0",
     error:
-      "alert alert-error fixed bottom-0 right-0 m-4 z-50 w-auto md:bottom-0 p-4 rounded-md shadow-md transition-opacity ease-in duration-700 opacity-100 inset-x-0",
+      "alert alert-error fixed bottom-0 right-0 m-4 z-50 w-auto md:bottom-0 p-4 rounded-md shadow-md transition-opacity inset-x-0",
   };
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Notification = () => {
   // Define animation variants
   const fadeInOutVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.3 } },
+    visible: { opacity: 1, transition: { duration: 0.2 } },
     exit: { opacity: 0, transition: { duration: 0.2 } }, // Increase duration for exit
   };
 
@@ -57,7 +57,7 @@ const Notification = () => {
           ...fadeInOutVariants,
           visible: {
             ...fadeInOutVariants.visible,
-            transition: { duration: 1 },
+            transition: { duration: 0.3 },
           }, // Increase duration for success status
         }
       : fadeInOutVariants;
