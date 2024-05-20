@@ -41,18 +41,29 @@ export default function RealPOPstats({ className }) {
     <>
       {(realPOPstats.percentage === 0 || realPOPstats.percentage) && (
         <div className={className}>
-          <div className="card-body">
-            <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
-              실제 강수 확률{" "}
-              <span className="text-2xl lg:text-2xl xl:text-3xl">
-                {realPOPstats.percentage}%
-              </span>
-            </h2>
-            <p className="text-sm">
-              계산된 강수 확률이에요.( 강수 횟수:{" "}
-              {realPOPstats.realPOP.didItRainCount} / 총 예보 횟수 :{" "}
-              {realPOPstats.realPOP.arrayLength} )
-            </p>
+          <div className="stat">
+            <div className="font-bold text-black stat-title">
+              실제 강수 확률
+            </div>
+            <div className="stat-value">{realPOPstats.percentage}%</div>
+            <div className="stat-desc">계산된 강수 확률이에요.</div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div
+                class="bg-blue-600 h-2.5 rounded-full"
+                style={{ width: realPOPstats.percentage + "%" }}
+              >
+                {" "}
+              </div>
+            </div>
+          </div>
+          <div className="stat">
+            <div className="font-bold text-black stat-title">강수 횟수</div>
+            <div className="stat-value">
+              {realPOPstats.realPOP.didItRainCount}
+            </div>
+            <div className="stat-desc">
+              총 예보 횟수 : {realPOPstats.realPOP.arrayLength}
+            </div>
           </div>
         </div>
       )}

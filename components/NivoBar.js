@@ -1,8 +1,9 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
-const MyBarChart = ({ data }) => (
+const MyBarChart = ({ data, layout = "vertical" }) => (
   <ResponsiveBar
+    layout={layout}
     data={data}
     keys={["실강수"]}
     indexBy="id"

@@ -17,6 +17,8 @@ import HowToUse from "@/components/HowToUse";
 import HowItWorks from "@/components/HowItWorks";
 import HowItMade from "@/components/HowItMade";
 import WhyItMade from "@/components/WhyItMade";
+import Infographic from "@/components/Infographic";
+import AllPOPStats from "@/components/AllPOPStats";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -41,9 +43,9 @@ export default function Home() {
       <div className="flex flex-col items-center w-full mb-48">
         <WhyItMade className="flex flex-col-reverse items-center justify-center gap-8 p-4 mb-6 rounded-xl md:flex-row" />
         <Question className="flex flex-col items-center justify-center w-full gap-8 p-4 mb-8 rounded-xl md:flex-row" />
-        <HowItMade className="flex flex-col items-center justify-center w-11/12 gap-8 p-4 mb-12 md:w-4/5 rounded-xl md:flex-col bg-slate-200" />
+        <HowItMade className="flex flex-col items-center justify-center w-full p-4 mb-12 md:w-4/5 rounded-xl md:flex-col bg-slate-200" />
 
-        <HowToUse className="flex flex-col items-center justify-center w-full gap-8 p-4 rounded-xl md:flex-row" />
+        <HowToUse className="flex flex-col items-center justify-center w-full gap-2 p-4 rounded-xl md:flex-row" />
         <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-full rounded-xl">
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
             <div className="flex flex-row items-center justify-center w-auto gap-4">
@@ -63,7 +65,7 @@ export default function Home() {
             <DBSelection className="flex flex-col items-center justify-center gap-4 md:flex-row" />
           </div>
           <DidItRain
-            className="flex flex-col items-center w-11/12 gap-6 p-5 m-12 md:w-11/12 justify-evenly rounded-xl lg:flex-row md:flex-col md:justify-evenly lg:justify-evenly bg-slate-200 "
+            className="flex flex-col items-center w-11/12 p-5 m-12 md:w-11/12 justify-evenly rounded-xl lg:flex-row md:justify-evenly lg:justify-evenly bg-slate-200 "
             onClick={() => {
               setActiveAccordion("accordion-1");
               accordionRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -83,6 +85,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <AllPOPStats className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 shadow-md bg-slate-200 rounded-xl" />
       </div>
 
       <div
@@ -95,6 +98,8 @@ export default function Home() {
           setActiveAccordion={setActiveAccordion}
         />
       </div>
+
+      {/* <Infographic className="flex flex-col items-center justify-center w-3/4 gap-8 p-4 mb-8 rounded-xl md:flex-col bg-slate-200" /> */}
 
       <Notification />
     </>

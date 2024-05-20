@@ -19,6 +19,9 @@ export const useWeatherStore = create((set) => ({
   popDataForNivo: {},
   pastPOPData: {},
   allOfPOPData: {},
+  allOfPOPDataStats: {},
+  updateAllOfPOPDataStats: (newAllOfPOPDataStats) =>
+    set({ allOfPOPDataStats: newAllOfPOPDataStats }),
   updatePastPOPData: (newPastPOPData) => set({ pastPOPData: newPastPOPData }),
   updateAllOfPOPData: (newAllOfPOPData) =>
     set({ allOfPOPData: newAllOfPOPData }),

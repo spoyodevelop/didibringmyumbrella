@@ -114,12 +114,25 @@ const DidItRain = ({ className, onClick }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-4 md:flex-row md:flex-nowrap justify-evenly">
+      <div className="stats bg-slate-100 stats-vertical lg:stats-horizontal">
+        {!weatherLoading && !weatherError ? (
+          <RealPOPstats className="flex flex-row item-center rounded-xl text-primary" />
+        ) : weatherError ? (
+          // Assuming you have an ErrorComponent defined somewhere in your project
+          <>
+            <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
+          </>
+        ) : (
+          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
+            <Loading />
+          </div>
+        )}
+
         {!weatherLoading && !weatherError ? (
           <WeatherData
             data={weatherData}
             typeOfData="POP"
-            className="shadow-lg card bg-slate-50"
+            className="flex justify-around gap-4 text-primary"
           />
         ) : weatherError ? (
           // Assuming you have an ErrorComponent defined somewhere in your project
@@ -133,22 +146,10 @@ const DidItRain = ({ className, onClick }) => {
         )}
 
         {!weatherLoading && !weatherError ? (
-          <RealPOPstats className="items-center shadow-lg card bg-slate-50" />
-        ) : weatherError ? (
-          // Assuming you have an ErrorComponent defined somewhere in your project
-          <>
-            <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
-          </>
-        ) : (
-          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
-            <Loading />
-          </div>
-        )}
-        {!weatherLoading && !weatherError ? (
           <WeatherData
             data={weatherData}
             typeOfData="RN1"
-            className="shadow-lg card bg-slate-50"
+            className="flex justify-around gap-4 text-primary"
           />
         ) : weatherError ? (
           // Assuming you have an ErrorComponent defined somewhere in your project

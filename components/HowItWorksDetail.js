@@ -2,6 +2,7 @@ import React from "react";
 import { CiPercent } from "react-icons/ci";
 import { FaCloudRain } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
+import { IoIosMegaphone } from "react-icons/io";
 
 const HowItWorksDetail = ({ className }) => {
   // Your code here
@@ -15,7 +16,7 @@ const HowItWorksDetail = ({ className }) => {
         {/* Step 1 */}
         <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
           <div className="card-body">
-            <CiPercent className="text-4xl text-bold" />
+            <IoIosMegaphone size={32} />
             <h1 className="mb-2 text-lg font-bold text-black card-title">
               <span className="text-4xl font-bold">1.</span> 단기예보 API에서
               강수 확률을 가져와요.
@@ -29,7 +30,7 @@ const HowItWorksDetail = ({ className }) => {
         {/* Step 2 */}
         <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
           <div className="card-body">
-            <FaCloudRain className="text-3xl" />
+            <FaCloudRain size={24} />
             <h1 className="mb-2 text-lg font-bold text-black card-title">
               <span className="text-4xl font-bold">2.</span> 초단기예보 API에서
               실제 강수 현황을 가져와요.
@@ -42,7 +43,7 @@ const HowItWorksDetail = ({ className }) => {
         {/* Step 3 */}
         <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
           <div className="card-body">
-            <IoIosStats className="text-4xl" />
+            <IoIosStats size={30} />
             <h1 className="mb-2 text-lg font-bold text-black card-title">
               <span className="text-4xl font-bold">3.</span> 1과 2를 비교해서
               실제 강수 확률을 확인해요.

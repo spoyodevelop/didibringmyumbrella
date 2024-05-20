@@ -15,6 +15,7 @@ const POPdata = () => {
     popDataForNivo,
     updatePastPOPData,
     updateAllOfPOPData,
+    updateAllOfPOPDataStats,
   } = useWeatherStore();
 
   const fetcher = async (url) => {
@@ -61,6 +62,7 @@ const POPdata = () => {
 
   useEffect(() => {
     if (allOfPOPData) {
+      updateAllOfPOPDataStats(allOfPOPData.DBData);
       const transformedData = transformDataForNivoChart(allOfPOPData.DBData);
       updateAllOfPOPData({ popDataForNivo: transformedData });
     }

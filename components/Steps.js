@@ -2,7 +2,8 @@ import React from "react";
 import LocationIcon from "./icons/LocationIcon";
 
 import GraphIcon from "./icons/GraphIcon";
-import Rain from "./icons/Rain";
+
+import { FaCloudRain } from "react-icons/fa";
 
 const Steps = ({ className }) => {
   return (
@@ -27,7 +28,7 @@ const Steps = ({ className }) => {
         {/* Step 2 */}
         <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
           <div className="card-body">
-            <Rain className="w-12 h-12" />
+            <FaCloudRain className="w-10 h-10" />
             <h1 className="mb-2 text-xl font-bold text-black card-title">
               <span className="text-4xl font-bold">2.</span> 강수확률을
               비교해보세요.

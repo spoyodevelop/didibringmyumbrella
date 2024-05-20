@@ -1,3 +1,5 @@
+import { IoIosMegaphone } from "react-icons/io";
+import { IoRainy } from "react-icons/io5";
 const WeatherData = ({ data, typeOfData, className }) => {
   function convertToDateTime(fcstDate, fcstTime) {
     // 날짜와 시간을 분리
@@ -28,9 +30,10 @@ const WeatherData = ({ data, typeOfData, className }) => {
     );
   let formattedString;
   let formattedDate;
+  let icon;
   if (typeOfData === "POP") {
     const { POP } = data;
-
+    icon = <IoIosMegaphone size={32} />;
     if (!POP) return;
     formattedDate = convertToDateTime(POP.POP.fcstDate, POP.POP.fcstTime);
     const formattedValue = POP.POP.fcstValue;
@@ -40,6 +43,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
   }
   if (typeOfData === "RN1") {
     const { RN1 } = data;
+    icon = <IoRainy size={28} />;
     if (!RN1) return;
 
     formattedDate = convertToDateTime(RN1.RN1.baseDate, RN1.RN1.baseTime);
@@ -51,14 +55,15 @@ const WeatherData = ({ data, typeOfData, className }) => {
   }
   return (
     <div className={className}>
-      <div className="card-body">
-        <h2 className="text-xl text-black lg:text-sm xl:text-xl card-title">
-          {formattedString?.name}
-          <span className="text-2xl lg:text-2xl xl:text-3xl">
-            {formattedString?.formattedValue} {formattedString?.formatter}
-          </span>
-        </h2>
-        <p className="text-sm">
+      <div className="stat">
+        <div> {icon}</div>
+        <div className="stat-title">{formattedString?.name}</div>
+        <div className="stat-value">{formattedString?.formattedValue}</div>
+        <div className="stat-desc">{formattedString?.formatter}</div>
+      </div>
+      <div className="stat">
+        <div className=" stat-title">기준 날짜</div>
+        <div className="text-sm text-slate-400 stat-value">
           {formattedDate?.toLocaleDateString("ko-KR", {
             weekday: "long",
             year: "numeric",
@@ -66,8 +71,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
             day: "numeric",
             hour: "numeric",
           })}
-          기준
-        </p>
+        </div>
       </div>
     </div>
   );
