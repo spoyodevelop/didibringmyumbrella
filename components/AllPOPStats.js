@@ -6,9 +6,39 @@ import AllPOPStatsIntro from "./AllPOPStatsIntro";
 import AllPOPStatsMainSection from "./AllPOPStatsMainSection";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import NivoTotalBar from "./NivoTotalBar";
 
 const AllPOPStats = ({ className }) => {
   const { allOfPOPDataStats, allOfPOPData } = useWeatherStore();
+
+  function transformDataForNivo(data) {
+    // Initialize an empty array to hold the transformed data
+    let transformedData = [];
+
+    // Iterate through each key in the data object
+    Object.keys(data).forEach((key) => {
+      // Check if the key starts with 'POP'
+      if (/^POP\d+$/.test(key)) {
+        // Extract the population group number
+        let populationGroupNumber = parseInt(key.replace("POP", ""));
+        if (data[key].arrayLength < 4) {
+          return;
+        }
+        // Create a new object for each population group
+        let groupData = {
+          강수확률: `${populationGroupNumber}%`,
+          예보횟수: data[key].arrayLength,
+          비가내린횟수: data[key].didItRainCount,
+        };
+
+        // Add the new object to the transformed data array
+        transformedData.push(groupData);
+      }
+    });
+
+    // Return the transformed data
+    return transformedData;
+  }
 
   function calculatePercentage(numerator, denominator) {
     // 분모가 0인 경우 오류 처리
@@ -42,6 +72,7 @@ const AllPOPStats = ({ className }) => {
   if (allOfPOPDataStats["totalArrayCount"]) {
     totalLength = allOfPOPDataStats["totalArrayCount"];
   }
+  const transformedData = transformDataForNivo(allOfPOPDataStats);
 
   const POPpercentage = (percent, tofixed) =>
     financial(
@@ -51,23 +82,20 @@ const AllPOPStats = ({ className }) => {
       ),
       tofixed
     );
+
   return (
     <section className={className}>
-      <AllPOPStatsIntro className="flex flex-col items-center justify-center w-full gap-2 p-4 rounded-xl" />
-      <div className="flex flex-col lg:flex-row">
+      <AllPOPStatsIntro className="flex flex-col items-center justify-center w-full gap-2 p-4 overflow-x-scroll rounded-xl" />
+      <div className="flex flex-col overflow-x-scroll lg:flex-row">
         <div className="flex w-full lg:w-1/2 h-96">
-          {allOfPOPData?.popDataForNivo ? (
-            <MyBarChart
-              data={allOfPOPData?.popDataForNivo}
-              layout="horizontal"
-            />
+          {transformedData ? (
+            <NivoTotalBar data={transformedData} />
           ) : (
             <Loading size="lg" />
           )}
         </div>
-        <AllPOPStatsMainSection className="flex flex-col w-full gap-2 p-4 card lg:w-1/2 rounded-xl" />
+        <AllPOPStatsMainSection className="flex flex-col w-full gap-2 p-4 overflow-x-scroll card lg:w-1/2 rounded-xl" />
       </div>
-
       <div className="flex flex-col items-center justify-center w-full gap-4 lg:flex-row lg:gap-8 ">
         <div className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center ">
           <div>
