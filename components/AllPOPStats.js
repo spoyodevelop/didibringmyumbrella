@@ -85,7 +85,7 @@ const AllPOPStats = ({ className }) => {
 
   return (
     <section className={className}>
-      <AllPOPStatsIntro className="flex flex-col items-center justify-center w-full gap-2 p-4 overflow-x-scroll rounded-xl" />
+      <AllPOPStatsIntro className="flex flex-col items-center justify-center w-full gap-2 p-4 overflow-x-scroll rounded-sm md:rounded-sm" />
       <div className="flex flex-col overflow-x-scroll lg:flex-row">
         <div className="flex w-full lg:w-1/2 h-96">
           {transformedData ? (
@@ -94,7 +94,7 @@ const AllPOPStats = ({ className }) => {
             <Loading size="lg" />
           )}
         </div>
-        <AllPOPStatsMainSection className="flex flex-col w-full gap-2 p-4 overflow-x-scroll card lg:w-1/2 rounded-xl" />
+        <AllPOPStatsMainSection className="flex flex-col w-full gap-2 p-4 overflow-x-scroll rounded-sm card lg:w-1/2 md:rounded-xl" />
       </div>
       <div className="flex flex-col items-center justify-center w-full gap-4 lg:flex-row lg:gap-8 ">
         <div className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center ">

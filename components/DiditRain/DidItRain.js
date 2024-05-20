@@ -114,7 +114,7 @@ const DidItRain = ({ className, onClick }) => {
           )}
         </div>
       </div>
-      <div className="w-full  stats rounded-xl bg-slate-100 stats-vertical lg:stats-horizontal">
+      <div className="w-full md:w-3/4 stats rounded-xl bg-slate-100 stats-vertical xl:stats-horizontal">
         {!weatherLoading && !weatherError ? (
           <RealPOPstats className="flex flex-row item-center rounded-xl text-primary" />
         ) : weatherError ? (
@@ -132,7 +132,7 @@ const DidItRain = ({ className, onClick }) => {
           <WeatherData
             data={weatherData}
             typeOfData="POP"
-            className="flex flex-col justify-around gap-0 md:gap-4 md:flex-row text-primary "
+            className="flex flex-col justify-around gap-0 flex-0 md:gap-4 md:flex-row text-primary "
           />
         ) : weatherError ? (
           // Assuming you have an ErrorComponent defined somewhere in your project
