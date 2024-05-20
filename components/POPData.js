@@ -112,7 +112,7 @@ const POPdata = () => {
     });
     const newData = transformedData.map((item) => {
       // id 필드의 값에서 'POP' 부분을 제거하고, '%' 문자를 추가합니다.
-      const newId = item.id.replace("POP", "") + "%";
+      const newId = item.id.replace("POP", "");
       // 실강수% 필드를 추가합니다.
       return {
         id: newId,

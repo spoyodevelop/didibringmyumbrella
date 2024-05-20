@@ -121,12 +121,12 @@ const DidItRain = ({ className, onClick }) => {
             <WeatherData
               data={weatherData}
               typeOfData="POP"
-              className="flex flex-row item-center rounded-xl text-primary"
+              className="flex flex-col sm:flex-row item-center rounded-xl text-primary"
             />
             <WeatherData
               data={weatherData}
               typeOfData="RN1"
-              className="flex flex-row item-center rounded-xl text-primary"
+              className="flex flex-col sm:flex-row item-center rounded-xl text-primary"
             />
           </>
         ) : weatherError ? (
