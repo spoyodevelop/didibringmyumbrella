@@ -116,47 +116,27 @@ const DidItRain = ({ className, onClick }) => {
       </div>
       <div className="w-full md:w-3/4 stats rounded-xl bg-slate-100 stats-vertical xl:stats-horizontal">
         {!weatherLoading && !weatherError ? (
-          <RealPOPstats className="flex flex-row item-center rounded-xl text-primary" />
+          <>
+            <RealPOPstats className="flex flex-row item-center rounded-xl text-primary" />
+            <WeatherData
+              data={weatherData}
+              typeOfData="POP"
+              className="flex flex-row item-center rounded-xl text-primary"
+            />
+            <WeatherData
+              data={weatherData}
+              typeOfData="RN1"
+              className="flex flex-row item-center rounded-xl text-primary"
+            />
+          </>
         ) : weatherError ? (
           // Assuming you have an ErrorComponent defined somewhere in your project
           <>
-            <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
+            <ErrorCard className="flex items-center justify-center w-full bg-slate-50 card text-primary" />
           </>
         ) : (
-          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
-            <Loading />
-          </div>
-        )}
-
-        {!weatherLoading && !weatherError ? (
-          <WeatherData
-            data={weatherData}
-            typeOfData="POP"
-            className="flex flex-col justify-around gap-0 flex-0 md:gap-4 md:flex-row text-primary "
-          />
-        ) : weatherError ? (
-          // Assuming you have an ErrorComponent defined somewhere in your project
-          <>
-            <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
-          </>
-        ) : (
-          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
-            <Loading />
-          </div>
-        )}
-
-        {!weatherLoading && !weatherError ? (
-          <WeatherData
-            data={weatherData}
-            typeOfData="RN1"
-            className="flex flex-col justify-around gap-0 md:gap-4 md:flex-row text-primary"
-          />
-        ) : weatherError ? (
-          // Assuming you have an ErrorComponent defined somewhere in your project
-          <ErrorCard className="flex items-center justify-center w-64 lg:w-64 bg-slate-50 card" />
-        ) : (
-          <div className="flex items-center justify-center w-64 h-32 lg:w-64 bg-slate-50 card">
-            <Loading />
+          <div className="flex items-center justify-center w-full h-40">
+            <Loading size="lg" />
           </div>
         )}
       </div>
