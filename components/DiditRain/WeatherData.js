@@ -55,13 +55,13 @@ const WeatherData = ({ data, typeOfData, className }) => {
   }
   return (
     <div className={className}>
-      <div className="stat">
+      <div className="py-2 md:py-4 stat">
         <div> {icon}</div>
-        <div className="stat-title">{formattedString?.name}</div>
+        <div className="text-base stat-title">{formattedString?.name}</div>
         <div className="stat-value">{formattedString?.formattedValue}</div>
         <div className="stat-desc">{formattedString?.formatter}</div>
       </div>
-      <div className="stat">
+      <div className="py-2 md:py-4 stat">
         <div className=" stat-title">기준 날짜</div>
         <div className="text-sm text-slate-400 stat-value">
           {formattedDate?.toLocaleDateString("ko-KR", {
