@@ -51,6 +51,7 @@ const AllPOPStatsMainSection = ({ className }) => {
           </div>
         </section>
       </div>
+   
     </section>
   );
 };

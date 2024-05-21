@@ -19,6 +19,7 @@ import HowItMade from "@/components/HowItMade";
 import WhyItMade from "@/components/WhyItMade";
 import Infographic from "@/components/Infographic";
 import AllPOPStats from "@/components/AllPOPStats";
+import SquallMeter from "@/components/SquallMeter";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -85,7 +86,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <AllPOPStats className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+        <AllPOPStats className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mb-8 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+        {/* <SquallMeter className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md md:p-8 bg-slate-200 rounded-xl" /> */}
       </div>
 
       <div
