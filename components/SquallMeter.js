@@ -1,4 +1,6 @@
 import { useWeatherStore } from "@/app/store/weather-store";
+import SquallMeterIntro from "./SquallMeterIntro";
+import { CircularProgressbar } from "react-circular-progressbar";
 
 export default function SquallMeter({ className }) {
   const { allOfPOPDataStats } = useWeatherStore();
@@ -41,8 +43,12 @@ export default function SquallMeter({ className }) {
   const weightedAverage = calculateWeightedAverage(rainRatiosData, weights);
 
   return (
-    <div className={className}>
-      <p>Weighted Average: {weightedAverage.toFixed(2)}</p>
-    </div>
+    <section className={className}>
+      <SquallMeterIntro />
+      <CircularProgressbar
+        value={weightedAverage.toFixed(2)}
+        text={`${weightedAverage.toFixed(2)}%`}
+      />
+    </section>
   );
 }

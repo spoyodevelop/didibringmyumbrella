@@ -7,7 +7,7 @@ import AllPOPStatsMainSection from "./AllPOPStatsMainSection";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import NivoTotalBar from "./NivoTotalBar";
-import AllPOPStatsUserSelection from "./AllPOPstatsUserSelection";
+
 import { useState } from "react";
 const AllPOPStats = ({ className }) => {
   const { allOfPOPDataStats, allOfPOPData } = useWeatherStore();
