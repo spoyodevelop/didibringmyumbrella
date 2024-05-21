@@ -1,6 +1,9 @@
 import { useWeatherStore } from "@/app/store/weather-store";
 import SquallMeterIntro from "./SquallMeterIntro";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+import SquallMeterMainSection from "./SquallMeterMainSection";
+import ErrorCard from "./ui/ErrorCard";
+import RainOutOfBlue from "./RainOutOfBlue";
 
 export default function SquallMeter({ className }) {
   const { allOfPOPDataStats } = useWeatherStore();
@@ -45,10 +48,31 @@ export default function SquallMeter({ className }) {
   return (
     <section className={className}>
       <SquallMeterIntro />
-      <CircularProgressbar
-        value={weightedAverage.toFixed(2)}
-        text={`${weightedAverage.toFixed(2)}%`}
-      />
+      {allOfPOPDataStats._id ? (
+        <>
+          <div className="flex flex-col items-center gap-12 md:flex-row">
+            <SquallMeterMainSection />
+            <div className="w-1/2">
+              <CircularProgressbarWithChildren
+                value={weightedAverage.toFixed(2)}
+              >
+                <h2 className="text-2xl font-bold text-blue-600 sm:text-4xl md:text-3xl lg:text-4xl xl:text-7xl">
+                  {weightedAverage.toFixed(2)}%
+                </h2>
+                <h2 className="mb-4 text-base text-black md:text-2xl">
+                  스콜미터
+                </h2>
+                <p className="hidden text-xs xl:block xl:text-sm">
+                  높을수록 갑작스런 소나기가 올 확률이 높아요.
+                </p>
+              </CircularProgressbarWithChildren>
+            </div>
+          </div>
+          <RainOutOfBlue data={allOfPOPDataStats} />
+        </>
+      ) : (
+        <ErrorCard />
+      )}
     </section>
   );
 }

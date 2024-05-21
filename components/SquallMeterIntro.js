@@ -1,12 +1,12 @@
 import React from "react";
-import { IoIosUmbrella } from "react-icons/io";
+import { IoThunderstorm } from "react-icons/io5";
 
 const SquallMeterIntro = ({ className }) => {
   // Your component code here
   return (
     <section className={className}>
       <div className="p-0 card-body">
-        <IoIosUmbrella className="w-10 h-10" />
+        <IoThunderstorm className="w-10 h-10" />
         <div className="flex items-center gap-2 ">
           <h2 className="mb-1 text-3xl text-black card-title">
             앗 갑자기 비가 온다!
