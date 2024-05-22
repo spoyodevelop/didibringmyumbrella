@@ -101,8 +101,8 @@ const AllPOPStats = ({ className }) => {
       <AllPOPStatsIntro className="flex flex-col items-center justify-center w-full gap-2 p-4 overflow-x-scroll rounded-sm md:rounded-sm" />
       {allOfPOPDataStats._id ? (
         <>
-          <div className="flex flex-col overflow-x-scroll lg:flex-row">
-            <div className="flex w-full lg:w-1/2 h-96">
+          <div className="flex flex-col w-full lg:flex-row">
+            <div className="flex items-center justify-center w-full shadow-xl md:w-full lg:w-3/5 h-96 rounded-xl">
               {transformedData ? (
                 <NivoTotalBar data={transformedData} />
               ) : (
