@@ -28,7 +28,7 @@ const AllPOPStats = ({ className }) => {
         <>
           <div className="flex flex-col w-full lg:flex-row">
             <div className="flex flex-col items-center justify-center w-auto lg:flex-row">
-              <div className="flex items-center justify-center w-full h-auto shadow-xl md:w-full lg:w-3/5 rounded-xl">
+              <div className="flex items-center justify-center w-full shadow-xl h-80 md:h-96 md:w-full lg:w-3/5 rounded-xl">
                 {transformedData ? (
                   <NivoTotalBar data={transformedData} />
                 ) : (
