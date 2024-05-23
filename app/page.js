@@ -43,10 +43,10 @@ export default function Home() {
 
       <div className="flex flex-col items-center w-full mb-48">
         <WhyItMade className="flex flex-col-reverse items-center justify-center gap-8 p-4 mb-6 rounded-xl md:flex-row" />
-        <Question className="flex flex-col items-center justify-center w-full gap-8 p-4 mb-8 rounded-xl md:flex-row" />
-        <HowItMade className="flex flex-col items-center justify-center w-full p-4 mb-12 md:w-4/5 rounded-xl md:flex-col bg-slate-200" />
+        <Question className="flex flex-col items-center justify-center w-11/12 gap-8 mb-8 rounded-xl md:flex-row" />
+        <HowItMade className="flex flex-col items-center justify-center w-11/12 p-4 mb-12 lg:w-4/5 rounded-xl md:flex-col bg-slate-200" />
 
-        <HowToUse className="flex flex-col items-center justify-center w-full gap-2 p-4 rounded-xl md:flex-row" />
+        <HowToUse className="flex flex-col items-center justify-center w-11/12 gap-2 lg:w-4/5 rounded-xl md:flex-row" />
         <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-full rounded-xl">
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
             <div className="flex flex-row items-center justify-center w-auto gap-4">
