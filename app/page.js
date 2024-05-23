@@ -14,10 +14,10 @@ import { useWeatherStore } from "@/app/store/weather-store";
 import QuestionIcon from "@/components/icons/QuestionButton";
 import Question from "@/components/Question";
 import HowToUse from "@/components/HowToUse";
-import HowItWorks from "@/components/HowItWorks";
+
 import HowItMade from "@/components/HowItMade";
 import WhyItMade from "@/components/WhyItMade";
-import Infographic from "@/components/Infographic";
+
 import AllPOPStats from "@/components/AllPOPStats";
 import SquallMeter from "@/components/SquallMeter";
 

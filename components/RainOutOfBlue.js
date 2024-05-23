@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useWeatherStore } from "@/app/store/weather-store";
+import RainOutOfBlueIntro from "./RainOutOfBlueIntro";
 
 // Reference data
 const CAPITAL_LOCATION = [
@@ -43,12 +44,13 @@ const CAPITAL_LOCATION = [
   { administrativeArea: "Jeju-do", administrativeAreaKorean: "제주특별자치도" },
 ];
 
-const RainOutOfBlue = ({ data }) => {
+const RainOutOfBlue = ({ data, className }) => {
   const { currentPlaceData } = useWeatherStore();
   const [selectedArea, setSelectedArea] = useState("All");
   const [sortOrder, setSortOrder] = useState("Newest");
   const [filteredData, setFilteredData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
+  const [animatedData, setAnimatedData] = useState([]);
   data = data.rainOutOfBlue;
   useEffect(() => {
     if (data && Array.isArray(data)) {
@@ -80,6 +82,16 @@ const RainOutOfBlue = ({ data }) => {
     }
   }, [sortOrder, filteredData]);
 
+  useEffect(() => {
+    setAnimatedData([]);
+    if (sortedData.length > 0) {
+      sortedData.forEach((item, index) => {
+        setTimeout(() => {
+          setAnimatedData((prev) => [...prev, item]);
+        }, index * 300); // 나타나는 간격을 300ms로 설정
+      });
+    }
+  }, [sortedData]);
   const handleAreaChange = (e) => {
     setSelectedArea(e.target.value);
   };
@@ -96,41 +108,72 @@ const RainOutOfBlue = ({ data }) => {
   };
 
   return (
-    <div>
-      <h1>Weather Data</h1>
-      <label>
-        Filter by Area:
-        {selectedArea}
-        <select value={selectedArea} onChange={handleAreaChange}>
-          <option value="All">전체</option>
+    <section className={`${className} p-6 bg-gray-100 rounded-lg shadow-lg`}>
+      <RainOutOfBlueIntro className="mb-6" data={data} />
 
-          {CAPITAL_LOCATION.map((area) => (
-            <option
-              key={area.administrativeArea}
-              value={area.administrativeArea}
+      <div className="mb-4">
+        <label className="block mb-2 text-lg font-medium text-gray-700">
+          Filter by Area:
+          <select
+            value={selectedArea}
+            onChange={handleAreaChange}
+            className="block w-full p-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="All">전체</option>
+            {CAPITAL_LOCATION.map((area) => (
+              <option
+                key={area.administrativeArea}
+                value={area.administrativeArea}
+              >
+                {area.administrativeAreaKorean}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div className="mb-6">
+        <label className="block mb-2 text-lg font-medium text-gray-700">
+          Sort by Date:
+          <select
+            value={sortOrder}
+            onChange={handleSortChange}
+            className="block w-full p-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="Newest">최신순</option>
+            <option value="Oldest">오래된 순</option>
+          </select>
+        </label>
+      </div>
+
+      {animatedData.length > 0 ? (
+        <ul className="space-y-4">
+          {animatedData.map((item, index) => (
+            <li
+              key={item._id}
+              className={`p-4 bg-white border border-gray-200 rounded-lg shadow-sm animate-fade-in-up`}
+              style={{ animationDelay: `${index * 0.1}s` }} // 애니메이션 지연 시간 설정
             >
-              {area.administrativeAreaKorean}
-            </option>
+              <div className="text-3xl font-extrabold text-blue-500">
+                {item?.RN1 ? item?.RN1 + "mm" : "빗방울"}
+              </div>
+              <div className="text-gray-600">
+                {new Date(item.baseDate).toLocaleString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                })}
+              </div>
+            </li>
           ))}
-        </select>
-      </label>
-      <label>
-        Sort by Date:
-        <select value={sortOrder} onChange={handleSortChange}>
-          <option value="Newest">최신순</option>
-          <option value="Oldest">오래된 순</option>
-        </select>
-      </label>
-      <ul>
-        {sortedData.map((item) => (
-          <li key={item._id}>
-            {getAreaKoreanName(item.administrativeArea)} -{" "}
-            {new Date(item.baseDate).toLocaleString()} {""}
-            {item?.RN1 ? item?.RN1 : "빗방울"}
-          </li>
-        ))}
-      </ul>
-    </div>
+        </ul>
+      ) : (
+        <div className="text-lg font-medium text-center text-gray-500 animate-pulse">
+          데이터가 없습니다
+        </div>
+      )}
+    </section>
   );
 };
 

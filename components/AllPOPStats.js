@@ -40,17 +40,17 @@ const AllPOPStats = ({ className }) => {
           </div>
           <div className="flex flex-col items-center justify-center w-full gap-4 mb-8 lg:flex-row lg:gap-8">
             <AllPOPStatsCard
-              className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center"
+              className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center transition duration-500 transform hover:scale-[1.03]"
               data={allOfPOPDataStats}
               percent={30}
             />
             <AllPOPStatsCard
-              className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center"
+              className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center transition duration-500 transform hover:scale-[1.03]"
               data={allOfPOPDataStats}
               percent={60}
             />
             <AllPOPStatsCard
-              className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center"
+              className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center transition duration-500 transform hover:scale-[1.03]"
               data={allOfPOPDataStats}
               percent={80}
             />
@@ -64,7 +64,7 @@ const AllPOPStats = ({ className }) => {
             강수 확률을 선택해서 확인해보세요.
           </p>
           <AllPOPStatsCard
-            className="flex p-6 mb-4 bg-blue-100 rounded-lg shadow-lg"
+            className="flex p-6 bg-blue-100 rounded-lg shadow-lg lg:flex-row lg:items-center transition duration-500 transform hover:scale-[1.03]"
             data={allOfPOPDataStats}
             percent={selectedPOP}
           />

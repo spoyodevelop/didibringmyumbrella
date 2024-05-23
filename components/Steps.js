@@ -11,9 +11,9 @@ const Steps = ({ className }) => {
       <h1 className="mb-8 text-2xl font-bold text-center text-black">
         사용방법은 간단합니다.
       </h1>
-      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
         {/* Step 1 */}
-        <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
+        <div className="flex flex-col items-start justify-between w-full p-2 transition duration-500 transform shadow-xl rounded-xl bg-slate-100 card hover:scale-[103%]">
           <div className="card-body">
             <LocationIcon className="w-12 h-12" />
             <h1 className="mb-2 text-xl font-bold text-black card-title">
@@ -26,7 +26,7 @@ const Steps = ({ className }) => {
           </div>
         </div>
         {/* Step 2 */}
-        <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
+        <div className="flex flex-col items-start justify-between w-full p-2 transition duration-500 transform shadow-xl rounded-xl bg-slate-100 card hover:scale-[103%]">
           <div className="card-body">
             <FaCloudRain className="w-10 h-10" />
             <h1 className="mb-2 text-xl font-bold text-black card-title">
@@ -40,7 +40,7 @@ const Steps = ({ className }) => {
           </div>
         </div>
         {/* Step 3 */}
-        <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
+        <div className="flex flex-col items-start justify-between w-full p-2 transition duration-500 transform shadow-xl rounded-xl bg-slate-100 card hover:scale-[103%]">
           <div className="card-body">
             <GraphIcon className="w-12 h-12" />
             <h1 className="mb-2 text-xl font-bold text-black card-title">

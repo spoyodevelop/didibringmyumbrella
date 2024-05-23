@@ -3,7 +3,6 @@ import {
   calculateArrayLength,
   financial,
   POPpercentage,
-  transformDataForNivo,
 } from "@/util/AllPOPstatsFormatting";
 export default function AllPOPStatsCard({ className, percent, data }) {
   let icon = "🌥️";

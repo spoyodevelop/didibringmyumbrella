@@ -10,6 +10,8 @@
     "pages:build": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
+    "@nextui-org/navbar": "^2.0.30",
+    "@nextui-org/react": "^2.3.6",
     "@nivo/bar": "^0.86.0",
     "@tanstack/react-query-devtools": "^5.32.1",
     "axios": "^1.6.8",

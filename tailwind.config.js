@@ -3,7 +3,19 @@ module.exports = {
   daisyui: {
     themes: ["light", "dark", "cupcake"],
   },
-
+  theme: {
+    extend: {
+      keyframes: {
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
+      },
+    },
+  },
   content: [
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",
@@ -11,8 +23,6 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   prefix: "",
-  theme: {
-    extend: {},
-  },
+
   plugins: [require("daisyui")],
 };

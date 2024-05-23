@@ -12,9 +12,9 @@ const HowItWorksDetail = ({ className }) => {
       <h1 className="mb-8 text-2xl font-bold text-center text-black">
         사이트는 이렇게 작동해요.
       </h1>
-      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
         {/* Step 1 */}
-        <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
+        <div className="flex flex-col items-start justify-between w-full p-2 transition duration-500 transform shadow-xl rounded-xl bg-slate-100 card hover:scale-[103%]">
           <div className="card-body">
             <IoIosMegaphone size={32} />
             <h1 className="mb-2 text-lg font-bold text-black card-title">
@@ -28,7 +28,7 @@ const HowItWorksDetail = ({ className }) => {
           </div>
         </div>
         {/* Step 2 */}
-        <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
+        <div className="flex flex-col items-start justify-between w-full p-2 transition duration-500 transform shadow-xl rounded-xl bg-slate-100 card hover:scale-[103%]">
           <div className="card-body">
             <FaCloudRain size={24} />
             <h1 className="mb-2 text-lg font-bold text-black card-title">
@@ -41,7 +41,7 @@ const HowItWorksDetail = ({ className }) => {
           </div>
         </div>
         {/* Step 3 */}
-        <div className="flex flex-col items-start justify-between w-full p-2 shadow-xl rounded-xl bg-slate-100 card">
+        <div className="flex flex-col items-start justify-between w-full p-2 transition duration-500 transform shadow-xl rounded-xl bg-slate-100 card hover:scale-[103%]">
           <div className="card-body">
             <IoIosStats size={30} />
             <h1 className="mb-2 text-lg font-bold text-black card-title">
