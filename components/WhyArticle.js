@@ -17,7 +17,7 @@ const WhyArticle = () => {
         <div>
           <section className="mb-8 section-indicator">
             <h2 className="mb-12 text-2xl font-semibold text-gray-800 md:text-4xl">
-              '1초에 5경2천조번 연산'
+              &lsquo;1초에 5경2천조번 연산&rsquo;
             </h2>
             <div className="flex justify-center mb-12">
               <div className="relative w-full xl:w-3/5 h-96">
@@ -89,9 +89,9 @@ const WhyArticle = () => {
 
             <article className="p-6 mb-4 bg-white border border-gray-300 rounded-lg shadow-sm">
               <p className="leading-relaxed text-gray-700">
-                윤 서기관은 "한국 지형적 특성 상 남북으로 길게 돼 있고, 고도
-                높낮이가 지역별로 많이 다르기 때문에 이런 지형적 특성도 기상
-                예측을 어렵게 하는 요인"이라고 설명했다.
+                윤 서기관은 &ldquo;한국 지형적 특성 상 남북으로 길게 돼 있고,
+                고도 높낮이가 지역별로 많이 다르기 때문에 이런 지형적 특성도
+                기상 예측을 어렵게 하는 요인&rdquo;이라고 설명했다.
               </p>
             </article>
 
@@ -109,16 +109,18 @@ const WhyArticle = () => {
                 흔적 예컨대 습도나 기온 등이 그 바로 뒤의 날씨에 직접적 영향을
                 끼치기 때문에 장기 예보보다는 실시간 예보가 더 정확하겠죠.
                 게다가 측정하는 장소도 하나의 변수가 되는데요. 실제로 우리 동네
-                날씨를 보더라도 우리 집이 아니라 '관측소가 설치된 곳'이다 보니
-                실제 우리 집 앞 날씨와는 조금 다를 수도 있다는 설명입니다.
+                날씨를 보더라도 우리 집이 아니라 &lsquo;관측소가 설치된
+                곳&rsquo;이다 보니 실제 우리 집 앞 날씨와는 조금 다를 수도
+                있다는 설명입니다.
               </p>
             </div>
 
             <article className="p-6 mt-4 mb-8 bg-white border border-gray-300 rounded-lg shadow-sm">
               <p className="leading-relaxed text-gray-700">
-                윤 서기관은 "비 예보는 작은 오차가 정확도를 가르기 마련인데,
-                관측소부터 어떻게 보면 오차일 수 있기 때문에 실제 시민들이
-                체감하는 정확도 및 맞힘률이 낮을 수밖에 없다"고 말했다.
+                윤 서기관은 &ldquo;비 예보는 작은 오차가 정확도를 가르기
+                마련인데, 관측소부터 어떻게 보면 오차일 수 있기 때문에 실제
+                시민들이 체감하는 정확도 및 맞힘률이 낮을 수밖에 없다&rdquo;고
+                말했다.
               </p>
             </article>
           </section>
