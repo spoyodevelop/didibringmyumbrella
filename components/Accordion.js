@@ -77,14 +77,15 @@ const Accordion = ({ activeAccordion, setActiveAccordion, className }) => {
           htmlFor="accordion-3"
           className="text-xl font-bold collapse-title"
         >
-          실제 강수 확률은 무엇인가요?
+          예보 강수 확률를 여기서 제공하는 실제 강수 확률로 대체해서 사용할 수
+          있나요?
         </label>
         <div className="collapse-content">
           <p className="text-slate-400">
-            실제 강수 확률은 기상청에서 제공하는 단기예보의 강수확률과, 실제로
-            비가 내린 횟수를 토대로 계산한 강수확률입니다. 초단기예보에서
-            강수확률이 60%로 나왔을때, 10번의 예보 중 4번이 비가 내렸다면, 실제
-            강수확률은 40%가 됩니다.
+            간단히 말하면, 안됩니다. 통계는 통계일뿐, 실제 자료를 바탕으로 하는
+            날씨예보와는 차이가 많고, 한계점도 많습니다. 하지만 유용한 참고
+            자료가 될 수 있어요. 항상 기상청의 예보와 비교하며, 참고용으로
+            사용하는게 바람직합니다.
           </p>
         </div>
       </div>

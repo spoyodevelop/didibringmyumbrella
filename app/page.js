@@ -21,6 +21,9 @@ import WhyItMade from "@/components/WhyItMade";
 import AllPOPStats from "@/components/AllPOPStats";
 import SquallMeter from "@/components/SquallMeter";
 
+import InfographicRain from "@/components/InfographicRain";
+import InfographicWhy from "@/components/InfographicWhy";
+
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
   const { systemMessage, currentPlaceData, weatherData } = useWeatherStore();
@@ -35,6 +38,7 @@ export default function Home() {
         <h2 className="mt-4 text-2xl font-bold text-white">Weather Data:</h2>
         <p className="text-gray-200">{JSON.stringify(weatherData)}</p>
       </div> */}
+
       <div className="flex navbar bg-base-100">
         <div className="flex-1">
           <a className="text-xl btn btn-ghost">아맞다 우산</a>
@@ -42,14 +46,20 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col items-center w-full mb-48">
-        <WhyItMade className="flex flex-col-reverse items-center justify-center gap-8 p-4 mb-6 rounded-xl md:flex-row" />
+        <WhyItMade
+          className="flex flex-col-reverse items-center justify-center gap-8 p-4 mb-6 rounded-xl md:flex-row"
+          id="만든이유"
+        />
         <Question className="flex flex-col items-center justify-center w-11/12 gap-8 mb-8 rounded-xl md:flex-row" />
         <HowItMade className="flex flex-col items-center justify-center w-11/12 p-4 mb-12 lg:w-4/5 rounded-xl md:flex-col bg-slate-200" />
 
         <HowToUse className="flex flex-col items-center justify-center w-11/12 gap-2 lg:w-4/5 rounded-xl md:flex-row" />
         <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-full rounded-xl">
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
-            <div className="flex flex-row items-center justify-center w-auto gap-4">
+            <div
+              className="flex flex-row items-center justify-center w-auto gap-4"
+              id="made"
+            >
               <GeocodeComponent />
               <CurrentLocation />
               <QuestionIcon
@@ -71,6 +81,7 @@ export default function Home() {
               setActiveAccordion("accordion-1");
               accordionRef.current?.scrollIntoView({ behavior: "smooth" });
             }}
+            id="날씨보기"
           />
           <div className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 mb-4 shadow-md lg:flex-row bg-slate-200 rounded-xl">
             <POPExplanation
@@ -86,8 +97,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <AllPOPStats className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mb-10 shadow-md bg-slate-200 rounded-xl" />
-        <SquallMeter className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+        <AllPOPStats
+          className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mb-10 shadow-md md:p-8 bg-slate-200 rounded-xl"
+          id="어느때우산"
+        />
+        <SquallMeter className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 mb-20 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+        <InfographicRain className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mb-12 shadow-md md:p-8 md:w-4/5 bg-slate-200 rounded-xl" />
+        <InfographicWhy className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md md:p-8 md:w-4/5 bg-slate-200 rounded-xl" />
       </div>
 
       <div

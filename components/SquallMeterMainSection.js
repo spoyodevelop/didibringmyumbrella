@@ -12,7 +12,7 @@ const SquallMeterMainSection = ({ className }) => {
 
   return (
     <section className={className}>
-      <div className="w-full rounded-lg shadow-md md:rounded-xl md:shadow-base bg-slate-200">
+      <div className="w-full rounded-lg shadow-none md:shadow-md md:rounded-xl md:shadow-base bg-slate-200">
         <section className="flex flex-col p-0 md:p-8">
           <div className="flex items-center gap-4 mb-8">
             <h1 className="text-xl lg:text-2xl">방금까지만 해도 맑았는데...</h1>
