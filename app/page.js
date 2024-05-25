@@ -23,11 +23,13 @@ import SquallMeter from "@/components/SquallMeter";
 
 import InfographicRain from "@/components/InfographicRain";
 import InfographicWhy from "@/components/InfographicWhy";
+import MyPieChart from "@/components/ResponsivePie";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
   const { systemMessage, currentPlaceData, weatherData } = useWeatherStore();
   const accordionRef = useRef(null);
+
   return (
     <>
       {/* <div className="w-4/5 p-6 mb-4 rounded-lg shadow-xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 align-center">

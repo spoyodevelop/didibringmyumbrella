@@ -2,16 +2,23 @@ import IconGrid from "./icons/IconGrid";
 import { useWeatherStore } from "@/app/store/weather-store";
 import Image from "next/image";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import WeatherForecastPieChart from "./WeatherForecastPieChart";
 
 const WhyArticle = () => {
   const { allOfPOPDataStats } = useWeatherStore();
+  const weatherData = [
+    { id: "슈퍼컴퓨터", value: 40, color: "#ff0000" },
+    { id: "기상관측", value: 32, color: "#00ff00" },
+    { id: "예보관 주관", value: 28, color: "#0000ff" },
+  ];
+
   return (
     <div className="">
       <header className="p-4 mb-6 text-white rounded-lg shadow-lg bg-cyan-500 shadow-cyan-400/40 sm:p-6 md:p-6">
         <h1 className="text-2xl font-bold tracking-tighter md:text-5xl">
           날씨 예측은 끔찍하게 어렵다고? 🤔
         </h1>
-        <p className="mt-2">날씨 맞추기가 어려운지 알아보아요.</p>
+        <p className="mt-2">왜 날씨 맞추기가 어려운지 알아보아요.</p>
       </header>
       <div className="flex flex-col p-4 rounded-lg shadow-lg md:p-8 sm:flex-row bg-stone-100">
         <div>
@@ -54,9 +61,11 @@ const WhyArticle = () => {
               </p>
             </article>
             <p className="mt-4 leading-relaxed text-gray-700">
-              그리고 지금 현재는 5호기가 운영중이에요. 5호기는 1초에
-              5경2천조번의 연산을 할수 있지만, 아직도 날씨 적중률은 50%를 넘지
-              못해요. 왜 그럴까요?
+              그렇게 계속해서 기상청의 슈퍼 컴퓨터가 업그레이드 되었고, 계속해서
+              기상 분석과 관측이 개선되고 있는중이에요. 그리고 지금 현재는
+              5호기가 운영중이에요. 5호기는 1초에 5경2천조번의 연산을 할 수
+              있고, 4호기에 비해 92배나 빨라졌어요. 하지만 아직도 날씨 적중률은
+              50%를 넘지못해요. 왜 그럴까요?
             </p>
           </section>
 
@@ -115,7 +124,7 @@ const WhyArticle = () => {
               </p>
             </div>
 
-            <article className="p-6 mt-4 mb-8 bg-white border border-gray-300 rounded-lg shadow-sm">
+            <article className="p-6 mb-8 bg-white border border-gray-300 rounded-lg shadow-sm">
               <p className="leading-relaxed text-gray-700">
                 윤 서기관은 &ldquo;비 예보는 작은 오차가 정확도를 가르기
                 마련인데, 관측소부터 어떻게 보면 오차일 수 있기 때문에 실제
@@ -124,6 +133,37 @@ const WhyArticle = () => {
               </p>
             </article>
           </section>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-800 md:text-4xl">
+            예보관의 주관과 항상 노력하는 기상청
+          </h2>
+          <div className="w-3/4 h-96">
+            <WeatherForecastPieChart data={weatherData} />
+          </div>
+          <article className="p-6 mb-8 bg-white border border-gray-300 rounded-lg shadow-sm">
+            <p className="leading-relaxed text-gray-700">
+              기상청에 따르면 날씨 예보의 단계별 역할 비중이 슈퍼컴퓨터의 예보
+              40%, 관측 자료 32%, 마지막 예보관의 판단이 28% 정도 차지한다고
+              합니다. 예보관은 모든 관측 자료와 결과값을 토대로 종합적인 판단을
+              내려 매일 날씨를 예측하죠.
+              <a
+                href="https://www.sedaily.com/NewsView/1VLUEDR8RO"
+                className="flex items-center justify-end gap-2 text-blue-500 hover:text-blue-800"
+              >
+                <FaExternalLinkAlt />
+                출처:서울경제
+              </a>
+            </p>
+          </article>
+          <p className="mt-4 mb-4 leading-relaxed text-gray-700">
+            예보관이 정확한 판단을 하려면 무엇보다 날씨에 대한 충분한 지식과
+            경험이 있어야 하는데요. 최근 지구 온난화로 기상이변이 잦아지면서
+            관측 자료가 부족하거나 오차가 높은 경우가 많은데 제대로 된 판단을
+            하기 위해 예보관의 역량이 더 중요해지는 시점이죠. 하지만 현실은
+            상당히 여려워요. 예보관 교육을 강화해 전문예보관을 육성해도 모자랄
+            판에 한국의 예보관들은 12시간 반복 교대근무와 잦은 순환보직 시스템
+            탓에 전문성을 갖추기가 어려운 상황이라고 이야기 합니다.
+          </p>
+          <p className="mt-4 mb-4 leading-relaxed text-gray-700"></p>
         </div>
       </div>
     </div>
