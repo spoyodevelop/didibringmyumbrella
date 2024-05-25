@@ -14,7 +14,7 @@ const WhyArticle = () => {
 
   return (
     <div className="">
-      <header className="p-4 mb-6 text-white rounded-lg shadow-lg bg-cyan-500 shadow-cyan-400/40 sm:p-6 md:p-6">
+      <header className="p-4 mb-6 text-white bg-blue-500 rounded-lg shadow-sm md:shadow-lg shadow-cyan-400/40 sm:p-6 md:p-6">
         <h1 className="text-2xl font-bold tracking-tighter md:text-5xl">
           날씨 예측은 끔찍하게 어렵다고? 🤔
         </h1>

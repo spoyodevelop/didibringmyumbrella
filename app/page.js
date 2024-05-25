@@ -104,8 +104,8 @@ export default function Home() {
           id="어느때우산"
         />
         <SquallMeter className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 mb-20 shadow-md md:p-8 bg-slate-200 rounded-xl" />
-        <InfographicRain className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mb-12 shadow-md md:p-8 md:w-4/5 bg-slate-200 rounded-xl" />
-        <InfographicWhy className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 shadow-md md:p-8 md:w-4/5 bg-slate-200 rounded-xl" />
+        <InfographicRain className="flex flex-col items-center justify-center w-11/12 gap-4 p-0 mb-12 shadow-md md:p-8 md:w-4/5 bg-none sm:bg-slate-200 rounded-xl" />
+        <InfographicWhy className="flex flex-col items-center justify-center w-11/12 gap-4 p-0 shadow-md md:p-8 md:w-4/5 bg-none sm:bg-slate-200 rounded-xl" />
       </div>
 
       <div
