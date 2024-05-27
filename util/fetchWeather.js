@@ -2,9 +2,6 @@ const { XMLParser } = require("fast-xml-parser");
 
 const { getTimeObj, getUrl } = require("./getUrlAndTimeObj");
 
-const axios = require("axios");
-const axiosRetry = require("axios-retry").default;
-
 async function fetchWeatherDataWithRetry(usage, dataType, location, delay) {
   const maxTries = 5;
 
@@ -43,24 +40,15 @@ async function fetchWeatherData(usage, dataType, location) {
 
   try {
     // Configure axios retry. which is pretty mucccchhhh useless now.
-    axiosRetry(axios, {
-      retries: 2,
-      retryDelay: (...args) => axiosRetry.exponentialDelay(...args, 2000),
-      onRetry: (retryCount, error, requestConfig) => {
-        console.log(`retry count: `, retryCount);
-      },
-    });
 
     // Fetch weather data
-    const response = await axios.get(url);
-
+    const response = await fetch(url);
     if (response.status !== 200) {
       throw new Error(
         `Failed to fetch data from ${url}. Status: ${response.status}`
       );
     }
-
-    const xmlData = await response.data;
+    const xmlData = await response.text();
     const parser = new XMLParser();
     let jObj = parser.parse(xmlData);
     if (!jObj || !jObj.response) {
