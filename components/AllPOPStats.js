@@ -22,7 +22,7 @@ const AllPOPStats = ({ className }) => {
     setSelectedPOP(event.target.value);
   };
   return (
-    <section className={className}>
+    <section className={className} id="어느때우산">
       <AllPOPStatsIntro className="flex flex-col items-center justify-center w-full gap-2 p-4 overflow-x-scroll rounded-sm md:rounded-sm" />
       {allOfPOPDataStats._id ? (
         <>

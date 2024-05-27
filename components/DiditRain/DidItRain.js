@@ -94,7 +94,7 @@ const DidItRain = ({ className, onClick }) => {
   //apply error data if weatherError is true
 
   return (
-    <div className={className}>
+    <div className={className} id="날씨보기">
       <div className="card">
         <div className="flex items-center justify-center card-body">
           <h2 className="text-lg lg:text-sm">

@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function WhyItMade({ className }) {
   return (
-    <section className={className}>
+    <section className={className} id="만든이유">
       <div className="w-full shadow-xl md:w-1/2 bg-slate-200 rounded-xl">
         <section className="flex flex-col p-8">
           <div className="flex items-center gap-4 mb-8">
