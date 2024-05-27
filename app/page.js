@@ -23,10 +23,8 @@ import SquallMeter from "@/components/SquallMeter";
 
 import InfographicRain from "@/components/InfographicRain";
 import InfographicWhy from "@/components/InfographicWhy";
-import MyPieChart from "@/components/ResponsivePie";
+
 import ScrollIndicator from "@/components/ScrollIndicator";
-import SectionIndicator from "@/components/SectionIndicator";
-import ScrollIndicatorHori from "@/components/ScrollIndicatorHori";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -47,7 +45,7 @@ export default function Home() {
         <p className="text-gray-200">{JSON.stringify(weatherData)}</p>
       </div> */}
 
-        <div className="fixed z-50 navbar bg-base-100">
+        <div className="navbar bg-base-100">
           <div className="flex-1">
             <a className="text-xl btn btn-ghost">아맞다 우산</a>
           </div>

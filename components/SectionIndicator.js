@@ -24,7 +24,7 @@ const SectionIndicator = ({ sectionIds }) => {
   }, [sectionIds]);
 
   return (
-    <div className="py-10">
+    <div className="flex items-center justify-center py-8">
       <p class="[writing-mode:vertical-lr]">{currentSection}</p>
     </div>
   );
