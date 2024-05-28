@@ -3,39 +3,42 @@ import Typewriter from "typewriter-effect";
 import { useEffect, useState, useRef } from "react";
 
 export default function WhyItMade({ className }) {
+  const typewriterRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const componentRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Adjust the threshold and rootMargin as needed
-        const isVisible = entry.isIntersecting;
-        setIsVisible(isVisible);
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
       },
-      {
-        threshold: 0.1, // Adjust this value to control when the callback triggers
-        rootMargin: "-50% -50% 0px 0px", // Adjust margin to control the area around the element
-      }
+      { threshold: 0.5 }
     );
 
-    if (componentRef.current) {
-      observer.observe(componentRef.current);
+    if (typewriterRef.current) {
+      observer.observe(typewriterRef.current);
     }
 
     return () => {
-      if (componentRef.current) {
-        observer.unobserve(componentRef.current);
+      if (typewriterRef.current) {
+        observer.unobserve(typewriterRef.current);
       }
     };
   }, []);
 
   return (
-    <section ref={componentRef} className={`${className}`} id="만든이유">
+    <section className={`${className}`} id="만든이유">
       <div className="flex flex-col-reverse items-center gap-8 lg:flex-row">
-        <div className="flex flex-col items-center justify-center flex-1">
-          {isVisible && (
-            <div className="flex items-center justify-center mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105">
+        <div className="flex flex-col items-center justify-center">
+          <div
+            ref={typewriterRef}
+            className="flex items-center justify-center w-64 mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105 lg:w-[40rem]"
+          >
+            {isVisible && (
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
@@ -51,20 +54,20 @@ export default function WhyItMade({ className }) {
                     })
                     .start();
                 }}
-                style={{ color: "red", fontSize: "20px" }}
               />
-            </div>
-          )}
-
-          <Image
-            src="/images/questioning.svg"
-            alt="questioning face"
-            width={250}
-            height={250}
-            className="transition duration-500 transform rounded-full shadow-lg hover:scale-105"
-          />
+            )}
+          </div>
+          <div className="flex flex-col items-center justify-center flex-1 ">
+            <Image
+              src="/images/questioning.svg"
+              alt="questioning face"
+              width={250}
+              height={250}
+              className="transition duration-500 transform rounded-full shadow-lg hover:scale-105"
+            />
+          </div>
         </div>
-        <div className="flex-1 p-6 transition duration-500 transform shadow-xl bg-slate-200 rounded-xl hover:scale-105">
+        <div className="p-6 transition duration-500 transform shadow-xl bg-slate-200 rounded-xl hover:scale-105">
           <section className="flex flex-col p-2 md:p-8">
             <div className="flex items-center gap-4 mb-8">
               <h1 className="text-2xl font-bold text-gray-800 lg:text-3xl">
