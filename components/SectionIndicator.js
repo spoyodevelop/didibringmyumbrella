@@ -23,11 +23,7 @@ const SectionIndicator = ({ sectionIds }) => {
     return () => window.removeEventListener("scroll", checkSection);
   }, [sectionIds]);
 
-  return (
-    <div className="flex items-center justify-center py-8">
-      <p class="[writing-mode:vertical-lr]">{currentSection}</p>
-    </div>
-  );
+  return <p class="[writing-mode:vertical-rl]">{currentSection}</p>;
 };
 
 export default SectionIndicator;
