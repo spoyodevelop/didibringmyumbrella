@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 
 export default function WhyItMade({ className }) {
   return (
-    <section className={`${className} p-6 w-11/12 md:w-4/5`} id="만든이유">
+    <section className={`${className}`} id="만든이유">
       <div className="flex flex-col-reverse items-center gap-8 md:flex-row">
         <div className="flex-1 p-6 transition duration-500 transform shadow-xl bg-slate-200 rounded-xl hover:scale-105">
           <section className="flex flex-col p-2 md:p-8">
@@ -50,7 +50,7 @@ export default function WhyItMade({ className }) {
           </section>
         </div>
         <div className="flex flex-col items-center justify-center flex-1">
-          <div className="mb-4 text-2xl font-bold text-white text-gray-800 transition duration-500 transform lg:text-3xl hover:scale-105">
+          <div className="flex items-center justify-center mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter

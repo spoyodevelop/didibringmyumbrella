@@ -8,9 +8,9 @@ const HowItWorksDetail = ({ className }) => {
       <h1 className="mb-12 text-3xl font-bold text-center text-gray-800">
         사이트는 이렇게 작동해요.
       </h1>
-      <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
         {/* Step 1 */}
-        <div className="flex flex-col items-center justify-between w-full p-6 transition duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105">
+        <div className="flex flex-col items-center justify-between p-6 transition duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105">
           <div className="flex flex-col items-center card-body">
             <IoIosMegaphone size={48} className="mb-4 text-blue-500" />
             <h1 className="mb-4 text-xl font-bold text-center text-gray-800">
@@ -24,7 +24,7 @@ const HowItWorksDetail = ({ className }) => {
           </div>
         </div>
         {/* Step 2 */}
-        <div className="flex flex-col items-center justify-between w-full p-6 transition duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105">
+        <div className="flex flex-col items-center justify-between p-6 transition duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105">
           <div className="flex flex-col items-center card-body">
             <FaCloudRain size={48} className="mb-4 text-blue-500" />
             <h1 className="mb-4 text-xl font-bold text-center text-gray-800">
@@ -37,7 +37,7 @@ const HowItWorksDetail = ({ className }) => {
           </div>
         </div>
         {/* Step 3 */}
-        <div className="flex flex-col items-center justify-between w-full p-6 transition duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105">
+        <div className="flex flex-col items-center justify-between p-6 transition duration-500 transform bg-white shadow-lg rounded-xl hover:scale-105">
           <div className="flex flex-col items-center card-body">
             <IoIosStats size={48} className="mb-4 text-blue-500" />
             <h1 className="mb-4 text-xl font-bold text-center text-gray-800">

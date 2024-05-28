@@ -31,15 +31,11 @@ export default function WhyItMade({ className }) {
   }, []);
 
   return (
-    <section
-      ref={componentRef}
-      className={`${className} p-6 w-11/12 md:4/5`}
-      id="만든이유"
-    >
+    <section ref={componentRef} className={`${className}`} id="만든이유">
       <div className="flex flex-col-reverse items-center gap-8 lg:flex-row">
         <div className="flex flex-col items-center justify-center flex-1">
           {isVisible && (
-            <div className="mb-4 text-2xl font-bold text-white text-gray-800 transition duration-500 transform lg:text-3xl hover:scale-105">
+            <div className="flex items-center justify-center mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105">
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
