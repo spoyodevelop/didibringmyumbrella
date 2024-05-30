@@ -25,44 +25,34 @@ import InfographicRain from "@/components/InfographicRain";
 import InfographicWhy from "@/components/InfographicWhy";
 
 import ScrollIndicator from "@/components/ScrollIndicator";
+import Navbar from "@/components/Navbar";
+import RainOutOfBlue from "@/components/RainOutOfBlue";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
-  const { systemMessage, currentPlaceData, weatherData } = useWeatherStore();
+
   const accordionRef = useRef(null);
+  const { allOfPOPDataStats } = useWeatherStore();
 
   return (
     <>
       <ScrollIndicator />
-      <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <a className="text-xl btn btn-ghost">아맞다 우산</a>
-        </div>
-        {/* <ScrollIndicatorHori /> */}
-      </div>
-
-      {/* <div className="w-4/5 p-6 mb-4 rounded-lg shadow-xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 align-center">
-        <h2 className="mb-4 text-2xl font-bold text-white">Current Place:</h2>
-        <p className="text-gray-200">{JSON.stringify(currentPlaceData)}</p>
-        <h2 className="mt-4 text-2xl font-bold text-white">System Message:</h2>
-        <p className="text-gray-200">{JSON.stringify(systemMessage)}</p>
-        <h2 className="mt-4 text-2xl font-bold text-white">Weather Data:</h2>
-        <p className="text-gray-200">{JSON.stringify(weatherData)}</p>
-      </div> */}
+      <Navbar />
 
       <div className="flex flex-col items-center w-full mb-48">
-        <WhyItMade className="flex flex-col-reverse items-center justify-center w-11/12 gap-8 p-4 mb-6 md:w-4/5 rounded-xl md:flex-row" />
-        <HowItMade className="flex flex-col items-center justify-center w-11/12 p-4 mb-12 lg:w-4/5 rounded-xl md:flex-col bg-slate-200" />
+        <div className="flex flex-col items-center w-full" id="만든이유">
+          <WhyItMade className="flex flex-col-reverse items-center justify-center w-11/12 gap-8 p-4 mt-0 mb-24 md:mb-64 md:mt-24 md:w-4/5 rounded-xl md:flex-row" />
+          <HowItMade className="flex flex-col items-center justify-center w-11/12 p-4 mt-0 mb-24 md:mb-64 md:mt-24 lg:w-4/5 rounded-xl md:flex-col bg-slate-200" />
 
-        <Question className="flex flex-col items-center justify-center w-11/12 gap-8 mb-8 rounded-xl md:flex-row" />
-        <HowToUse className="flex flex-col items-center justify-center w-11/12 gap-2 lg:w-4/5 rounded-xl md:flex-row" />
-
-        <div className="flex flex-col items-center justify-center w-full py-8 mt-12 shadow-xl lg:w-full rounded-xl">
+          <Question className="flex flex-col items-center justify-center w-11/12 gap-8 mt-0 mb-24 md:mb-64 md:mt-24 rounded-xl md:flex-row" />
+          <HowToUse className="flex flex-col items-center justify-center w-11/12 gap-2 mt-0 mb-24 md:mb-64 md:mt-24 lg:w-4/5 rounded-xl md:flex-row" />
+        </div>
+        <div
+          className="flex flex-col items-center justify-center w-full py-8 mt-24 shadow-xl lg:w-full rounded-xl"
+          id="날씨보기"
+        >
           <div className="flex flex-col justify-between w-11/12 gap-4 p-4 md:flex-row">
-            <div
-              className="flex flex-row items-center justify-center w-auto gap-4"
-              id="made"
-            >
+            <div className="flex flex-row items-center justify-center w-auto gap-4">
               <GeocodeComponent />
               <CurrentLocation />
               <QuestionIcon
@@ -99,14 +89,19 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <AllPOPStats className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mb-10 shadow-md md:p-8 bg-slate-200 rounded-xl" />
-        <SquallMeter className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 mb-20 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+
+        <AllPOPStats className="flex flex-col items-center justify-center w-11/12 gap-4 p-4 mt-24 mb-10 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+        <SquallMeter className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 mb-24 shadow-md md:p-8 bg-slate-200 rounded-xl" />
+        <RainOutOfBlue
+          data={allOfPOPDataStats}
+          className="w-11/12 gap-4 p-8 mb-48 shadow-md md:p-8 bg-slate-200 rounded-xl "
+        />
         <InfographicRain className="flex flex-col items-center justify-center w-11/12 gap-4 p-0 mb-12 shadow-md md:p-8 md:w-4/5 bg-none sm:bg-slate-200 rounded-xl" />
-        <InfographicWhy className="flex flex-col items-center justify-center w-11/12 gap-4 p-0 mb-48 shadow-md md:p-8 md:w-4/5 bg-none sm:bg-slate-200 rounded-xl" />
+        <InfographicWhy className="flex flex-col items-center justify-center w-11/12 gap-4 p-0 mb-64 shadow-md md:p-8 md:w-4/5 bg-none sm:bg-slate-200 rounded-xl" />
         <div
           ref={accordionRef}
-          className="w-11/12 h-auto p-4 mb-48 shadow-md lg:w-3/5 bg-slate-200 rounded-xl"
-          id="accordion"
+          className="w-11/12 p-4 shadow-md lg:w-3/5 bg-slate-200 rounded-xl"
+          id="QnA"
         >
           <Accordion
             activeAccordion={activeAccordion}

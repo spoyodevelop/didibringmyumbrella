@@ -73,9 +73,9 @@ export default function SquallMeter({ className }) {
               </CircularProgressbarWithChildren>
             </div>
           </div>
-          <div className="flex">
-            <RainOutOfBlue data={allOfPOPDataStats} className="flex-start" />
-          </div>
+          
+           
+          
         </>
       ) : (
         <ErrorCard />

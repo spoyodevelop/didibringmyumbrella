@@ -9,7 +9,7 @@ const Accordion = ({ activeAccordion, setActiveAccordion, className }) => {
 
   return (
     <div className={className}>
-      <h1 className="p-4 text-3xl font-bold lg:text-5xl">FAQ</h1>
+      <h1 className="p-4 text-3xl font-bold lg:text-5xl">Q&A</h1>
       <div className="collapse collapse-arrow">
         <input
           type="radio"

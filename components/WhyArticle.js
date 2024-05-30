@@ -32,8 +32,10 @@ const WhyArticle = () => {
                   loading="lazy"
                   src="/images/server.jpeg"
                   alt="image of server"
-                  layout="fill" // Keeps the image responsive
-                  className="rounded-lg shadow-lg" // Removed mb-12 to avoid unnecessary margin
+                  fill
+                  className="object-cover rounded-lg shadow-lg"
+                  // Removed mb-12 to avoid unnecessary margin
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
             </div>
@@ -89,9 +91,9 @@ const WhyArticle = () => {
                   loading="lazy"
                   src="/images/weatherkorea.jpg"
                   alt="image of weather in korea"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg shadow-lg" // Removed mb-12 to avoid unnecessary margin
+                  fill
+                  className="object-cover rounded-lg shadow-lg" // Removed mb-12 to avoid unnecessary margin
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
             </div>

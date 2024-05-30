@@ -1,6 +1,7 @@
 import style from "../styles/index.css";
 import SWRProvider from "./SWRProvider";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
+import SmoothScrolling from "./SmoothScrolling";
 const notoSansKr = Noto_Sans_KR({
   // preload: true, 기본값
   subsets: ["latin"], // 또는 preload: false
@@ -23,14 +24,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="dark">
       <body>
-        <main
-          className={
-            cls(notoSansKr.className, roboto.variable) +
-            " flex flex-col items-center justify-center min-h-screen"
-          }
-        >
-          <SWRProvider>{children}</SWRProvider>
-        </main>
+        <SmoothScrolling>
+          <main
+            className={
+              cls(notoSansKr.className, roboto.variable) +
+              " flex flex-col items-center justify-center min-h-screen"
+            }
+          >
+            <SWRProvider>{children}</SWRProvider>
+          </main>
+        </SmoothScrolling>
       </body>
     </html>
   );

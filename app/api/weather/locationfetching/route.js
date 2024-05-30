@@ -4,7 +4,7 @@ import { fetchClientLocationData } from "@/util/reverseGeolocation";
 
 import filterAndMapItems from "@/util/filterItems";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 export async function GET(request) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.searchParams);

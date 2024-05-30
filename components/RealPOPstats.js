@@ -47,7 +47,7 @@ export default function RealPOPstats({ className }) {
             </div>
             <div className="stat-value">{realPOPstats.percentage}%</div>
             <div className="stat-desc">계산된 강수 확률이에요.</div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mb-2">
               <div
                 className="bg-blue-600 h-2.5 rounded-full"
                 style={{ width: realPOPstats.percentage + "%" }}

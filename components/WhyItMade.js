@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 
 export default function WhyItMade({ className }) {
   return (
-    <section className={`${className}`} id="만든이유">
+    <section className={`${className}`}>
       <div className="flex flex-col-reverse items-center gap-8 md:flex-row">
         <div className="flex-1 p-6 transition duration-500 transform shadow-xl bg-slate-200 rounded-xl hover:scale-105">
           <section className="flex flex-col p-2 md:p-8">
@@ -42,7 +42,7 @@ export default function WhyItMade({ className }) {
             </div>
             <div className="self-center mt-4 card">
               <div className="flex justify-center p-4 transition duration-500 transform bg-blue-300 rounded-lg card-body ">
-                <h2 className="text-xl font-semibold text-center text-black lg:text-3xl">
+                <h2 className="text-xl font-semibold text-center text-black lg:text-2xl">
                   그래서 강수 확률을 조금더 유용하게 만들어 봤어요.
                 </h2>
               </div>
@@ -73,6 +73,7 @@ export default function WhyItMade({ className }) {
             width={250}
             height={250}
             className="transition duration-500 transform rounded-full shadow-lg hover:scale-105"
+            priority={true}
           />
         </div>
       </div>

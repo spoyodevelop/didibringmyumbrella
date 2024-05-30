@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SectionIndicator from "./SectionIndicator";
-const sections = [
-  "만든이유",
-  "날씨보기",
-  "어느때우산",
-  "인포그래피",
-  // Add other sections here
-];
+const sections = ["만든이유", "날씨보기", "어느때우산", "인포그래피", "QnA"];
 const ScrollIndicator = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0);
 

@@ -94,7 +94,7 @@ const DidItRain = ({ className, onClick }) => {
   //apply error data if weatherError is true
 
   return (
-    <div className={className} id="날씨보기">
+    <div className={className}>
       <div className="card">
         <div className="flex items-center justify-center card-body">
           <h2 className="text-lg lg:text-sm">
@@ -117,16 +117,16 @@ const DidItRain = ({ className, onClick }) => {
       <div className="w-full md:w-3/4 stats rounded-xl bg-slate-100 stats-vertical xl:stats-horizontal">
         {!weatherLoading && !weatherError ? (
           <>
-            <RealPOPstats className="flex flex-row item-center rounded-xl text-primary" />
+            <RealPOPstats className="flex flex-col xl:flex-row item-center rounded-xl text-primary" />
             <WeatherData
               data={weatherData}
               typeOfData="POP"
-              className="flex flex-col sm:flex-row item-center rounded-xl text-primary"
+              className="flex flex-col xl:flex-row item-center rounded-xl text-primary "
             />
             <WeatherData
               data={weatherData}
               typeOfData="RN1"
-              className="flex flex-col sm:flex-row item-center rounded-xl text-primary"
+              className="flex flex-col xl:flex-row item-center rounded-xl text-primary"
             />
           </>
         ) : weatherError ? (

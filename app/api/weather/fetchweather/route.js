@@ -3,7 +3,7 @@ import { fetchWeatherDataWithRetry } from "@/util/fetchWeather";
 import filterAndMapItems from "@/util/filterItems";
 import { CAPITAL_LOCATION } from "@/util/locations";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 export async function GET(request) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.searchParams);
