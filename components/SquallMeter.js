@@ -46,7 +46,7 @@ export default function SquallMeter({ className }) {
   const weightedAverage = calculateWeightedAverage(rainRatiosData, weights);
 
   return (
-    <section className={className}>
+    <section className={className} id="스콜미터">
       <SquallMeterIntro />
       {allOfPOPDataStats._id ? (
         <>
@@ -73,9 +73,6 @@ export default function SquallMeter({ className }) {
               </CircularProgressbarWithChildren>
             </div>
           </div>
-          
-           
-          
         </>
       ) : (
         <ErrorCard />

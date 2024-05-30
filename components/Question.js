@@ -31,7 +31,7 @@ export default function WhyItMade({ className }) {
   }, []);
 
   return (
-    <section className={`${className}`}>
+    <section className={`${className}`} id="한번쯤은">
       <div className="flex flex-col-reverse items-center gap-8 lg:flex-row">
         <div className="flex flex-col items-center justify-center">
           <div

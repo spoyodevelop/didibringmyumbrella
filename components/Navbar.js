@@ -17,6 +17,12 @@ const scrollToTopWithOffset = (id) => {
     });
   }
 };
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
 const Navbar = () => {
   return (
@@ -41,21 +47,53 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-md dropdown-content mt-3 z-[1] shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a onClick={() => scrollToTopWithOffset("만든이유")}>만든이유</a>
+              <a>만든이유</a>
+              <ul className="p-2">
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("만든이유")}>
+                    만든이유
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("작동원리")}>
+                    작동원리
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("한번쯤은")}>
+                    한번 쯤 있으시죠?
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("사용방법")}>
+                    사용방법
+                  </a>
+                </li>
+              </ul>
             </li>
-
             <li>
-              <a onClick={() => scrollToTopWithOffset("날씨보기")}>날씨보기</a>
+              <a>어느때우산</a>
+              <ul className="p-2">
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("어느때우산")}>
+                    어느때우산
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("스콜미터")}>
+                    스콜미터
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("갑자기비")}>
+                    앗 갑자기 비가!
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li>
-              <a onClick={() => scrollToTopWithOffset("어느때우산")}>
-                어느때 우산
-              </a>
-            </li>
-
             <li>
               <a onClick={() => scrollToTopWithOffset("인포그래피")}>
                 인포그래피
@@ -63,23 +101,64 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="text-xl btn btn-ghost">아맞다 우산</a>
+        <a className="text-xl btn btn-ghost" onClick={() => scrollToTop()}>
+          아 맞다 우산
+        </a>
       </div>
       <div className="hidden navbar-center lg:flex">
-        <ul className="px-1 menu menu-horizontal">
-          <li>
-            <a onClick={() => scrollToTopWithOffset("만든이유")}>만든이유</a>
+        <ul className="gap-4 px-1 menu menu-horizontal">
+          <li className="mr-2">
+            <details>
+              <summary>만든이유</summary>
+              <ul className="p-2">
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("만든이유")}>
+                    만든이유
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("작동원리")}>
+                    작동원리
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("한번쯤은")}>
+                    한번쯤은
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("사용방법")}>
+                    사용방법
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
-
           <li>
-            <a onClick={() => scrollToTopWithOffset("날씨보기")}>날씨보기</a>
+            <a onClick={() => scrollToTopWithOffset("날씨보기")}> 날씨보기</a>
           </li>
           <li>
-            <a onClick={() => scrollToTopWithOffset("어느때우산")}>
-              어느때 우산
-            </a>
+            <details>
+              <summary>어느때우산</summary>
+              <ul className="p-1">
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("어느때우산")}>
+                    어느때?
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("스콜미터")}>
+                    스콜미터
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => scrollToTopWithOffset("갑자기비")}>
+                    갑자기비
+                  </a>
+                </li>
+              </ul>
+            </details>
           </li>
-
           <li>
             <a onClick={() => scrollToTopWithOffset("인포그래피")}>
               인포그래피
@@ -88,7 +167,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn" onClick={() => scrollToTopWithOffset("QnA")}>
+        <a onClick={() => scrollToTopWithOffset("QnA")} className="btn">
           Q&A
         </a>
       </div>

@@ -108,7 +108,10 @@ const RainOutOfBlue = ({ data, className }) => {
   };
 
   return (
-    <section className={`${className} p-6 bg-gray-100 rounded-lg shadow-lg`}>
+    <section
+      className={`${className} p-6 bg-gray-100 rounded-lg shadow-lg`}
+      id="갑자기비"
+    >
       <RainOutOfBlueIntro className="mb-6" data={data} />
 
       <div className="mb-4">
