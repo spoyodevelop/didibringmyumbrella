@@ -27,6 +27,7 @@ import InfographicWhy from "@/components/InfographicWhy";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import Navbar from "@/components/Navbar";
 import RainOutOfBlue from "@/components/RainOutOfBlue";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -109,6 +110,7 @@ export default function Home() {
           />
         </div>
       </div>
+      <Footer />
       <Notification />
     </>
   );

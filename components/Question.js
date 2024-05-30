@@ -59,8 +59,8 @@ export default function WhyItMade({ className }) {
           </div>
           <div className="flex flex-col items-center justify-center flex-1 ">
             <Image
-              src="/images/questioning.svg"
-              alt="questioning face"
+              src="/images/confused.svg"
+              alt="confused face"
               width={250}
               height={250}
               className="transition duration-500 transform rounded-full shadow-lg hover:scale-105"
