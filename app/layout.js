@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
           >
             <SWRProvider>{children}</SWRProvider>
           </main>
+          <SpeedInsights />
         </SmoothScrolling>
       </body>
     </html>
