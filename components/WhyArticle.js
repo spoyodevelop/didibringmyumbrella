@@ -147,6 +147,15 @@ const WhyArticle = () => {
                 시민들이 체감하는 정확도 및 맞힘률이 낮을 수밖에 없다&rdquo;고
                 말했다.
               </p>
+              <div className="flex justify-end">
+                <a
+                  href="https://www.hankookilbo.com/News/Read/A2020072214140001639"
+                  className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
+                >
+                  <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
+                  출처:한국일보
+                </a>
+              </div>
             </article>
           </section>
           <h2 className="mb-4 text-2xl font-semibold text-gray-800 md:text-4xl">

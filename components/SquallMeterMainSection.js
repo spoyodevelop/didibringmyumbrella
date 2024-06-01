@@ -48,10 +48,10 @@ const SquallMeterMainSection = ({ className }) => {
         <div className="self-center p-6 transition-shadow bg-white rounded-lg shadow-md hover:shadow-lg">
           <div className="flex flex-col items-center justify-center">
             <h2 className="mb-4 text-2xl font-semibold text-center text-blue-700 lg:text-3xl">
-              갑작스런 비가 오면 올수록 스콜미터가 높아져요.
+              갑작스런 비가 오면 올수록 소나기미터가 높아져요.
             </h2>
             <p className="mb-4 text-center text-gray-700">
-              기후변화가 심해지면서 점점 더 스콜메터가 높아질까요?
+              기후변화가 심해지면서 점점 더 소나기미터가 높아질까요?
             </p>
             <FaUmbrella className="text-5xl text-blue-500" />
           </div>

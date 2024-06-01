@@ -64,7 +64,7 @@ export default function SquallMeter({ className }) {
                     {weightedAverage.toFixed(2)}%
                   </h2>
                   <h2 className="mb-4 text-sm text-black sm:text-base md:text-2xl">
-                    스콜미터
+                    소나기미터
                   </h2>
                   <p className="hidden text-xs xl:block xl:text-sm">
                     높을수록 갑작스런

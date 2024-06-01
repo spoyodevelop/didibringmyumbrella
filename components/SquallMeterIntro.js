@@ -14,7 +14,7 @@ const SquallMeterIntro = ({ className }) => {
         </h2>
 
         <p className="text-xl text-center text-gray-700 md:text-left">
-          갑작스레 비가 내리는 경우가 있지요. 스콜미터는 이런 갑작스러운
+          갑작스레 비가 내리는 경우가 있지요. 소나기미터는 이런 갑작스러운
           소나기에 대한 확률이에요. 소나기가 오는 확률에 가중 편차 평균을
           적용하여 소나기가 오는 확률을 계산해요. 가중 평균이 높을수록 소나기가
           오는 것이 더 심하다는 뜻이에요.

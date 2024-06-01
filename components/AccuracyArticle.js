@@ -104,7 +104,7 @@ const AccuracyArticle = () => {
                   href="https://news.sbs.co.kr/amp/news.amp?news_id=N1004359476"
                   className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
                 >
-                  <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0  group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
+                  <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
                   출처:SBS
                 </a>
               </div>
