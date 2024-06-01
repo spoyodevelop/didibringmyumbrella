@@ -50,7 +50,7 @@ export default function WhyItMade({ className }) {
           </section>
         </div>
         <div className="flex flex-col items-center justify-center flex-1">
-          <div className="flex items-center justify-center mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105">
+          <div className="flex items-center justify-center h-4 w-64 mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105 lg:w-[40rem] lg:h-auto">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
