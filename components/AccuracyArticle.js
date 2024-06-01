@@ -21,13 +21,16 @@ const AccuracyArticle = () => {
             <article className="p-6 bg-white border border-gray-300 rounded-lg shadow-sm">
               <p className="leading-relaxed text-gray-700">
                 지난 12일 기상청과 국회 입법조사처에 따르면, 기상청 단기예보
-                강수유무정확도는 2019년 92.7%, 2020년 91.4%, 2021년 90.9%,
-                2022년 92.4%에 달한다.
+                강수유무정확도는{" "}
+                <span className="highlight">
+                  2019년 92.7%, 2020년 91.4%, 2021년 90.9%, 2022년 92.4%에
+                  달한다.
+                </span>
               </p>
             </article>
             <p className="mt-4 leading-relaxed text-gray-700">
-              일반적으로 무려 90% 넘는 확률을 기대 할 수 있는 것이죠. 그런데
-              이것이 정말 맞는 것일까요?
+              일반적으로 무려 <span className="highlight">90%</span> 넘는 확률을
+              기대 할 수 있는 것이죠. 그런데 이것이 정말 맞는 것일까요?
             </p>
           </section>
 
@@ -38,11 +41,13 @@ const AccuracyArticle = () => {
             <article className="p-6 mb-4 bg-white border border-gray-300 rounded-lg shadow-sm">
               <p className="leading-relaxed text-gray-700">
                 우선 감사원은 기상청의 강수 예보 평가 기준에 문제를
-                제기했습니다. 강수 예보를 평가하는 잣대로 &lsquo; 정확도
-                &lsquo;를 쓰는 것은 적절하지 않다는 겁니다. 같은 강수 상황을
-                반영했더라도, 기상청이 발표해온 예보&lsquo;정확도&lsquo;와
-                감사원이 제시한 예보 &lsquo;적중률&lsquo;은 계산 방식에 차이가
-                있습니다. 강수 예보에 대한 경우의 수는 4가지입니다.
+                제기했습니다. 강수 예보를 평가하는 잣대로
+                <span className="highlight">&lsquo;정확도&rsquo;</span>를 쓰는
+                것은 적절하지 않다는 겁니다. 같은 강수 상황을 반영했더라도,
+                기상청이 발표해온 예보 &lsquo;정확도&rsquo;와 감사원이 제시한
+                예보 <span className="highlight">&lsquo;적중률&rsquo;</span>은
+                계산 방식에 차이가 있습니다. 강수 예보에 대한 경우의 수는
+                4가지입니다.
               </p>
             </article>
             <div className="flex justify-center">
@@ -65,11 +70,17 @@ const AccuracyArticle = () => {
               </ul>
 
               <p className="mt-4 mb-4 leading-relaxed text-gray-700">
-                1번의 경우는 제대로 기상청이 실력을 발휘해 맞춘 경우이지만,
-                4번의 경우에는 굉장히 많은 경우 거저로 정확도를 올릴 수 있어요.
-                전체 예보 {allOfPOPDataStats?.totalArrayCount}건 중 강수 확률 0%
-                예보의 경우 {allOfPOPDataStats["POP0"]?.arrayLength}건에 달하니,
-                절반정도는 거저로 정확도를 올릴 수 있지요.
+                1번의 경우는 제대로{" "}
+                <span className="highlight">
+                  기상청이 실력을 발휘해 맞춘 경우
+                </span>
+                이지만, 4번의 경우에는 굉장히 많은 경우 거저로 정확도를 올릴 수
+                있어요. 전체 예보 {allOfPOPDataStats?.totalArrayCount}건 중 강수
+                확률 0% 예보의 경우 {allOfPOPDataStats["POP0"]?.arrayLength}건에
+                달하니, 절반정도는{" "}
+                <span className="highlight">
+                  거저로 정확도를 올릴 수 있지요.
+                </span>
               </p>
             </div>
 
@@ -97,6 +108,11 @@ const AccuracyArticle = () => {
               </a>
             </article>
 
+            <p className="mt-4 mb-12 leading-relaxed text-gray-700">
+              4번의 경우를 제외하면, 기상청의 예보{" "}
+              <span className="highlight">&lsquo;적중률&rsquo;</span>은{" "}
+              <span className="highlight"> 40%</span>대에 불과한 경우가 많아요.
+            </p>
             <h2 className="mb-4 text-2xl font-semibold text-center text-gray-800 md:text-4xl">
               그럼, 왜 기상청은 이렇게 날씨를 맞추기 어려워 하는 것일까요?
             </h2>

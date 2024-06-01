@@ -5,6 +5,9 @@
   .center-bottom-md {
     @apply fixed bottom-0 transform -translate-x-1/2 left-1/2;
   }
+  .highlight {
+    @apply p-1 m-0.5 bg-blue-600  text-white shadow-sm rounded-xl;
+  }
 }
 html.lenis,
 html.lenis body {
