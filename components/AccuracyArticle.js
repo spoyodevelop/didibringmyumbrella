@@ -99,13 +99,15 @@ const AccuracyArticle = () => {
                 선진국에서도 적중률을 강수 예보 기준으로 삼고 있습니다.
               </p>
 
-              <a
-                href="https://news.sbs.co.kr/amp/news.amp?news_id=N1004359476"
-                className="flex items-center justify-end gap-2 text-blue-500 hover:text-blue-800"
-              >
-                <FaExternalLinkAlt />
-                출처:SBS
-              </a>
+              <div className="flex justify-end">
+                <a
+                  href="https://news.sbs.co.kr/amp/news.amp?news_id=N1004359476"
+                  className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
+                >
+                  <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0  group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
+                  출처:SBS
+                </a>
+              </div>
             </article>
 
             <p className="mt-4 mb-12 leading-relaxed text-gray-700">
