@@ -14,6 +14,8 @@ export default function Footer({ className }) {
           <br />
           emoji icons provided by mono_font with CC Attribution License
           <br />
+          <br /> Made with DaisyUI and Heroicons, ReactIcons, Nivo.
+          <br /> little help with mongoDB in the backend.
           <br /> SPOY &copy; 2024
         </p>
       </aside>

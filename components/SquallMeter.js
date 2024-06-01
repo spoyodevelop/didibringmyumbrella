@@ -46,8 +46,11 @@ export default function SquallMeter({ className }) {
   const weightedAverage = calculateWeightedAverage(rainRatiosData, weights);
 
   return (
-    <section className={className} id="스콜미터">
-      <SquallMeterIntro />
+    <section
+      className={`${className}  p-4 sm:p-6 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg`}
+      id="스콜미터"
+    >
+      <SquallMeterIntro className="flex flex-col items-center justify-center w-full gap-4 p-4 sm:p-6 md:rounded-lg" />
       {allOfPOPDataStats._id ? (
         <>
           <div className="flex flex-col items-center gap-12 md:flex-row">
@@ -57,10 +60,10 @@ export default function SquallMeter({ className }) {
                 value={weightedAverage.toFixed(2)}
               >
                 <div className="transition duration-500 transform  hover:scale-[1.03] flex items-center justify-center flex-col ">
-                  <h2 className="text-2xl font-bold text-blue-600 sm:text-4xl md:text-3xl lg:text-4xl xl:text-6xl">
+                  <h2 className="text-lg font-bold text-blue-600 sm:text-4xl md:text-3xl lg:text-4xl xl:text-6xl">
                     {weightedAverage.toFixed(2)}%
                   </h2>
-                  <h2 className="mb-4 text-base text-black md:text-2xl">
+                  <h2 className="mb-4 text-sm text-black sm:text-base md:text-2xl">
                     스콜미터
                   </h2>
                   <p className="hidden text-xs xl:block xl:text-sm">
