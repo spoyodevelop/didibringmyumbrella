@@ -47,7 +47,7 @@ export default function SquallMeter({ className }) {
 
   return (
     <section
-      className={`${className}  p-4 sm:p-6 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg`}
+      className={`${className}  p-2 sm:p-6 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg`}
       id="스콜미터"
     >
       <SquallMeterIntro className="flex flex-col items-center justify-center w-full gap-4 p-4 sm:p-6 md:rounded-lg" />

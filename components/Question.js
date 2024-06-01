@@ -36,7 +36,7 @@ export default function WhyItMade({ className }) {
         <div className="flex flex-col items-center justify-center">
           <div
             ref={typewriterRef}
-            className="flex items-center justify-center h-4 w-64 mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105 lg:w-[40rem] sm:h-auto"
+            className="flex items-center justify-center h-4 w-80 mt-8 mb-4 text-base font-bold text-white transition duration-500 transform sm:mt-0 lg:text-3xl hover:scale-105 lg:w-[40rem] sm:h-auto"
           >
             {isVisible && (
               <Typewriter
@@ -59,8 +59,8 @@ export default function WhyItMade({ className }) {
           </div>
           <div className="flex flex-col items-center justify-center flex-1 ">
             <Image
-              src="/images/confused.svg"
-              alt="confused face"
+              src="/images/smiling-face.svg"
+              alt="smiling face"
               width={250}
               height={250}
               className="transition duration-500 transform rounded-full shadow-lg hover:scale-105"

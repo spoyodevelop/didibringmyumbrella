@@ -13,7 +13,7 @@ const AllPOPStatsMainSection = ({ className }) => {
 
   return (
     <section
-      className={`${className} p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg`}
+      className={`${className} p-2 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg`}
     >
       <section className="flex flex-col space-y-8">
         <div className="flex items-center gap-4 mb-8">
