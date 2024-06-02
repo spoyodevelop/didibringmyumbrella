@@ -1,4 +1,6 @@
+import { useWeatherStore } from "@/app/store/weather-store";
 export default function Footer({ className }) {
+  const { allOfPOPDataStats } = useWeatherStore();
   return (
     <footer className="p-10 footer bg-base-200 text-base-content">
       <aside>
@@ -16,7 +18,21 @@ export default function Footer({ className }) {
           <br />
           <br /> Made with DaisyUI and Heroicons, ReactIcons, Nivo.
           <br /> little help with mongoDB in the backend.
+          <br />
           <br /> SPOY &copy; 2024
+          <br />
+          <br />
+          마지막 데이터베이스 업데이트:{" "}
+          {new Date(allOfPOPDataStats?.lastUpdatedSince)?.toLocaleString(
+            "ko-KR",
+            {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            }
+          )}
         </p>
       </aside>
     </footer>

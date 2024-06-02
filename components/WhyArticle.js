@@ -57,16 +57,16 @@ const WhyArticle = () => {
                 예측 값의 정확도를 높였으며, 4호기는 폭염, 폭설, 한파 등 규모가
                 작고 수명이 짧아 정확한 예보가 어려운 위험기상 관련 데이터도
                 분석할 수 있게 됐다.
-                <div className="flex justify-end">
-                  <a
-                    href="https://zdnet.co.kr/view/?no=20230906104735"
-                    className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
-                  >
-                    <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
-                    출처:지디넷 코리아
-                  </a>
-                </div>
               </p>
+              <div className="flex justify-end">
+                <a
+                  href="https://zdnet.co.kr/view/?no=20230906104735"
+                  className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
+                >
+                  <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
+                  출처:지디넷 코리아
+                </a>
+              </div>
             </article>
             <p className="mt-4 leading-relaxed text-gray-700">
               그렇게 계속해서 기상청의 슈퍼 컴퓨터가 업그레이드 되었고, 계속해서
@@ -173,16 +173,16 @@ const WhyArticle = () => {
               </span>{" "}
               예보관은 모든 관측 자료와 결과값을 토대로 종합적인 판단을 내려
               매일 날씨를 예측하죠.
-              <div className="flex justify-end">
-                <a
-                  href="https://www.sedaily.com/NewsView/1VLUEDR8RO"
-                  className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
-                >
-                  <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
-                  출처:서울경제
-                </a>
-              </div>
             </p>
+            <div className="flex justify-end">
+              <a
+                href="https://www.sedaily.com/NewsView/1VLUEDR8RO"
+                className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
+              >
+                <FaExternalLinkAlt className="transition-opacity duration-300 ease-in-out transform scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:transition-transform group-hover:duration-200" />
+                출처:서울경제
+              </a>
+            </div>
           </article>
           <p className="mt-4 mb-4 leading-relaxed text-gray-700">
             예보관이 정확한 판단을 하려면 무엇보다 날씨에 대한 충분한 지식과
