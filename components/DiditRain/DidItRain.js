@@ -38,7 +38,7 @@ const DidItRain = ({ className, onClick }) => {
     },
     async (url) => {
       try {
-        const response = await fetch(url, { next: { revalidate: 3600 } });
+        const response = await fetch(url, { next: { revalidate: 1800 } });
         if (!response.ok) {
           // HTTP 에러 처리
           const errorMessage = await response.text();

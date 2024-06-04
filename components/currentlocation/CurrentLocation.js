@@ -9,7 +9,7 @@ async function fetchLocationData(latitude, longitude) {
   try {
     const response = await fetch(
       `/api/weather/locationfetching?latitude=${latitude}&longitude=${longitude}`,
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 1800 } }
     );
 
     if (!response.ok) {
