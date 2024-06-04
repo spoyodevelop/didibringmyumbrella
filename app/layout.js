@@ -3,6 +3,7 @@ import SWRProvider from "./SWRProvider";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
 import SmoothScrolling from "./SmoothScrolling";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { inject } from "@vercel/analytics";
 const notoSansKr = Noto_Sans_KR({
   // preload: true, 기본값
   subsets: ["latin"], // 또는 preload: false
@@ -22,6 +23,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  inject();
   return (
     <html lang="en" data-theme="dark">
       <body>
