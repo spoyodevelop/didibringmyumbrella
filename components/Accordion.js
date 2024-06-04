@@ -30,9 +30,19 @@ const Accordion = ({ activeAccordion, setActiveAccordion, className }) => {
         <div className=" collapse-content">
           <p className="text-slate-400">
             본 사이트는 기상청에서 제공하는 초단기예보 API를 이용하여
-            제작되었어요. 초단기예보는 1시간 단위로 갱신되요. 따라서 이 시간내로
-            날씨가 바뀌면, 예보가 틀릴수 있어요. 이 페이지를 정말 날씨 예보를
-            보는 용도로 사용하시기 보다는, 참고용도로 쓰시는 것을 권장합니다.
+            제작되었어요. 초단기예보는{" "}
+            <span className="highlight">1시간 단위</span>로 갱신되요. 새로 고침
+            버튼을 눌러도 날씨가 안바뀐다면, 아직 서버에 날씨 현황이 업데이트
+            되지 않아 예보가 틀릴수 있어요. 조금 더 정확한 정보를 원하신다면,
+            기상청의{" "}
+            <a
+            target="_blank"
+              href="https://www.weather.go.kr"
+              className="inline-flex items-center gap-2 font-bold text-blue-500 hover:text-blue-800 group"
+            >
+              공식 사이트
+            </a>
+            를 참고해주세요.
           </p>
         </div>
       </div>
@@ -56,8 +66,12 @@ const Accordion = ({ activeAccordion, setActiveAccordion, className }) => {
           <p className="text-slate-400">
             위치를 입력하면, 해당 위치의 날씨 정보를 가져올 수 있어요. 위치
             정보는 브라우저에서 제공하는 기능(
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API">
-              geolocation
+            <a
+            target="_blank"
+              href="https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API"
+              className="inline-flex items-center gap-2 font-bold text-blue-500 hover:text-blue-800 group"
+            >
+              Geolocation API
             </a>
             )을 이용하여 가져오며, 서버등 어디에도 저장되지 않습니다. 안심하고
             사용하셔도 됩니다. 그래도 위치정보를 입력하기 싫으시다면, 각

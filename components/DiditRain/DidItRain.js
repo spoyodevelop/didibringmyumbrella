@@ -1,5 +1,5 @@
 import { useWeatherStore } from "@/app/store/weather-store";
-import React, { useEffect, useState, useRef, use } from "react";
+import React, { useState, useRef } from "react";
 import Loading from "@/components/ui/Loading";
 import WeatherData from "./WeatherData";
 import { CAPITAL_LOCATION } from "@/util/locations";
@@ -8,6 +8,7 @@ import RealPOPstats from "../RealPOPstats";
 import QuestionIcon from "../icons/QuestionButton";
 import useSWR from "swr";
 import ErrorCard from "../ui/ErrorCard";
+import { IoMdRefresh } from "react-icons/io";
 const DidItRain = ({ className, onClick }) => {
   const isItInit = useRef(true);
   const {
@@ -19,11 +20,13 @@ const DidItRain = ({ className, onClick }) => {
     updatePlaceData,
     popData,
   } = useWeatherStore();
+  const [animate, setAnimate] = useState(false);
 
   const {
     data: weatherData,
     error: weatherError,
     isLoading: weatherLoading,
+    mutate: mutateWeather,
   } = useSWR(
     () => {
       if (!placeData.administrativeArea) return null;
@@ -92,7 +95,11 @@ const DidItRain = ({ className, onClick }) => {
   //rifting state up of RealPOPstats.js
   //send data to RealPOPstats.js
   //apply error data if weatherError is true
-
+  function handleClick() {
+    mutateWeather();
+    setAnimate(true);
+    console.log(`mutateWeather`);
+  }
   return (
     <div className={className}>
       <div className="card">
@@ -112,6 +119,20 @@ const DidItRain = ({ className, onClick }) => {
               <QuestionIcon buttonSize="xs" onClick={onClick} />
             </h1>
           )}
+          <div className="flex flex-col items-center gap-2 mt-1">
+            <p className="text-sm">새로고침을 눌러 날씨를 업데이트 해보세요.</p>
+
+            <button
+              onClick={handleClick}
+              className="flex items-center justify-center p-2 text-black bg-white rounded-full hover:bg-gray-100 hover:ring-2 hover:ring-offset-2 hover:ring-offset-slate-100 hover:ring-primary"
+            >
+              <IoMdRefresh
+                size={24}
+                className={`transform ${animate ? "rotate-animation" : ""}`}
+                onAnimationEnd={() => setAnimate(false)}
+              />
+            </button>
+          </div>
         </div>
       </div>
       <div className="w-full md:w-3/4 stats rounded-xl bg-slate-100 stats-vertical xl:stats-horizontal">

@@ -87,6 +87,7 @@ const WhyArticle = () => {
             <p className="mb-4 leading-relaxed text-gray-700">
               일단,{" "}
               <a
+                target="_blank"
                 href="https://www.hankookilbo.com/News/Read/A2020072214140001639"
                 className="inline-flex items-center justify-center gap-2 text-blue-500 hover:text-blue-800 group"
               >
@@ -149,6 +150,7 @@ const WhyArticle = () => {
               </p>
               <div className="flex justify-end">
                 <a
+                  target="_blank"
                   href="https://www.hankookilbo.com/News/Read/A2020072214140001639"
                   className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
                 >
@@ -176,6 +178,7 @@ const WhyArticle = () => {
             </p>
             <div className="flex justify-end">
               <a
+                target="_blank"
                 href="https://www.sedaily.com/NewsView/1VLUEDR8RO"
                 className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
               >

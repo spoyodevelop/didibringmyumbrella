@@ -101,6 +101,7 @@ const AccuracyArticle = () => {
 
               <div className="flex justify-end">
                 <a
+                  target="_blank"
                   href="https://news.sbs.co.kr/amp/news.amp?news_id=N1004359476"
                   className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-800 group"
                 >
