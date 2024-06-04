@@ -42,7 +42,7 @@ export default function Home() {
 
       <div className="flex flex-col items-center w-full mb-48">
         <div className="flex flex-col items-center w-full" id="만든이유">
-          <WhyItMade className="flex flex-col-reverse items-center justify-center w-11/12 gap-8 p-4 mt-0 mb-24 md:mb-64 md:mt-24 md:w-4/5 rounded-xl md:flex-row" />
+          <WhyItMade className="flex flex-col-reverse items-center justify-center w-11/12 gap-8 p-4 mt-0 mb-24 md:mb-64 md:mt-24 rounded-xl md:flex-row" />
           <HowItMade className="flex flex-col items-center justify-center w-11/12 p-4 mt-0 mb-24 md:mb-64 md:mt-24 lg:w-4/5 rounded-xl md:flex-col bg-slate-200" />
 
           <Question className="flex flex-col items-center justify-center w-11/12 gap-8 mt-0 mb-24 md:mb-64 md:mt-24 rounded-xl md:flex-row" />
