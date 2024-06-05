@@ -30,14 +30,15 @@ html.lenis body {
   pointer-events: none;
 }
 @keyframes rotate {
-  from {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    transform: rotate(360deg); /* 100% 시점에 회전을 완료 */
   }
 }
 
 .rotate-animation {
-  animation: rotate 0.3s linear forwards; /* Add 'forwards' to keep the final state */
+  animation: rotate 1s cubic-bezier(0.9, 0.15, 0.5, 1.6) forwards; /* 'forwards' 추가 */
 }
