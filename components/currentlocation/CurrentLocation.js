@@ -106,7 +106,7 @@ const CurrentLocation = ({ className }) => {
 
   return (
     <>
-      {currentPlaceData.administrativeArea ? (
+      {currentPlaceData?.administrativeArea ? (
         <div className="flex items-center gap-2">
           <LocationIcon className="w-6 h-6" />
           <span>
