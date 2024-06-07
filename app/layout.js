@@ -18,8 +18,25 @@ export const cls = (...classnames) => {
   return classnames.join(" ");
 };
 export const metadata = {
-  title: "아맞다 우산",
-  description: "실제 강수확률을 체크해보세요.",
+  title: "아 맞다 우산 | 실시간 강수확률 및 실제 강수 확률 정보",
+  description:
+    "오늘 우산을 챙겨야 할지 고민되시나요? 실시간 강수확률과 실제 강수 확률를 비교하여 우산이 필요한지 알아보세요.",
+  keywords:
+    "우산, 날씨, 실시간 강수확률, 날씨 정보, 비, 우산 챙기기, 기상 예보",
+  author: "Spoy",
+  openGraph: {
+    title: "아 맞다 우산 | 실시간 강수확률 및 실제 강수 확률 정보",
+    description:
+      "오늘 우산을 챙겨야 할지 고민되시나요? 실시간 강수확률과 실제 강수 확률를 비교하여 우산이 필요한지 알아보세요.",
+    url: "https://didibringmyumbrella.site/",
+  },
+  twitter: {
+    card: "summary",
+    title: "아 맞다 우산 | 실시간 강수확률 및 실제 강수 확률 정보",
+    description:
+      "오늘 우산을 챙겨야 할지 고민되시나요? 실시간 강수확률과 실제 강수 확률를 비교하여 우산이 필요한지 알아보세요.",
+  },
+  canonical: "https://didibringmyumbrella.site/",
 };
 
 export default function RootLayout({ children }) {
