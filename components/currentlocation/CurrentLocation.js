@@ -35,15 +35,24 @@ const CurrentLocation = ({ className }) => {
     currentPlaceData,
     updateCurrentPlaceData,
 
-    systemMessage: { status: systemStatus, message: systemMessage },
     updateErrorMessage,
   } = useWeatherStore();
 
-  const [showCurrentLocation, setShowCurrentLocation] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     if (latitude && longitude) {
+      if (latitude === seoulLatitude && longitude === seoulLongitude) {
+        updatePlaceData({
+          latitude: seoulLatitude,
+          longitude: seoulLongitude,
+          administrativeArea: "Seoul",
+          administrativeAreaKorean: "서울특별시",
+          capitalNX: 60,
+          capitalNY: 127,
+          koreanName: "서울",
+          midAreaNumber: "11B00000",
+        });
+        return;
+      }
       fetchLocationData(latitude, longitude)
         .then((data) => {
           // Once data is fetched, update the place data
