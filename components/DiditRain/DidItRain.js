@@ -1,5 +1,5 @@
 import { useWeatherStore } from "@/app/store/weather-store";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Loading from "@/components/ui/Loading";
 import WeatherData from "./WeatherData";
 import { CAPITAL_LOCATION } from "@/util/locations";
@@ -11,7 +11,7 @@ import ErrorCard from "../ui/ErrorCard";
 import { IoMdRefresh } from "react-icons/io";
 const DidItRain = ({ className, onClick }) => {
   const isItInit = useRef(true);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const {
     place,
     placeData,
@@ -22,7 +22,9 @@ const DidItRain = ({ className, onClick }) => {
     popData,
   } = useWeatherStore();
   const [animate, setAnimate] = useState(false);
-
+  useEffect(() => {
+    setDate(new Date());
+  }, []);
   const {
     data: weatherData,
     error: weatherError,
