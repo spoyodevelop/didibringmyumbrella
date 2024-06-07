@@ -11,6 +11,7 @@ import ErrorCard from "../ui/ErrorCard";
 import { IoMdRefresh } from "react-icons/io";
 const DidItRain = ({ className, onClick }) => {
   const isItInit = useRef(true);
+  const [date, setDate] = useState(new Date());
   const {
     place,
     placeData,
@@ -98,6 +99,7 @@ const DidItRain = ({ className, onClick }) => {
   function handleClick() {
     mutateWeather();
     setAnimate(true);
+    setDate(new Date());
     console.log(`mutateWeather`);
   }
   return (
@@ -120,8 +122,6 @@ const DidItRain = ({ className, onClick }) => {
             </h1>
           )}
           <div className="flex flex-col items-center gap-2 mt-1">
-            <p className="text-sm">새로고침을 눌러 날씨를 업데이트 해보세요.</p>
-
             <button
               onClick={handleClick}
               className="flex items-center justify-center p-2 text-black bg-white rounded-full hover:bg-gray-100 hover:ring-2 hover:ring-offset-2 hover:ring-offset-slate-100 hover:ring-primary"
@@ -132,6 +132,16 @@ const DidItRain = ({ className, onClick }) => {
                 onAnimationEnd={() => setAnimate(false)}
               />
             </button>
+            <p className="text-base">
+              마지막 업데이트 :{" "}
+              {date?.toLocaleString("ko-KR", {
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })}
+            </p>
           </div>
         </div>
       </div>
