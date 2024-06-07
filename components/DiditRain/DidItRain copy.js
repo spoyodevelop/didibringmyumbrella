@@ -5,8 +5,7 @@ import Loading from "@/components/ui/Loading";
 import WeatherData from "./WeatherData";
 import { CAPITAL_LOCATION } from "@/util/locations";
 import RealPOPstats from "../RealPOPstats";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import POPdata from "../POPData";
+
 import QuestionIcon from "../icons/QuestionButton";
 
 const DidItRain = ({ className, onClick }) => {
