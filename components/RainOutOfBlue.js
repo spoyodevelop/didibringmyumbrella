@@ -160,6 +160,14 @@ const RainOutOfBlue = ({ data, className }) => {
               <div className="text-3xl font-extrabold text-blue-500">
                 {item?.RN1 ? item?.RN1 + "mm" : "빗방울"}
               </div>
+              <div>
+                {
+                  CAPITAL_LOCATION?.find(
+                    (capital) =>
+                      capital?.administrativeArea === item?.administrativeArea
+                  )?.administrativeAreaKorean
+                }
+              </div>
               <div className="text-gray-600">
                 {new Date(item.baseDate).toLocaleString("ko-KR", {
                   year: "numeric",
