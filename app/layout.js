@@ -4,6 +4,7 @@ import { Roboto, Noto_Sans_KR } from "next/font/google";
 import SmoothScrolling from "./SmoothScrolling";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { inject } from "@vercel/analytics";
+import { icons } from "lucide-react";
 const notoSansKr = Noto_Sans_KR({
   // preload: true, 기본값
   subsets: ["latin"], // 또는 preload: false
@@ -18,6 +19,9 @@ export const cls = (...classnames) => {
   return classnames.join(" ");
 };
 export const metadata = {
+  icons: {
+    icon: "/favicon.ico",
+  },
   title: "아 맞다 우산 | 실시간 강수확률 및 실제 강수 확률 정보",
   description:
     "오늘 우산을 챙겨야 할지 고민되시나요? 실시간 강수확률과 실제 강수 확률를 비교하여 우산이 필요한지 알아보세요.",
@@ -42,7 +46,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   inject();
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="ko" data-theme="dark">
       <body>
         <SmoothScrolling>
           <main
