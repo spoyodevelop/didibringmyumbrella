@@ -116,7 +116,7 @@ const RainOutOfBlue = ({ data, className }) => {
 
       <div className="mb-4">
         <label className="block mb-2 text-lg font-medium text-gray-700">
-          Filter by Area:
+          지역별로 보기:
           <select
             value={selectedArea}
             onChange={handleAreaChange}
@@ -137,7 +137,7 @@ const RainOutOfBlue = ({ data, className }) => {
 
       <div className="mb-6">
         <label className="block mb-2 text-lg font-medium text-gray-700">
-          Sort by Date:
+          날짜 별 정렬:
           <select
             value={sortOrder}
             onChange={handleSortChange}
