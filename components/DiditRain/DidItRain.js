@@ -99,10 +99,32 @@ const DidItRain = ({ className, onClick }) => {
   //send data to RealPOPstats.js
   //apply error data if weatherError is true
   function handleClick() {
+    if (currentPlaceData?.convertedX && currentPlaceData?.convertedY) {
+      fetch(
+        `/api/cache?action=invalidate&key=weather_${currentPlaceData?.administrativeArea}_${currentPlaceData?.convertedX}_${currentPlaceData?.convertedY}`
+      );
+      fetch(
+        `/api/cache?action=invalidate&key=weather_DB_${currentPlaceData?.administrativeArea}`
+      );
+      fetch(
+        `/api/cache?action=invalidate&key=weather_POPdata_${currentPlaceData?.administrativeArea}`
+      );
+    } else {
+      if (placeData) {
+        fetch(
+          `/api/cache?action=invalidate&key=weather_${placeData?.administrativeArea}`
+        );
+        fetch(
+          `/api/cache?action=invalidate&key=weather_DB_${placeData?.administrativeArea}`
+        );
+        fetch(
+          `/api/cache?action=invalidate&key=weather_POPdata_${placeData?.administrativeArea}`
+        );
+      }
+    }
     mutateWeather();
     setAnimate(true);
     setDate(new Date());
-    console.log(`mutateWeather`);
   }
   return (
     <div className={className}>

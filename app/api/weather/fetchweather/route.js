@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import NodeCache from "node-cache";
+import cache from "@/lib/cache";
 import { fetchWeatherDataWithRetry } from "@/util/fetchWeather";
 import filterAndMapItems from "@/util/filterItems";
 import { CAPITAL_LOCATION } from "@/util/locations";
 
 // 캐시 객체 생성 (TTL: 600초, 즉 10분)
-const cache = new NodeCache({ stdTTL: 600 });
 
 // export const dynamic = "force-dynamic";
 export async function GET(request) {
@@ -25,8 +24,12 @@ export async function GET(request) {
   }
 
   // 캐시 키 생성 (예: "Seoul")
-  const cacheKey = `weather_${administrativeArea}_${convertedX}_${convertedY}`;
-
+  let cacheKey;
+  if (convertedX && convertedY) {
+    cacheKey = `weather_${administrativeArea}_${convertedX}_${convertedY}`;
+  } else {
+    cacheKey = `weather_${administrativeArea}`;
+  }
   // 캐시에서 데이터 검색
   const cachedData = cache.get(cacheKey);
   if (cachedData) {

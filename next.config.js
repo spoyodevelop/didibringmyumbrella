@@ -8,11 +8,16 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: "/api/cache",
+        destination: "/",
+      },
+      {
         source: "/api/weather",
-        destination: `/`,
+        destination: "/",
       },
     ];
   },
+
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,

@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
-import NodeCache from "node-cache";
+import cache from "@/lib/cache";
 
 const MONGODB_URL = process.env.MONGODB_URL;
 const MONGODB_USERNAME = process.env.MONGODB_USERNAME;
 const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
 
 // 캐시 객체 생성 (TTL: 600초, 즉 10분)
-const cache = new NodeCache({ stdTTL: 600 });
 
 async function connectToDatabase() {
   const DBurl = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_URL}/?retryWrites=true&w=majority&appName=WeatherCluster`;
