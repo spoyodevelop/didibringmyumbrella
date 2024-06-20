@@ -15,7 +15,6 @@ const DBSelection = ({ className }) => {
   const handleSelectChange = async (e) => {
     const newValue = e.target.value;
     updatePlace(newValue);
-    console.log(currentPlaceData);
   };
 
   let displayingPlace = CAPITAL_LOCATION.find(

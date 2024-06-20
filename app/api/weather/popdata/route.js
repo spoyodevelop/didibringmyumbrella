@@ -16,6 +16,7 @@ async function connectToDatabase() {
   const db = client.db("POPdata");
   const collection = db.collection("weathers");
   console.log("Database connection established");
+
   return { client, collection };
 }
 
@@ -34,6 +35,7 @@ export async function GET(request) {
   // 캐시에서 데이터 검색
   const cachedData = cache.get(cacheKey);
   if (cachedData) {
+    console.log("data been loaded from cache");
     return NextResponse.json(cachedData);
   }
 
