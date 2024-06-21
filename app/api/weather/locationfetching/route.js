@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
-import { fetchWeatherDataWithRetry } from "@/util/fetchWeather";
-import { fetchClientLocationData } from "@/util/reverseGeolocation";
 
-import filterAndMapItems from "@/util/filterItems";
+import { fetchClientLocationData } from "@/util/reverseGeolocation";
 
 // export const dynamic = "force-dynamic";
 export async function GET(request) {
