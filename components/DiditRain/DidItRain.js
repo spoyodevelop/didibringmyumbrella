@@ -23,7 +23,20 @@ const DidItRain = ({ className, onClick }) => {
     popData,
   } = useWeatherStore();
   const [animate, setAnimate] = useState(false);
-  const currentDate = useFormattedDate(date);
+  const [formattedDate, setFormattedDate] = useState(null);
+  useEffect(
+    () =>
+      setFormattedDate(
+        new Date().toLocaleString("ko-KR", {
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        })
+      ),
+    []
+  );
   const {
     data: weatherData,
     error: weatherError,
@@ -123,7 +136,15 @@ const DidItRain = ({ className, onClick }) => {
     }
     mutateWeather();
     setAnimate(true);
-    setDate(new Date());
+    setFormattedDate(
+      new Date().toLocaleString("ko-KR", {
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+    );
   }
   return (
     <div className={className}>
@@ -155,7 +176,7 @@ const DidItRain = ({ className, onClick }) => {
                 onAnimationEnd={() => setAnimate(false)}
               />
             </button>
-            <p className="text-base">마지막 업데이트 : {date}</p>
+            <p className="text-base">마지막 업데이트 : {formattedDate}</p>
           </div>
         </div>
       </div>
