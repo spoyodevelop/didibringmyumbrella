@@ -22,9 +22,9 @@ const DidItRain = ({ className, onClick }) => {
     popData,
   } = useWeatherStore();
   const [animate, setAnimate] = useState(false);
-  useEffect(() => {
-    setDate(new Date());
-  }, []);
+  // useEffect(() => {
+  //   setDate(new Date());
+  // }, []);
   const {
     data: weatherData,
     error: weatherError,
@@ -158,13 +158,13 @@ const DidItRain = ({ className, onClick }) => {
             </button>
             <p className="text-base">
               마지막 업데이트 :{" "}
-              {date?.toLocaleString("ko-KR", {
+              {/* {date?.toLocaleString("ko-KR", {
                 month: "2-digit",
                 day: "2-digit",
                 hour: "2-digit",
                 minute: "2-digit",
                 hour12: false,
-              })}
+              })} */}
             </p>
           </div>
         </div>
