@@ -3,6 +3,7 @@ const { XMLParser } = require("fast-xml-parser");
 const { getTimeObj, getUrl } = require("./getUrlAndTimeObj");
 
 async function fetchWeatherDataWithRetry(usage, dataType, location, delay) {
+  // 최고 5번까지 시도한다.
   const maxTries = 5;
 
   for (let tries = 1; tries <= maxTries; tries++) {
@@ -26,9 +27,10 @@ async function fetchWeatherDataWithRetry(usage, dataType, location, delay) {
         );
       }
 
-      // Exponentially increase delay
+      // 1, 2, 4... 8초로 지수적으로 증가하는 딜레이를 사용한다.
+
       await new Promise((resolve) => setTimeout(resolve, delay));
-      delay *= 2; // Double the delay for the next retry
+      delay *= 2; // 딜레이를 2배로 증가시킨다.
     }
   }
 }
@@ -39,10 +41,10 @@ async function fetchWeatherData(usage, dataType, location) {
   console.log(url);
 
   try {
-    // Configure axios retry. which is pretty mucccchhhh useless now.
-
-    // Fetch weather data
+    // 기상청 API로부터 데이터를 가져온다,
     const response = await fetch(url);
+
+    // 일반적인 HTTP 에러를 처리한다. 하지만 대개는 여기서 에러가 발생하지 않는다.
     if (response.status !== 200) {
       throw new Error(
         `Failed to fetch data from ${url}. Status: ${response.status}`
@@ -51,6 +53,8 @@ async function fetchWeatherData(usage, dataType, location) {
     const xmlData = await response.text();
     const parser = new XMLParser();
     let jObj = parser.parse(xmlData);
+    // jOBj가 없거나 jObj.response가 없는 경우 에러를 발생시킨다.  jObj.response.header가 없는 경우도 에러를 발생시킨다.
+
     if (!jObj || !jObj.response) {
       throw new Error(
         `Failed to fetch data for ${location.administrativeArea}. it has no jObj or jObj response`
@@ -61,6 +65,8 @@ async function fetchWeatherData(usage, dataType, location) {
         `Failed to fetch data for ${location.administrativeArea}. it has no header.`
       );
     }
+    //http status가 200이지만, 에러가 발생이 안되는 경우코드가 여기까지 내려온다.
+    //resultCode가 0이 아니거나 숫자가 아닌 경우 에러를 발생시킨다. NO_DATA의 경우에도 에러를 발생시킨다.
     if (
       isNaN(jObj.response.header.resultCode) ||
       +jObj.response.header.resultCode !== 0

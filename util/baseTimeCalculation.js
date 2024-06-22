@@ -1,5 +1,10 @@
+//moment.js를 사용하여 현재 시간을 기준으로 단기예보의 baseTime을 계산하는 함수
 const moment = require("moment");
+//node js 환경에서 혹시 timezone이 설정되어 있지 않다면, 아래 코드를 통해 env.TZ 한국으로 설정해주어야 한다.
 process.env.TZ = "Asia/Seoul";
+//단기예보의 baseTime이 해당 timeRange에 떨어지면, 그 baseTime을 return한다.
+//단기예보는 해당 시간, 2, 5, 8, 11, 14, 17, 20, 23시+ 10분에 갱신되지만,
+//해당 시간을 baseTime으로 사용하기에는 너무 이르기 때문에(오류가 잦음), 1시간을 더해서 가져오게 만들었다.
 const timeRanges = [
   { startTime: "00:01", endTime: "03:00", baseTime: 23 },
   { startTime: "03:01", endTime: "06:00", baseTime: 2 },
@@ -15,7 +20,7 @@ function getBaseTimeForGivenTime(givenDate) {
   const givenMoment = moment(givenDate);
   const currentDate = moment();
 
-  // Check if the given time is between "00:00" and "03:00"
+  //"00:00에서 03:00 사이의 시간은 전날 23시로 처리 1일을 빼준다."
   if (
     givenMoment.isBetween(
       moment("00:00", "HH:mm"),
@@ -34,12 +39,12 @@ function getBaseTimeForGivenTime(givenDate) {
     if (range.startTime === "21:01") {
       startTime.subtract(1, "day");
     }
-    // Adjust end time for "00:00""
+    // 00:00의 경우 endTime이 00:00이기 때문에 1일을 더해준다.
     if (range.endTime === "00:00") {
       endTime = endTime.add(1, "day");
     }
 
-    // Include the end time in the comparison
+    // givenDate가 startTime과 endTime 사이에 있으면 해당 baseTime을 return한다.
     if (givenMoment.isBetween(startTime, endTime, null, "[]")) {
       currentDate.set({
         hour: range.baseTime,
@@ -51,6 +56,7 @@ function getBaseTimeForGivenTime(givenDate) {
       return currentDate.toDate();
     }
   }
+  // givenDate가 timeRanges에 포함되지 않는 경우, 23시로 설정한다. (기본값) fallback 로직.
   currentDate.set({ hour: 23, minute: 0, second: 0, millisecond: 0 });
   return currentDate.toDate();
 }
