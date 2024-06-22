@@ -9,6 +9,7 @@ import QuestionIcon from "../icons/QuestionButton";
 import useSWR from "swr";
 import ErrorCard from "../ui/ErrorCard";
 import { IoMdRefresh } from "react-icons/io";
+import useFormattedDate from "@/hooks/useFormattedDate";
 const DidItRain = ({ className, onClick }) => {
   const isItInit = useRef(true);
   const [date, setDate] = useState(null);
@@ -22,9 +23,7 @@ const DidItRain = ({ className, onClick }) => {
     popData,
   } = useWeatherStore();
   const [animate, setAnimate] = useState(false);
-  // useEffect(() => {
-  //   setDate(new Date());
-  // }, []);
+  const currentDate = useFormattedDate(date);
   const {
     data: weatherData,
     error: weatherError,
@@ -156,16 +155,7 @@ const DidItRain = ({ className, onClick }) => {
                 onAnimationEnd={() => setAnimate(false)}
               />
             </button>
-            <p className="text-base">
-              마지막 업데이트 :{" "}
-              {/* {date?.toLocaleString("ko-KR", {
-                month: "2-digit",
-                day: "2-digit",
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false,
-              })} */}
-            </p>
+            <p className="text-base">마지막 업데이트 : {date}</p>
           </div>
         </div>
       </div>
