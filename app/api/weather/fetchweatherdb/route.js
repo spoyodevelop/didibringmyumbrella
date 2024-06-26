@@ -11,11 +11,12 @@ export async function GET(request) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.searchParams);
   const administrativeArea = searchParams.get("administrativeArea");
+  //get the administrativeArea from the query parameter
 
   if (!administrativeArea) {
     throw new Error("Administrative area is missing.");
   }
-
+  //merge the administrativeArea with the capitalLocationData, and return the matched location data
   function mergeLocationsData(capitalLocationData, administrativeArea) {
     const matchedPlace = capitalLocationData.filter(
       (capital) => capital.administrativeArea === administrativeArea
@@ -28,13 +29,14 @@ export async function GET(request) {
 
   const locationData = mergeLocationsData(CAPITAL_LOCATION, administrativeArea);
 
-  // 캐시 키 생성
+  //cacheKey is the key to store the data in the cache
   const cacheKey = `weather_DB_${administrativeArea}`;
 
-  // 캐시에서 데이터 검색
+  //check if the data is already in the cache
   const cachedData = cache.get(cacheKey);
   if (cachedData) {
     console.log("Cached data:", cachedData);
+    return NextResponse.json(cachedData);
   } else {
     console.log("No cached data for key:", cacheKey);
   }
