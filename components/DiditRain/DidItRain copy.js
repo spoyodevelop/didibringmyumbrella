@@ -37,7 +37,7 @@ const DidItRain = ({ className, onClick }) => {
         const errorMessage = await response.text();
         updateSystemMessage({
           status: "error",
-          message: `날씨정보를 가져오는데 에러가 발생했어요. ${errorMessage}`,
+          message: `날씨정보를 가져오는데 에러가 발생했어요. `,
         });
         return;
       }
