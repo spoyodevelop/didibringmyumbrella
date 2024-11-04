@@ -76,13 +76,16 @@ export default function Home() {
               <DBSelection className="flex flex-col items-center justify-center gap-4 md:flex-row" />
             </Suspense>
           </div>
-          <DidItRain
-            className="flex flex-col items-center w-11/12 p-5 m-12 md:w-11/12 justify-evenly rounded-xl xl:flex-row md:justify-evenly lg:justify-evenly bg-slate-200"
-            onClick={() => {
-              setActiveAccordion("accordion-1");
-              accordionRef.current?.scrollIntoView({ behavior: "smooth" });
-            }}
-          />
+
+          <Suspense fallback={<Loading />}>
+            <DidItRain
+              className="flex flex-col items-center w-11/12 p-5 m-12 md:w-11/12 justify-evenly rounded-xl xl:flex-row md:justify-evenly lg:justify-evenly bg-slate-200"
+              onClick={() => {
+                setActiveAccordion("accordion-1");
+                accordionRef.current?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+          </Suspense>
 
           <div className="flex flex-col items-center justify-center w-11/12 gap-4 p-8 mb-4 shadow-md lg:flex-row bg-slate-200 rounded-xl">
             <Suspense fallback={<Loading />}>
