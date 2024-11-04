@@ -183,12 +183,12 @@ const DidItRain = ({ className, onClick }) => {
       <div className="w-full md:w-3/4 stats rounded-xl bg-slate-100 stats-vertical xl:stats-horizontal">
         {!weatherLoading && !weatherError ? (
           <>
-            {/* <RealPOPstats className="flex flex-col xl:flex-col 2xl:flex-row item-center rounded-xl text-primary" /> */}
-            {/* <WeatherData
+            <RealPOPstats className="flex flex-col xl:flex-col 2xl:flex-row item-center rounded-xl text-primary" />
+            <WeatherData
               data={weatherData}
               typeOfData="POP"
               className="flex flex-col xl:flex-col 2xl:flex-row item-center rounded-xl text-primary "
-            /> */}
+            />
             <WeatherData
               data={weatherData}
               typeOfData="RN1"

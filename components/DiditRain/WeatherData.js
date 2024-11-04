@@ -37,8 +37,8 @@ const WeatherData = ({ data, typeOfData, className }) => {
 
     icon = <IoIosMegaphone size={32} />;
     if (!POP) return;
-    formattedDate = convertToDateTime(POP.POP.fcstDate, POP.POP.fcstTime);
-    const formattedValue = POP.POP.fcstValue;
+    formattedDate = convertToDateTime(POP?.POP?.fcstDate, POP?.POP?.fcstTime);
+    const formattedValue = POP?.POP?.fcstValue;
     const name = "예보강수확률 ";
     const formatter = "%";
     formattedString = { name, formatter, formattedValue };
@@ -48,8 +48,8 @@ const WeatherData = ({ data, typeOfData, className }) => {
     icon = <IoRainy size={28} />;
     if (!RN1) return;
 
-    formattedDate = convertToDateTime(RN1.RN1.baseDate, RN1.RN1.baseTime);
-    const formattedValue = RN1.RN1.obsrValue;
+    formattedDate = convertToDateTime(RN1?.RN1?.baseDate, RN1?.RN1?.baseTime);
+    const formattedValue = RN1?.RN1?.obsrValue;
 
     const name = "강수량은";
     const formatter = "mm";

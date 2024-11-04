@@ -15,7 +15,7 @@ export default function RealPOPstats({ className }) {
   useEffect(() => {
     if (!popData || !weatherData.POP) return;
     else if (popData.DBData && weatherData.POP) {
-      let originalPOP = weatherData.POP.POP.fcstValue;
+      let originalPOP = weatherData.POP.POP?.fcstValue;
       originalPOP = rounding(originalPOP);
       const realPOP = popData.DBData[`POP${originalPOP}`];
 
