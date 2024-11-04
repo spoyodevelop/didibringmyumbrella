@@ -34,7 +34,6 @@ const WeatherData = ({ data, typeOfData, className }) => {
   let icon;
   if (typeOfData === "POP") {
     const { POP } = data;
-
     icon = <IoIosMegaphone size={32} />;
     if (!POP) return;
     formattedDate = convertToDateTime(POP.POP.fcstDate, POP.POP.fcstTime);
@@ -57,6 +56,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
   }
   return (
     <div className={className}>
+   
       <div className="py-2 md:py-4 stat">
         <div> {icon}</div>
         <div className="text-base stat-title">{formattedString?.name}</div>
