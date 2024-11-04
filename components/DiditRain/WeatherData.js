@@ -1,6 +1,7 @@
 import { IoIosMegaphone } from "react-icons/io";
 import { IoRainy } from "react-icons/io5";
 const WeatherData = ({ data, typeOfData, className }) => {
+  console.log(data);
   function convertToDateTime(fcstDate, fcstTime) {
     // 날짜와 시간을 분리
     const year = String(fcstDate).substring(0, 4);
@@ -17,7 +18,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
 
     return dateObject;
   }
-  if (!data)
+  if (!data || !data.POP || !data.RN1)
     return (
       <div className={className}>
         <div className="card-body">
@@ -33,6 +34,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
   let icon;
   if (typeOfData === "POP") {
     const { POP } = data;
+
     icon = <IoIosMegaphone size={32} />;
     if (!POP) return;
     formattedDate = convertToDateTime(POP.POP.fcstDate, POP.POP.fcstTime);
