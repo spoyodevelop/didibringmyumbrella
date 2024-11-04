@@ -14,8 +14,8 @@ function transformDataForNivo(data) {
       // Create a new object for each population group
       let groupData = {
         강수확률: `${populationGroupNumber}`,
-        예보횟수: data[key].arrayLength,
-        비가내린횟수: data[key].didItRainCount,
+        예보횟수: data[key]?.arrayLength,
+        비가내린횟수: data[key]?.didItRainCount,
       };
 
       // Add the new object to the transformed data array

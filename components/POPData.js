@@ -85,16 +85,16 @@ const POPdata = () => {
       if (key.startsWith("POP")) {
         // Ensure the data object has the required properties and they are numbers
         if (
-          typeof data[key].didItRainCount === "number" &&
-          typeof data[key].arrayLength === "number"
+          typeof data[key]?.didItRainCount === "number" &&
+          typeof data[key]?.arrayLength === "number"
         ) {
           let percentage = 0;
           // Calculate the percentage
-          if (data[key].arrayLength !== 0 && data[key].didItRainCount === 0) {
+          if (data[key]?.arrayLength !== 0 && data[key]?.didItRainCount === 0) {
             percentage = 0;
           } else {
             percentage =
-              (data[key].didItRainCount / data[key].arrayLength) * 100;
+              (data[key]?.didItRainCount / data[key]?.arrayLength) * 100;
             percentage = Math.round(percentage);
           }
           // Check if the percentage is NaN

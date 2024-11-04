@@ -21,13 +21,13 @@ export default function RealPOPstats({ className }) {
 
       let percentage = 0;
       if (
-        typeof realPOP.didItRainCount === "number" &&
-        typeof realPOP.arrayLength === "number"
+        typeof realPOP?.didItRainCount === "number" &&
+        typeof realPOP?.arrayLength === "number"
       ) {
-        if (realPOP.arrayLength !== 0 && realPOP.didItRainCount === 0) {
+        if (realPOP?.arrayLength !== 0 && realPOP?.didItRainCount === 0) {
           percentage = 0;
         } else {
-          percentage = (realPOP.didItRainCount / realPOP.arrayLength) * 100;
+          percentage = (realPOP?.didItRainCount / realPOP?.arrayLength) * 100;
           percentage = Math.round(percentage);
         }
         if (!isNaN(percentage)) {
