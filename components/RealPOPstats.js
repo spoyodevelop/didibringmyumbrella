@@ -13,7 +13,7 @@ export default function RealPOPstats({ className }) {
   } = useWeatherStore();
 
   useEffect(() => {
-    if (!popData || !weatherData) return;
+    if (!popData || !weatherData.POP) return;
     else if (popData.DBData && weatherData.POP) {
       let originalPOP = weatherData.POP.POP.fcstValue;
       originalPOP = rounding(originalPOP);
