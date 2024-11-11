@@ -57,7 +57,7 @@ export default function WhyItMade({ className }) {
                   .typeString("이 사이트는 왜 만들어져 있는건가요?")
                   .pauseFor(1000)
                   .deleteAll()
-                  .typeString("사이트를 만들게 된 이유를 알려줄께요.")
+                  .typeString("사이트를 만들게 된 이유를 알려줄게요.")
                   .callFunction(() => {
                     typewriter.stop(); // Stop the typewriter instance
                   })
