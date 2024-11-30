@@ -37,7 +37,7 @@ const DidItRain = ({ className, onClick }) => {
         const errorMessage = await response.text();
         updateSystemMessage({
           status: "error",
-          message: `날씨정보를 가져오는데 에러가 발생했어요. `,
+          message: `날씨정보를 가져오는데 실패했어요. 기상청에서 제공하는 정보 대신 아 맞다 우산에서 제공하는 자료를 보여드립니다.`,
         });
         return;
       }
@@ -52,7 +52,8 @@ const DidItRain = ({ className, onClick }) => {
     } catch (error) {
       updateSystemMessage({
         status: "error",
-        message: "날씨정보를 가져오는데 에러가 발생했어요.",
+        message:
+          "날씨정보를 가져오는데 실패했어요. 기상청에서 제공하는 정보 대신 아 맞다 우산에서 제공하는 자료를 보여드립니다.",
       });
       console.error("Error fetching weather data:", error);
 
