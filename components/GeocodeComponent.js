@@ -91,8 +91,8 @@ const GeocodeComponent = () => {
       fetchingData.current = true; // Set to true to prevent multiple fetch calls
 
       try {
-        const seoulLatitude = 37.5665;
-        const seoulLongitude = 126.978;
+        const seoulLatitude = 37.502;
+        const seoulLongitude = 127.128;
 
         updateLatitude(seoulLatitude);
         updateLongitude(seoulLongitude);

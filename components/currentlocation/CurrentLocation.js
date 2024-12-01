@@ -46,8 +46,8 @@ const CurrentLocation = ({ className }) => {
           longitude: seoulLongitude,
           administrativeArea: "Seoul",
           administrativeAreaKorean: "서울특별시",
-          capitalNX: 60,
-          capitalNY: 127,
+          capitalNX: 62,
+          capitalNY: 125,
           koreanName: "서울",
           midAreaNumber: "11B00000",
         });
@@ -84,8 +84,8 @@ const CurrentLocation = ({ className }) => {
           longitude: seoulLongitude,
           administrativeArea: "Seoul",
           administrativeAreaKorean: "서울특별시",
-          capitalNX: 60,
-          capitalNY: 127,
+          capitalNX: 62,
+          capitalNY: 125,
           koreanName: "서울",
           midAreaNumber: "11B00000",
         });

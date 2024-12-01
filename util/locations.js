@@ -1,5 +1,5 @@
-const seoulLatitude = 37.5665;
-const seoulLongitude = 126.978;
+const seoulLatitude = 37.5020;
+const seoulLongitude = 127.128;
 const DUMMY_POSITION = [
   {
     place: "남산타워",
@@ -101,8 +101,8 @@ const CAPITAL_LOCATION = [
   {
     administrativeArea: "Seoul",
     administrativeAreaKorean: "서울특별시",
-    capitalNX: 60,
-    capitalNY: 127,
+    capitalNX: 62,
+    capitalNY: 125,
     koreanName: "서울",
     midAreaNumber: "11B00000",
   },

@@ -21,7 +21,7 @@ const DBSelection = ({ className }) => {
     (capital) => capital.administrativeArea === place
   )?.administrativeAreaKorean;
   if (place === "currentLocation" && !currentPlaceData?.administrativeArea) {
-    displayingPlace = "기본 위치 (서울 중구)";
+    displayingPlace = "기본 위치 (서울 송파구)";
   }
   return (
     <div className={className}>
@@ -29,7 +29,7 @@ const DBSelection = ({ className }) => {
         <p className="text-sm">현재 선택된 광역시는 {displayingPlace}</p>
       ) : (
         <p className="text-sm">
-          광역시를 선택해주세요. 기본 위치는 서울 중구입니다.
+          광역시를 선택해주세요. 기본 위치는 서울 송파구입니다.
         </p>
       )}
 
