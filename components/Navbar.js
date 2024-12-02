@@ -82,11 +82,7 @@ const Navbar = () => {
                     어느때우산
                   </a>
                 </li>
-                <li>
-                  <a onClick={() => scrollToTopWithOffset("스콜미터")}>
-                    스콜미터
-                  </a>
-                </li>
+
                 <li>
                   <a onClick={() => scrollToTopWithOffset("갑자기비")}>
                     앗 갑자기 비가!
@@ -146,11 +142,7 @@ const Navbar = () => {
                     어느때?
                   </a>
                 </li>
-                <li>
-                  <a onClick={() => scrollToTopWithOffset("스콜미터")}>
-                    스콜미터
-                  </a>
-                </li>
+
                 <li>
                   <a onClick={() => scrollToTopWithOffset("갑자기비")}>
                     갑자기비
