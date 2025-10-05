@@ -1,7 +1,6 @@
 import { IoIosMegaphone } from "react-icons/io";
 import { IoRainy } from "react-icons/io5";
 const WeatherData = ({ data, typeOfData, className }) => {
-  console.log(data);
   function convertToDateTime(fcstDate, fcstTime) {
     // 날짜와 시간을 분리
     const year = String(fcstDate).substring(0, 4);
@@ -64,7 +63,7 @@ const WeatherData = ({ data, typeOfData, className }) => {
         <div className="stat-desc">{formattedString?.formatter}</div>
       </div>
       <div className="py-2 md:py-4 stat">
-        <div className=" stat-title">기준 날짜</div>
+        <div className="stat-title">기준 날짜</div>
         <div className="text-sm text-slate-400 stat-value">
           {formattedDate?.toLocaleDateString("ko-KR", {
             weekday: "long",
